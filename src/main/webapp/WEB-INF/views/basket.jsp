@@ -40,29 +40,25 @@
 <section class="basketList">
     <h1 class="textBasket">Корзина</h1>
     <div class="container">
+
+        <form action="/basket" method="post">
+        <c:forEach items="${order}" var="ord">
         <div class="productList">
-            <img src="img/турник1.jpg" alt="" class="img">
+            <img src="${ord.productOrder.filename}" alt="No images" class="img">
             <div class="infoProduct">
                 <br>
-                <p class="article">Артикул: 1</p><br><br><br>
-                <h4 class="nameProduct">Турник Champion G-630/10</h4>
-                <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="1"></h5>
-                <h3 class="price">99 руб</h3>
+                <p class="article">Артикул: ${ord.productOrder.article}</p><br><br><br>
+                <h4 class="nameProduct">${ord.productOrder.category} ${ord.productOrder.brand} ${ord.productOrder.model}</h4>
+                <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="${ord.count}" name="orderCount"></h5>
+                <h3 class="price">${ord.productOrder.price} руб</h3>
+                <input type="hidden" value="${ord.id}" name="orderId">
                 <a href="" class="del">Удалить из корзины</a>
             </div>
         </div>
-        <div class="productList">
-            <img src="img/турник1.jpg" alt="" class="img">
-            <div class="infoProduct">
-                <br>
-                <p class="article">Артикул: 1</p><br><br><br>
-                <h4 class="nameProduct">Турник Champion G-630/10</h4>
-                <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="1"></h5>
-                <h3 class="price">99 руб</h3>
-                <a href="" class="del">Удалить из корзины</a>
-            </div>
-        </div>
-        <a href="" class="btn">Оформить заказ</a>
+        </c:forEach>
+        <button type="submit" class="btn">Оформить заказ</button>
+        </form>
+
     </div>
 </section>
 

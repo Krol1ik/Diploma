@@ -225,12 +225,12 @@ a{
 
 .qualityInput{
     width: 38px;
+    margin-right: 15px;
 }
 
 .price{
-    padding-left: 60px;
-    font-style: 14px;
     color: #ffa627;
+    display: inline;
 }
 
 .del{
@@ -238,6 +238,7 @@ a{
     font-size: 9px;
     text-decoration: underline;
 }
+
 
 .btn {
     margin-top: 40px;

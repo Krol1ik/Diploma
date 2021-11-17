@@ -63,14 +63,14 @@ values ('BSK13');
 
 insert into Product (Category_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, filename)
 values (1, 5, 3, 'это новый профессиональный турник, для настоящих энтузиастов спорта и воркаута на базе усиленного разборного турника.',
-        219.99, 0, '/E:/Java/DiplomaTMS/Diploma/src/main/resources/static/img/турник1.jpg');
+        219.99, 0, '/static/img/турник1.jpg');
 insert into Product (Category_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, filename)
 values (1, 5, 3, 'это новый профессиональный турник, для настоящих энтузиастов спорта и воркаута на базе усиленного разборного турника.',
-        219.99, 0, '/E:/Java/DiplomaTMS/Diploma/src/main/resources/static/img/турник1.jpg');
+        219.99, 0, '/static/img/турник1.jpg');
 insert into Product (Category_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, filename)
 values (1, 5, 3, 'это новый профессиональный турник, для настоящих энтузиастов спорта и воркаута на базе усиленного разборного турника.',
-        219.99, 0, '/E:/Java/DiplomaTMS/Diploma/src/main/resources/static/img/турник1.jpg');
+        219.99, 0, '/static/img/турник1.jpg');
 insert into Product (Category_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, filename)
 values (1, 5, 3, 'это новый профессиональный турник, для настоящих энтузиастов спорта и воркаута на базе усиленного разборного турника.',
-        219.99, 0, '/E:/Java/DiplomaTMS/Diploma/src/main/resources/static/img/турник1.jpg');
+        219.99, 0, '/static/img/турник1.jpg');
 

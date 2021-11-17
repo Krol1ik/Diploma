@@ -14,7 +14,7 @@ public class DataOrder {
     private Long id;
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "Order_number")
-    private String orderNumber;
+    private Long orderNumber;
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn (name = "User_id")
     private User user;
@@ -37,11 +37,11 @@ public class DataOrder {
         this.id = id;
     }
 
-    public String getOrderNumber() {
+    public Long getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(String orderNumber) {
+    public void setOrderNumber(Long orderNumber) {
         this.orderNumber = orderNumber;
     }
 
@@ -67,5 +67,16 @@ public class DataOrder {
 
     public void setOrderItem(List<OrderItem> orderItem) {
         this.orderItem = orderItem;
+    }
+
+    @Override
+    public String toString() {
+        return "DataOrder{" +
+                "id=" + id +
+                ", orderNumber='" + orderNumber + '\'' +
+                ", user=" + user +
+                ", customer=" + customer +
+                ", orderItem=" + orderItem +
+                '}';
     }
 }

@@ -24,8 +24,11 @@ public class OrderItem {
     @JoinColumn (name = "Product_id")
     private Product productOrder;
 
+    @Column (name = "status_order")
+    private boolean statusOrder = false;
+
     @Column (name = "Count")
-    private int count;
+    private int count = 1;
 
     public OrderItem() {
     }
@@ -68,5 +71,16 @@ public class OrderItem {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", user=" + user +
+                ", dataOrders=" + dataOrders +
+                ", productOrder=" + productOrder +
+                ", count=" + count +
+                '}';
     }
 }

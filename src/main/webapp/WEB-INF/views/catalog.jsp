@@ -53,22 +53,20 @@
             <div class="filter">
 
             </div>
-            <form method="post">
+
             <div class="products">
-<c:forEach items="${product}" var="prod">
-                <div class="prdouct">
-                    <img src="/static/img/турник1.jpg" alt="No images" class="img">
+<c:forEach items="${productList}" var="prod">
+                <div class="prodouctStyle">
+                    <img src="${prod.filename}" alt="No images" class="img">
                     <br>
                     <h4 class="nameProduct">${prod.category} ${prod.brand} ${prod.model}</h4>
                     <p class="nameProduct">Артикул: ${prod.article}</p>
                     <div class="by">
                         <h3 class="price">${prod.price} руб</h3>
-                        <button type="submit" class="btnBy" value="${prod.id}">В корзину</button>
-<%--                        <a  class="btnBy">В корзину</a>--%>
+                        <button type="submit" class="btnBy"><a href="/catalog/${prod.id}">В корзину</a></button>
                     </div>
                 </div>
 </c:forEach>
-                </form>
             </div>
         </div>
     </div>
