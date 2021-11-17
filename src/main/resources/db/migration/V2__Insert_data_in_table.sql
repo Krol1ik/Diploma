@@ -1,6 +1,7 @@
 insert into country (Country_name)
 values ('Беларусь');
 
+
 insert into city (City_name, Country_id)
 values ('Минск', 1);
 insert into city (City_name, Country_id)
@@ -13,6 +14,7 @@ insert into city (City_name, Country_id)
 values ('Могилев', 1);
 insert into city (City_name, Country_id)
 values ('Гродно', 1);
+
 
 insert into Type_product (Type_name)
 values ('Гантели');

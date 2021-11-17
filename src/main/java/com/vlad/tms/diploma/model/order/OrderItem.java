@@ -33,6 +33,14 @@ public class OrderItem {
     public OrderItem() {
     }
 
+    public boolean isStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(boolean statusOrder) {
+        this.statusOrder = statusOrder;
+    }
+
     public Long getId() {
         return id;
     }

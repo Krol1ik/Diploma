@@ -10,9 +10,9 @@ public class Country {
     private Long id;
     @Column (name = "Country_name", nullable = false)
     private String countryName;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Address_id", referencedColumnName = "id")
-    private Address address;
+
+    @OneToMany (mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> address;
 
     @OneToMany (mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<City> city;
@@ -36,11 +36,11 @@ public class Country {
         this.countryName = countryName;
     }
 
-    public Address getAddress() {
+    public List<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(List<Address> address) {
         this.address = address;
     }
 

@@ -1,6 +1,7 @@
 package com.vlad.tms.diploma.model.address;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class City {
@@ -13,6 +14,9 @@ public class City {
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn (name = "Country_id")
     private Country country;
+
+    @OneToMany (mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> address;
 
     public City() {
     }
@@ -39,5 +43,15 @@ public class City {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", cityName='" + cityName + '\'' +
+                ", country=" + country +
+                ", address=" + address +
+                '}';
     }
 }

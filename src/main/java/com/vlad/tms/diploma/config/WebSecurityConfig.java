@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()   //Включаем авторизацию
-                .antMatchers("/", "/registration","/basket/**", "/static/**", "/activate/*", "/catalog/**", "/h2-console/**").permitAll()  //указываем, для каких страниц есть доступ у всех
+                .antMatchers("/","/checkoutOrder/**","/thanksOrder/**", "/registration","/basket/**", "/static/**", "/activate/*", "/catalog/**", "/h2-console/**").permitAll()  //указываем, для каких страниц есть доступ у всех
                 .anyRequest().authenticated()  //а для всех остальных запросов мы требуем авторизацию
                 .and()
                 .formLogin()  // включаем форму Login (из нашего шаблона MvcConfig

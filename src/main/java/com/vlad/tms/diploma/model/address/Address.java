@@ -16,8 +16,13 @@ public class Address {
     private String numberHouse;
     @Column (name = "Number_apartment")
     private String numberApartment;
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "Country_id")
     private Country country;
+
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "City_id")
+    private City city;
 
 
     @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -83,6 +88,28 @@ public class Address {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", numberHouse='" + numberHouse + '\'' +
+                ", numberApartment='" + numberApartment + '\'' +
+                ", country=" + country +
+                ", city=" + city +
+                ", user=" + user +
+                ", customer=" + customer +
+                '}';
     }
 }
 

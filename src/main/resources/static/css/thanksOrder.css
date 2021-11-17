@@ -1,0 +1,297 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+div, p, input, button, span, form, ul, li,a {
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 0;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.container{
+    width: 1171px;
+    margin: 0 auto;
+}
+
+.header{
+    background: #f7f8fa;
+    height: 164px;
+}
+.headLineOne{
+    padding-left: 200px;
+    margin: 0 auto;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.number {
+    margin-right: 10px;
+    padding-top: 5px;
+    height: 35px;
+    padding-left: 467px;
+}
+
+.viber{
+    height: 35px;
+    margin-right: 17px;
+    display: inline;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-left: 1px solid grey;
+
+}
+
+.telegram {
+    height: 35px;
+    display: inline;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 16px;
+    border-left: 1px solid grey;
+}
+
+.workTime {
+    width: 105px;
+    height: 35px;
+    color: grey;
+    padding-left: 10px;
+    border-left: 1px solid grey;
+    font-size: 11px;
+}
+
+.lang{
+    height: 35px;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-left: 1px solid grey;
+}
+
+
+
+.logo{
+    width: 139px;
+    height: 66px;
+    display: inline;
+    padding-right: 300px;
+}
+
+.headLineTwo{
+    margin-left: 10px;
+    padding-top: 10px;
+    display: flex;
+    align-items:center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.catalog{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    width: 203px;
+    height: 42px;
+    padding: 10px 0;
+    padding-left: 17px;
+    text-align: left;
+    font-weight: bold;
+    border-radius: 10px ;
+    border: 1px solid grey;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.catalog:hover{
+    background-color: #ffa627;
+}
+
+.search{
+    width: 236px;
+    height: 42px;
+    text-align: left;
+    font-size: 11px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: 40px;
+}
+
+.basket{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    width: 152px;
+    height: 42px;
+    padding: 10px 0;
+    padding-left: 17px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: 40px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.basket:hover{
+    background-color: #ffa627;
+}
+
+.log{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    width: 152px;
+    height: 42px;
+    padding: 10px 0;
+    padding-left: 17px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: 40px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.log:hover{
+    background-color: #ffa627;
+}
+
+.title{
+    margin-top: 41px;
+    margin-bottom: 41px;
+}
+
+.textDelivery{
+    font-weight: bold;
+    padding-top: 20px;
+    padding-right: 17px;
+    font-size: 16px;
+}
+
+.textDeliveryTwo{
+    font-weight: bold;
+    padding-right: 40px;
+    padding-bottom: 17px;
+    font-size: 16px;
+}
+
+.delivery{
+    width: 258px;
+    height: 95px;
+    background-color: #f7f8fa;
+    text-align: right;
+    border-radius: 10px;
+    border-top: 2px solid grey;
+    margin-left: 50px;
+}
+
+.oneDel{
+    width: 258px;
+    height: 95px;
+    background-color: #f7f8fa;
+    text-align: right;
+    border-radius: 10px;
+    border-top: 2px solid grey;
+    margin-left: 0;
+}
+
+.benefistSection{
+    display: flex;
+    align-items:center;
+}
+
+.textGuarantee{
+    font-weight: bold;
+    padding-top: 20px;
+    padding-right: 55px;
+    font-size: 16px;
+}
+
+.textGuaranteeTwo{
+    font-weight: bold;
+    padding-right: 40px;
+    padding-bottom: 17px;
+    font-size: 16px;
+}
+
+.textQualityTwo{
+    font-weight: bold;
+    padding-right: 45px;
+    padding-bottom: 17px;
+    font-size: 16px;
+}
+
+.deliveryBenefist{
+    font-weight: bold;
+    padding-right: 5px;
+    padding-bottom: 17px;
+    font-size: 16px;
+}
+
+.category{
+    align-items:center;
+    padding-top: 70px;
+
+}
+
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+    background-color: #ffa627;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    padding-top: 6px;
+    margin-left: 400px;
+}
+
+.thanks{
+    margin-bottom: 50px;
+    padding-left: 455px;
+    font-size: 30px;
+}
+
+
+.footer{
+    background-color: #f7f8fa;
+    height: 258px;
+}
+
+.footerLineOne{
+    padding-left: 10px;
+    padding-bottom: 113px;
+    padding-top: 24px;
+}
+
+.footerInfo{
+    font-size: 12px;
+}
+
+.footerRequisites{
+    padding-bottom: 12px;
+}
+
+.footerText{
+    padding-left: 10px;
+    font-size: 10px;
+    color: #b2aeba;
+}

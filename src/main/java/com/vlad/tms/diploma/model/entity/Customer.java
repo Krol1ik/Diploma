@@ -83,4 +83,17 @@ public class Customer {
     public void setOrder(List<DataOrder> order) {
         this.order = order;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", order=" + order +
+                '}';
+    }
 }
