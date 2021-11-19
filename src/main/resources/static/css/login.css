@@ -188,88 +188,78 @@ a{
 }
 
 .profile:hover{
+    background-color: #b1b1aa;
+}
+
+.inputForm{
+    padding-top: 30px;
+    display: flex;
+    border: 5px solid #ffa627;
+    width: 600px;
+    height: 200px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    margin-left: 285px;
+    padding-left: 100px;
+}
+
+.login{
+    padding-left: 10px;
+}
+
+.inputPlace{
+    margin-top: 10px;
+    width: 300px;
+    margin-left: 10px;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.btn {
+    margin-top: 20px;
+    margin-left: 80px;
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: inline;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.btn:hover{
     background-color: #ffa627;
 }
 
-
-.img{
-    padding: 20px 20px 20px 40px;
-    width: 120px;
-
-}
-
-.productList{
-    border: 4px solid #f7f8fa;
-    margin-left: 75px;
-    display: flex;
-}
-
-.infoProduct{
-    display: flex;
-}
-
-.nameProduct{
-    width: 220px;
-}
-
-.article{
-    display: inline;
-    font-size: 12px;
-    font-weight: normal;
-}
-.quality{
-    width: 100px;
-    padding-top: 60px;
-    padding-left: 440px;
-    font-weight: normal;
-    display: inline;
-}
-
-.qualityInput{
-    width: 38px;
-}
-
-.price{
-    width: 120px;
-    padding-top: 60px;
-    padding-left: 60px;
-    font-style: 14px;
-    color: #ffa627;
-}
-
-.del{
-    padding-left: 670px;
-    font-size: 9px;
-    text-decoration: underline;
-}
-
-
-.btn {
-    margin-top: 40px;
-    margin-left: 970px;
+.btnReg {
+    margin-top: 20px;
+    margin-left: 120px;
     font-family: 'Montserrat', sans-serif;
-    background: #ffa627;
-    display: block;
-    width: 200px;
-    height: 60px;
-    padding: 16px 0;
+    background: #f7f8fa;
+    display: inline;
+    width: 120px;
+    height: 30px;
     text-align: center;
-    font-weight: normal;
-    font-size: 16px;
+    font-weight: bold;
     margin-bottom: 40px;
-    border-radius: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 1s ease;
 }
 
-.basketList{
-    margin-top: 35px;
-    margin-bottom: 60px;
+.btnReg:hover{
+    background-color: #ffa627;
 }
 
-.textBasket{
-    margin-left: 50%;
-    margin-right: -50%;
-    margin-bottom: 35px;
+.btnAction{
+    display: flex;
 }
+
 
 
 

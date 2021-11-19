@@ -258,7 +258,19 @@ a{
     background-color: #ffa627;
 }
 
+.yourOrder{
+    font-weight: normal;
+    padding-top: 15px;
+}
 
+.orderInfo{
+    color: #ffa627;
+    padding-top: 15px;
+}
+.allOrderCheck{
+    width: 490px;
+    margin: 40px 0px 100px 420px;
+}
 
 
 

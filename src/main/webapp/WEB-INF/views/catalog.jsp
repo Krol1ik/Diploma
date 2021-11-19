@@ -28,21 +28,21 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <p class="logo">SPORT LINE</p>
+            <a href="/"class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
             <a href="/basket" class="basket">Корзина</a>
-            <a href="" class="log">Войти</a>
+            <a href="/login" class="log">Войти</a>
         </div>
     </div>
 </header>
 <section class="sectionOne">
     <div class="container">
         <div class="category">
-            <a href="" class="btn">Турники</a>
-            <a href="" class="btn">Шведские стены</a>
-            <a href="" class="btn">Железо</a>
-            <a href="" class="btn">Спортивные комплексы</a>
+            <a href="/catalog/category/${categoryList.get(0).id}" class="btn" >Турники</a>
+            <a href="/catalog/category/${categoryList.get(1).id}" class="btn" >Шведские стены</a>
+            <a href="/catalog/category/${categoryList.get(2).id}" class="btn" >Железо</a>
+            <a href="/catalog/category/${categoryList.get(3).id}" class="btn" >Тренажеры</a>
         </div>
     </div>
 </section>
@@ -51,15 +51,15 @@
         <p>Физические упражнения – залог красивого тела и отличного самочувствия. Всем, у кого нет времени посещать спортзал, рекомендуем купить настенный турник и уделять занятиям всего несколько минут в день.</p>
         <div class="pageProduct">
             <div class="filter">
-
+            <h3>Фильтр в разработке <br>_________________________</h3>
             </div>
-
             <div class="products">
+
 <c:forEach items="${productList}" var="prod">
                 <div class="prodouctStyle">
                     <img src="${prod.filename}" alt="No images" class="img">
                     <br>
-                    <h4 class="nameProduct">${prod.category} ${prod.brand} ${prod.model}</h4>
+                    <h4 class="nameProduct">${prod.category} <br> ${prod.type.toString()} ${prod.brand} ${prod.model}</h4>
                     <p class="nameProduct">Артикул: ${prod.article}</p>
                     <div class="by">
                         <h3 class="price">${prod.price} руб</h3>

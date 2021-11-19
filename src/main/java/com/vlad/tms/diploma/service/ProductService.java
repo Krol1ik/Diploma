@@ -13,6 +13,9 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
+    public List<Product> findByCategory(Long id){
+        return productRepository.findProductByCategoryId(id);
+    }
 
     public List<Product> findAll() {
         return productRepository.findAll();

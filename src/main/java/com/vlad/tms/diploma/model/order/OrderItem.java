@@ -27,6 +27,9 @@ public class OrderItem {
     @Column (name = "status_order")
     private boolean statusOrder = false;
 
+    @Column (name = "price_order")
+    private double priceOrder;
+
     @Column (name = "Count")
     private int count = 1;
 
@@ -39,6 +42,14 @@ public class OrderItem {
 
     public void setStatusOrder(boolean statusOrder) {
         this.statusOrder = statusOrder;
+    }
+
+    public double getPriceOrder() {
+        return priceOrder;
+    }
+
+    public void setPriceOrder(double priceOrder) {
+        this.priceOrder = priceOrder;
     }
 
     public Long getId() {

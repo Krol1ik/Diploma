@@ -23,6 +23,7 @@ public class DataOrder {
     @JoinColumn (name = "Customer_id")
     private Customer customer;
 
+
     @OneToMany (mappedBy = "dataOrders", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItem;
 

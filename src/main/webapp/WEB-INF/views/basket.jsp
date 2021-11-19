@@ -28,13 +28,14 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <p class="logo">SPORT LINE</p>
-            <a href="catalog" class="catalog">Каталог товаров</a>
+            <a href="/"class="logo">SPORT LINE</a>
+            <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
             <a href="/basket" class="basket">Корзина</a>
-            <a href="" class="log">Войти</a>
+            <a href="/login" class="log">Войти</a>
         </div>
     </div>
+
 </header>
 
 <section class="basketList">
@@ -47,8 +48,8 @@
             <img src="${ord.productOrder.filename}" alt="No images" class="img">
             <div class="infoProduct">
                 <br>
-                <p class="article">Артикул: ${ord.productOrder.article}</p><br><br><br>
-                <h4 class="nameProduct">${ord.productOrder.category} ${ord.productOrder.brand} ${ord.productOrder.model}</h4>
+                <h4 class="nameProduct"><span class="article"><br>Артикул: ${ord.productOrder.article}</span>
+                    <br><br><br>${ord.productOrder.category} ${ord.productOrder.type} ${ord.productOrder.brand} ${ord.productOrder.model}</h4>
                 <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="${ord.count}" name="orderCount"></h5>
                 <h3 class="price">${ord.productOrder.price} руб</h3>
                 <input type="hidden" value="${ord.id}" name="orderId">

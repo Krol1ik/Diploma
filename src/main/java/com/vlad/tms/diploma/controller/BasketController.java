@@ -1,26 +1,25 @@
 package com.vlad.tms.diploma.controller;
 
 import com.vlad.tms.diploma.model.address.Address;
-import com.vlad.tms.diploma.model.address.City;
-import com.vlad.tms.diploma.model.address.Country;
 import com.vlad.tms.diploma.model.entity.Customer;
 import com.vlad.tms.diploma.model.order.OrderItem;
 import com.vlad.tms.diploma.service.CityService;
-import com.vlad.tms.diploma.service.CountryService;
 import com.vlad.tms.diploma.service.DataOrderService;
 import com.vlad.tms.diploma.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
 @RequestMapping
 public class BasketController {
-    @Autowired
-    private CountryService countryService;
+
     @Autowired
     private CityService cityService;
     @Autowired
@@ -41,13 +40,16 @@ public class BasketController {
 
         for (int i = 0; i < orderItem.size(); i++) {
             orderItem.get(i).setCount(count.get(i));
-
+            orderItemService.saveOrder(orderItem.get(i));
         }
+        orderItemService.priceProductInRow();
         return "redirect:checkoutOrder";
     }
 
     @GetMapping("/checkoutOrder")
-    public String checkout(Model model){
+    public String checkout(Model model) {
+        model.addAttribute("finalPrice", orderItemService.priceAllOrder());
+        model.addAttribute("order", orderItemService.placedOrder());
         model.addAttribute("customer", new Customer());
         model.addAttribute("address", new Address());
         model.addAttribute("cityList", cityService.allCity());
@@ -57,15 +59,15 @@ public class BasketController {
     @PostMapping("/checkoutOrder")
     public String orderComplete(Customer customer,
                                 Address address,
-                                @RequestParam ("cityName") String cityName,
-                                Model model){
+                                @RequestParam("cityName") String cityName,
+                                Model model) {
 
         dataOrderService.saveOrder(orderItemService.placedOrder(), customer, cityName, address);
         return "redirect:thanksOrder";
     }
 
     @GetMapping("/thanksOrder")
-    public String thanksOrder(){
+    public String thanksOrder() {
         return "thanksOrder";
     }
 }

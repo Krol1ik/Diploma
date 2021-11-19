@@ -1,12 +1,14 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored = "false" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
-  Date: 09.11.2021
-  Time: 16:09
+  Date: 11.11.2021
+  Time: 10:20
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/thanksOrder.css">
+<link rel="stylesheet" href="/static/css/login.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,22 +28,26 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <a href="/"class="logo">SPORT LINE</a>
-            <a href="/catalog" class="catalog">Каталог товаров</a>
+            <p class="logo">SPORT LINE</p>
+            <a href="" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
-            <a href="/basket" class="basket">Корзина</a>
+            <a href="" class="basket">Корзина</a>
             <a href="/login" class="log">Войти</a>
         </div>
     </div>
 </header>
-<section class="title">
-    <div class="container">
-        <div class="category">
-            <h1 class="thanks">Спасибо за заказ!</h1>
-            <a href="/title" class="btn">Вернуться на главную страницу</a>
+<div class="container">
+    <div class="inputForm">
+        <div>
+            <h4 class="login">Логин: <input type="text" class="inputPlace"> </h4>
+            <h4 class="pass">Пароль: <input type="password" class="inputPlace"> </h4>
+            <div class="btnAction">
+                <button type="submit" class="btn">Вход</button>
+                <button type="submit" class="btnReg">Регистрация</button>
+            </div>
         </div>
     </div>
-</section>
+</div>
 <footer class="footer">
     <div class="container">
         <div class="footerLineOne">

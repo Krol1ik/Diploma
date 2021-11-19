@@ -15,7 +15,7 @@ public class MvcConfig implements WebMvcConfigurer {
     //"/login" - шаблон, который будет использовать Spring Security со уже заложенными правилами
     //login - страничка jsp, на которой будет использоваться шаблон
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("title");
+        registry.addViewController("/login").setViewName("login");
     }
 
     @Override

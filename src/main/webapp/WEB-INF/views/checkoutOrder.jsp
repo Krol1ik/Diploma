@@ -28,14 +28,26 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <p class="logo">SPORT LINE</p>
-            <a href="" class="catalog">Каталог товаров</a>
+            <a href="/"class="logo">SPORT LINE</a>
+            <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
-            <a href="" class="basket">Корзина</a>
-            <a href="" class="log">Войти</a>
+            <a href="/basket" class="basket">Корзина</a>
+            <a href="/login" class="log">Войти</a>
         </div>
     </div>
 </header>
+<section class="chekorder">
+    <div class="container">
+        <div class="allOrderCheck">
+            <h2 class="orderInfo">Ваш заказ:</h2>
+            <c:forEach items="${order}" var="ord">
+            <h4 class="yourOrder">${ord.productOrder.category} ${ord.productOrder.brand} ${ord.productOrder.brand}, в количестве ${ord.count} шт. итоговая стоимость за позицию ${ord.priceOrder} руб.</h4>
+            </c:forEach>
+            <h3 class="orderInfo">Итоговая стоимость за заказ: ${finalPrice} руб.</h3>
+            <h5 class="yourOrder">Чтобы подвердить заказ, заполниет форму ниже.</h5>
+        </div>
+    </div>
+</section>
 <section class="title">
     <div class="container">
         <div class="chekoutInfo">
@@ -54,21 +66,13 @@
                 <div class="email">
                     E-mail: <input type="email" class="inputsBlock" value="${customer.email}" name="email">
                 </div>
-                <input type="hidden" value="${address.country.id}" name="country">
                 <div class="city">
-<%--                    Город: <select class="inputsBlock">--%>
-<%--                    <c:forEach items="${cityList}" var="city">--%>
-<%--                    <option value="${city.id}" name="cityId">${city.cityName}</option>--%>
-<%--                    </c:forEach>--%>
-<%--                </select>--%>
-
                     Город: <input list="browsers" name="cityName" class="inputsBlock"/>
                     <datalist id="browsers" lass="inputsBlock">
                         <c:forEach items="${cityList}" var="city">
                         <option value="${city.cityName}">
                             </c:forEach>
                     </datalist>
-
                 </div>
                 <div class="street">
                     Улица:<input type="text" class="inputsBlock" value="${address.street}" name="street">

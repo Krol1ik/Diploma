@@ -26,11 +26,11 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <p class="logo">SPORT LINE</p>
+            <a href="/"class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
             <a href="/basket" class="basket">Корзина</a>
-            <a href="" class="log">Войти</a>
+            <a href="/login" class="log">Войти</a>
         </div>
     </div>
 </header>
@@ -57,10 +57,10 @@
     </div>
     <div class="container">
         <div class="category">
-            <a href="" class="btn">Турники</a>
-            <a href="" class="btn">Шведские стены</a>
-            <a href="" class="btn">Железо</a>
-            <a href="" class="btn">Спортивные комплексы</a>
+            <a href="/catalog/category/${categoryList.get(0).id}" class="btn" >Турники</a>
+            <a href="/catalog/category/${categoryList.get(1).id}" class="btn" >Шведские стены</a>
+            <a href="/catalog/category/${categoryList.get(2).id}" class="btn" >Железо</a>
+            <a href="/catalog/category/${categoryList.get(3).id}" class="btn" >Тренажеры</a>
         </div>
     </div>
 </section>

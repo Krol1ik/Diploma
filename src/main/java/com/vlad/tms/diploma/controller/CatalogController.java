@@ -1,20 +1,15 @@
 package com.vlad.tms.diploma.controller;
 
 
-import com.vlad.tms.diploma.model.order.DataOrder;
-import com.vlad.tms.diploma.model.order.OrderItem;
-import com.vlad.tms.diploma.model.product.Product;
-import com.vlad.tms.diploma.service.CustomerService;
-import com.vlad.tms.diploma.service.DataOrderService;
+import com.vlad.tms.diploma.service.CategoryService;
 import com.vlad.tms.diploma.service.OrderItemService;
 import com.vlad.tms.diploma.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/catalog")
@@ -23,17 +18,22 @@ public class CatalogController {
     @Autowired
     private ProductService productService;
     @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private DataOrderService dataOrderService;
-    @Autowired
     private OrderItemService orderItemService;
-
+    @Autowired
+    private CategoryService categoryService;
 
 
     @GetMapping()
     public String catalogPage(Model model){
         model.addAttribute("productList", productService.findAll());
+        model.addAttribute("categoryList", categoryService.categoryAll());
+        return "catalog";
+    }
+
+    @GetMapping("/category/{id}")
+    public String catalogOnCategory(@PathVariable("id") Long id, Model model){
+        model.addAttribute("productList", productService.findByCategory(id));
+        model.addAttribute("categoryList", categoryService.categoryAll());
         return "catalog";
     }
 
