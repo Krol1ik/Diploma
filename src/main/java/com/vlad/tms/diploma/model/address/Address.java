@@ -4,14 +4,17 @@ import com.vlad.tms.diploma.model.entity.Customer;
 import com.vlad.tms.diploma.model.entity.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Улица не может быть пустой")
     @Column (name = "Street")
     private String street;
+    @NotEmpty(message = "Номер дома не может быть пустым")
     @Column (name = "Number_house")
     private String numberHouse;
     @Column (name = "Number_apartment")

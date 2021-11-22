@@ -212,12 +212,12 @@ a{
 
 .phone{
     margin-top: 15px;
-    padding-left: 104px;
+    padding-left: 103px;
 }
 
 .email{
     margin-top: 15px;
-    padding-left: 123px;
+    padding-left: 122px;
 }
 
 .country{
@@ -227,17 +227,17 @@ a{
 
 .city{
     margin-top: 15px;
-    padding-left: 123px;
+    padding-left: 122px;
 }
 
 .street{
     margin-top: 15px;
-    padding-left: 125px;
+    padding-left: 120px;
 }
 
 .numberHouse{
     margin-top: 15px;
-    padding-left: 80px;
+    padding-left: 135px;
 }
 
 .inputsBlock{
@@ -279,6 +279,10 @@ a{
 .allOrderCheck{
     width: 490px;
     margin: 40px 0px 100px 420px;
+}
+
+.err{
+    color: red;
 }
 
 

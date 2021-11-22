@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page isELIgnored = "false" %>
 <%--
   Created by IntelliJ IDEA.
@@ -40,29 +41,50 @@
     <div class="container">
         <div class="chekoutInfo">
             <h1 class="registrationOrder">Форма регистрации</h1>
-            <c:if test="${!messages}">
-                <p>${messages}</p>
-            </c:if>
-            <form method="post" action="/registration">
-                <div class="dataCostumer">
-                    <div class="loginForm">
-                        Логин: <input type="text" class="inputsBlock" value="${user.username}" name="username">
-                    </div>
-                    <div class="passwordForm">
-                        Пароль: <input type="password" class="inputsBlock" value="${user.password}" name="password">
-                    </div>
-                    <div class="firstName">
-                        Имя: <input type="text" class="inputsBlock" value="${user.firstName}" name="firstName">
-                    </div>
-                    <div class="lastName">
-                        Фамилия: <input type="text" class="inputsBlock" value="${user.lastName}" name="lastName">
-                    </div>
-                    <div class="phone">
-                        Телефон: <input type="phone" class="inputsBlock" value="${user.phoneNumber}" name="phoneNumber">
-                    </div>
-                    <div class="email">
-                        E-mail: <input type="email" class="inputsBlock" value="${user.email}" name="email">
-                    </div>
+            <div class="dataCostumer">
+            <form:form action="/registration" modelAttribute="user" method="post">
+                <div class="loginForm">
+                <form:label path="username">Логин: </form:label>
+                <form:input path="username" class="inputsBlock"/>
+                    <br>
+                <form:errors path="username" class="err" />
+                    <c:if test="${!messages}">
+                        <p class="err">${messages}</p>
+                    </c:if>
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                </div>
+                <div class="passwordForm">
+                <form:label path="password">Пароль: </form:label>
+                <form:input path="password" type="password" class="inputsBlock"/>
+                    <br>
+                <form:errors path="password" class="err"/>
+                </div>
+                <div class="email">
+                <form:label path="email">E-mail: </form:label>
+                <form:input path="email" class="inputsBlock"/>
+                    <br>
+                <form:errors path="email" class="err"/>
+                </div>
+                <div class="firstName">
+                <form:label path="firstName">Имя: </form:label>
+                <form:input path="firstName" class="inputsBlock"/>
+                    <br>
+                <form:errors path="firstName" class="err"/>
+                </div>
+                <div class="lastName">
+                <form:label path="lastName">Фамилия: </form:label>
+                <form:input path="lastName" class="inputsBlock"/>
+                    <br>
+                <form:errors path="lastName" class="err"/>
+                </div>
+                <div class="phone">
+                <form:label path="phoneNumber">Телефон: </form:label>
+                <form:input path="phoneNumber" type="phone" class="inputsBlock"/>
+                    <br>
+                <form:errors path="phoneNumber" class="err"/>
+                </div>
+
+                <form:form action="/registration" modelAttribute="address" method="post">
                     <div class="city">
                         Город: <input list="browsers" name="cityName" class="inputsBlock"/>
                         <datalist id="browsers" lass="inputsBlock">
@@ -70,18 +92,30 @@
                             <option value="${city.cityName}">
                                 </c:forEach>
                         </datalist>
+                        <br>
+                        <c:if test="${!messagesErrorCity}">
+                            <p class="err">${messagesErrorCity}</p>
+                        </c:if>
                     </div>
-                    <div class="street">
-                        Улица:<input type="text" class="inputsBlock" value="" name="street">
-                    </div>
-                    <div class="numberHouse">
-                        Номер дома:<input type="text" class="inputsBlock" value="" name="numberHouse">
-                    </div>
+                <div class="street">
+                    <form:label path="street">Улица: </form:label>
+                    <form:input path="street" class="inputsBlock"/>
+                    <br>
+                    <form:errors path="street" class="err"/>
+                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                </div>
+                <div class="numberHouse">
+                    <form:label path="numberHouse">Дом: </form:label>
+                    <form:input path="numberHouse" class="inputsBlock"/>
+                    <br>
+                    <form:errors path="numberHouse" class="err"/>
+                </div>
                     <div class="btnOrder">
                         <button type="submit" class="sendOrder">Зарегистрироваться</button>
-                    </div>
-                </div>
-            </form>
+                        </div>
+            </form:form>
+            </form:form>
+            </div>
         </div>
     </div>
 </section>

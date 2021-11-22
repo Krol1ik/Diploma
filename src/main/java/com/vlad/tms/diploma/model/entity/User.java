@@ -20,18 +20,24 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 2, message = "Username must be more than 2 characters")
-    @Size(max = 20, message = "Username must be no more than 20 characters")
+    @Size(min = 2, message = "Логин должен быть более 2 символов")
+    @Size(max = 20, message = "Логин не должен превышать более 20 символов")
     private String username;
-    @Size(min = 4, message = "Password must be more than 4 characters")
+    @Size(min = 4, message = "Пароль должен быть более 4 символов")
     private String password;
-    @Email(message = "Email should be valid")
-    @NotEmpty(message = "Email cannot be empty")
+    @Email(message = "Вы ввели e-mail некорректно")
+    @NotEmpty(message = "E-mail не может быть пустым")
     private String email;
+    @Size(min = 2, message = "Имя должен быть более 2 символов")
+    @Size(max = 20, message = "Имя не должен превышать более 20 символов")
     @Column (name = "First_name", nullable = false)
     private String firstName;
+    @Size(min = 2, message = "Фамилия должна быть более 2 символов")
+    @Size(max = 20, message = "Фамилия не должна превышать более 20 символов")
     @Column (name = "Last_name", nullable = false)
     private String lastName;
+    @Size(min = 9, message = "Телефон должен содержать более 9 цифр")
+    @Size(max = 13, message = "Телефон должен содержать не более 13 цифр")
     @Column (name = "Phone_number", nullable = false)
     private String phoneNumber;
     private boolean active;

@@ -25,21 +25,25 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("cityList", cityService.allCity());
-        model.addAttribute("customer", new User());
+        model.addAttribute("user", new User());
         model.addAttribute("address", new Address());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String addUser(Address address,
+    public String addUser(@Valid Address address, BindingResult errorAddress,
                           @RequestParam("cityName") String cityName,
             @ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || errorAddress.hasErrors()){
             return "/registration";
         }
-        if (!userService.addUser(user, cityService.getCity(cityName), address)) {
-            model.addAttribute("messages", "User exist!");
+        if (cityService.getCity(cityName) == null || cityName.isEmpty()){
+            model.addAttribute("messagesErrorCity", "Некорректно указан город");
+            return "/registration";
+
+        } else if (!userService.addUser(user, cityService.getCity(cityName), address)) {
+            model.addAttribute("messages", "Такой логин уже существует");
             return "registration";
         } else {
             return "redirect:/login";

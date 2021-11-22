@@ -5,7 +5,7 @@ create table address
     number_house     varchar(10),
     street           varchar(255),
     country_id       bigint,
-    city_id          bigint,
+    city_id          bigint not null,
     primary key (id)
 );
 
