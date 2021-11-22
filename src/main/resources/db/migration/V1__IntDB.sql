@@ -121,10 +121,10 @@ create table user
     email           varchar(50),
     first_name      varchar(50) not null,
     last_name       varchar(50) not null,
-    password        varchar(50) not null,
+    password        varchar(255) not null,
     phone_number    varchar(50) not null,
-    username        varchar(20),
-    address_id      bigint      not null,
+    username        varchar(255),
+    address_id      bigint,
     primary key (id)
 );
 

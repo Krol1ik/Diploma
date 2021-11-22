@@ -1,6 +1,7 @@
 package com.vlad.tms.diploma.config;
 
 
+import com.vlad.tms.diploma.model.entity.User;
 import com.vlad.tms.diploma.repository.UserRepository;
 import com.vlad.tms.diploma.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder(8);
     }
 
@@ -35,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()   //Включаем авторизацию
-                .antMatchers("/","/checkoutOrder/**","/thanksOrder/**", "/registration","/basket/**",
-                        "/category/**","/static/**", "/activate/*", "/catalog/**", "/h2-console/**").permitAll()  //указываем, для каких страниц есть доступ у всех
+                .antMatchers("/", "/checkoutOrder/**", "/thanksOrder/**", "/registration", "/basket/**",
+                        "/category/**", "/static/**", "/activate/*", "/catalog/**", "/h2-console/**").permitAll()  //указываем, для каких страниц есть доступ у всех
                 .anyRequest().authenticated()  //а для всех остальных запросов мы требуем авторизацию
                 .and()
                 .formLogin()  // включаем форму Login (из нашего шаблона MvcConfig
@@ -53,8 +57,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance());    //настроили проверку паролей при логине (без кодировки)
-//                .passwordEncoder(passwordEncoder);
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance());    //настроили проверку паролей при логине (без кодировки)
+                .passwordEncoder(passwordEncoder);
 
+        User admin = userRepository.findByUsername("admin");
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));     //весь код для кодирвоки существующих паролей
+        User user = userRepository.findByUsername("user");
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(admin);
+        userRepository.save(user);
     }
 }

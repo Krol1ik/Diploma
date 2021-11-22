@@ -1,3 +1,16 @@
+insert into user (username, password, email, First_name, Last_name, Phone_number, active)
+values ( 'user', 'user', 'user@user.ru', 'Name', 'User', 80299998877, true );
+
+insert into user_role (user_id, role_users)
+values (1, 'USER');
+
+insert into user (username, password, email, First_name, Last_name, Phone_number, active)
+values ( 'admin', 'admin', 'admin@admin.ru', 'Name', 'Admin', 80291112233, true );
+
+insert into user_role (user_id, role_users)
+values (2, 'USER'), (2, 'ADMIN');
+
+
 insert into country (Country_name)
 values ('Беларусь');
 

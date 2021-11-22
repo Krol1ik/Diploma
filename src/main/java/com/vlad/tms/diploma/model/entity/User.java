@@ -43,7 +43,7 @@ public class User implements UserDetails {
     private Set<RoleUser> roleUsers;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Address_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "Address_id", referencedColumnName = "id")
     private Address address;
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
@@ -51,6 +51,14 @@ public class User implements UserDetails {
     private List<DataOrder> order;
 
     public User() {
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {

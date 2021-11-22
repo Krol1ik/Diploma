@@ -39,12 +39,14 @@
 <div class="container">
     <div class="inputForm">
         <div>
-            <h4 class="login">Логин: <input type="text" class="inputPlace"> </h4>
-            <h4 class="pass">Пароль: <input type="password" class="inputPlace"> </h4>
+            <form action="/login" method="post">
+            <h4 class="login">Логин: <input type="text" class="inputPlace" name="username"> </h4>
+            <h4 class="pass">Пароль: <input type="password" class="inputPlace" name="password"> </h4>
             <div class="btnAction">
                 <button type="submit" class="btn">Вход</button>
-                <button type="submit" class="btnReg">Регистрация</button>
+                <a href="/registration" class="btnReg">Регистрация</a>
             </div>
+            </form>
         </div>
     </div>
 </div>

@@ -170,99 +170,116 @@ a{
     background-color: #ffa627;
 }
 
-.profile{
+.title{
+    margin-top: 41px;
+    margin-bottom: 41px;
+}
+
+.chekInfo{
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.registrationOrder{
+    margin-left: 40%;
+}
+.dataCostumer{
+    width: 70%;
+    margin-top: 25px;
+    margin-left:15%;
+    border: 4px solid #f7f8fa;
+}
+
+.loginForm{
+    margin-top: 15px;
+    padding-left: 120px;
+}
+
+.passwordForm{
+    margin-top: 15px;
+    padding-left: 110px;
+}
+
+.firstName{
+    margin-top: 15px;
+    padding-left: 134px;
+}
+
+.lastName{
+    margin-top: 15px;
+    padding-left: 98px;
+}
+
+.phone{
+    margin-top: 15px;
+    padding-left: 104px;
+}
+
+.email{
+    margin-top: 15px;
+    padding-left: 123px;
+}
+
+.country{
+    margin-top: 15px;
+    padding-left: 114px;
+}
+
+.city{
+    margin-top: 15px;
+    padding-left: 123px;
+}
+
+.street{
+    margin-top: 15px;
+    padding-left: 125px;
+}
+
+.numberHouse{
+    margin-top: 15px;
+    padding-left: 80px;
+}
+
+.inputsBlock{
+    height: 30px;
+    margin-left: 15px;
+    border-radius: 5px;
+    width: 500px;
+}
+
+.btnOrder{
+    padding-left: 35%;
+}
+
+.sendOrder{
+    margin-top: 40px;
+    margin-bottom: 40px;
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 40%;
     height: 42px;
-    padding: 10px 0;
-    padding-left: 17px;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
     border: 1px solid grey;
     border-radius: 10px;
     margin-left: 40px;
-    text-decoration: none;
-    transition: all 1s ease;
-}
-
-.profile:hover{
-    background-color: #b1b1aa;
-}
-
-.inputForm{
-    padding-top: 30px;
-    display: flex;
-    border: 5px solid #ffa627;
-    width: 600px;
-    height: 200px;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    border-radius: 10px;
-    margin-left: 285px;
-    padding-left: 100px;
-}
-
-.login{
-    padding-left: 10px;
-}
-
-.inputPlace{
-    margin-top: 10px;
-    width: 300px;
-    margin-left: 10px;
-    border-radius: 5px;
-    height: 30px;
-}
-
-.btn {
-    margin-top: 20px;
-    margin-left: 80px;
-    border: 1px solid grey;
-    font-family: 'Montserrat', sans-serif;
-    background: #f7f8fa;
-    display: inline;
-    width: 60px;
-    height: 30px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 40px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 1s ease;
-}
-
-.btn:hover{
     background-color: #ffa627;
 }
 
-.btnReg {
-    border: 1px solid grey;
-    margin-top: 20px;
-    margin-left: 120px;
-    padding-top: 5px;
-    font-family: 'Montserrat', sans-serif;
-    display: inline;
-    width: 120px;
-    height: 30px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 40px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 1s ease;
+.yourOrder{
+    font-weight: normal;
+    padding-top: 15px;
 }
 
-.btnReg:hover{
-    background-color: #ffa627;
+.orderInfo{
+    color: #ffa627;
+    padding-top: 15px;
 }
-
-.btnAction{
-    display: flex;
+.allOrderCheck{
+    width: 490px;
+    margin: 40px 0px 100px 420px;
 }
-
-
 
 
 
