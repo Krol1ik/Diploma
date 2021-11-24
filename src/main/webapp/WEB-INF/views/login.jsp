@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page isELIgnored = "false" %>
 <%--
   Created by IntelliJ IDEA.
@@ -28,11 +29,16 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <p class="logo">SPORT LINE</p>
-            <a href="" class="catalog">Каталог товаров</a>
+            <a href="/"class="logo">SPORT LINE</a>
+            <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
-            <a href="" class="basket">Корзина</a>
-            <a href="/login" class="log">Войти</a>
+            <a href="/basket" class="basket">Корзина</a>
+            <sec:authorize access="isAnonymous()">
+                <a href="/login" class="log">Войти</a>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <a href="/profile" class="profile">Профиль</a>
+            </sec:authorize>
         </div>
     </div>
 </header>

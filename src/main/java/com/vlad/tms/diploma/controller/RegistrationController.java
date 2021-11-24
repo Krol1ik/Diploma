@@ -33,7 +33,7 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(@Valid Address address, BindingResult errorAddress,
                           @RequestParam("cityName") String cityName,
-            @ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
+                          @ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors() || errorAddress.hasErrors()){
             return "/registration";

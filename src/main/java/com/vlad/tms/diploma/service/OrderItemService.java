@@ -55,4 +55,8 @@ public class OrderItemService {
         }
         return sumPrice;
     }
+
+    public void delete(Long id) {
+        orderItemRepository.deleteById(id);
+    }
 }

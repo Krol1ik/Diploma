@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -30,7 +31,12 @@
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
             <a href="/basket" class="basket">Корзина</a>
-            <a href="/login" class="log">Войти</a>
+            <sec:authorize access="isAnonymous()">
+                <a href="/login" class="log">Войти</a>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <a href="/profile" class="profile">Профиль</a>
+            </sec:authorize>
         </div>
     </div>
 </header>

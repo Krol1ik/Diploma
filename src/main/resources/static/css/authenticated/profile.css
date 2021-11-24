@@ -170,107 +170,120 @@ a{
     background-color: #ffa627;
 }
 
-.profile{
+.title{
+    margin-top: 41px;
+    margin-bottom: 41px;
+}
+
+.chekInfo{
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.registrationOrder{
+    margin-left: 40%;
+}
+.dataCostumer{
+    width: 70%;
+    margin-top: 25px;
+    margin-left:15%;
+    border: 4px solid #f7f8fa;
+}
+
+.loginForm{
+    margin-top: 15px;
+    padding-left: 120px;
+}
+
+.passwordForm{
+    margin-top: 15px;
+    padding-left: 110px;
+}
+
+.firstName{
+    margin-top: 15px;
+    padding-left: 134px;
+}
+
+.lastName{
+    margin-top: 15px;
+    padding-left: 98px;
+}
+
+.phone{
+    margin-top: 15px;
+    padding-left: 103px;
+}
+
+.email{
+    margin-top: 15px;
+    padding-left: 122px;
+}
+
+.country{
+    margin-top: 15px;
+    padding-left: 114px;
+}
+
+.city{
+    margin-top: 15px;
+    padding-left: 122px;
+}
+
+.street{
+    margin-top: 15px;
+    padding-left: 120px;
+}
+
+.numberHouse{
+    margin-top: 15px;
+    padding-left: 135px;
+}
+
+.inputsBlock{
+    height: 30px;
+    margin-left: 15px;
+    border-radius: 5px;
+    width: 500px;
+}
+
+.btnOrder{
+    padding-left: 35%;
+}
+
+.sendOrder{
+    margin-top: 40px;
+    margin-bottom: 40px;
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 40%;
     height: 42px;
-    padding: 10px 0;
-    padding-left: 17px;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
     border: 1px solid grey;
     border-radius: 10px;
     margin-left: 40px;
+    background-color: #ffa627;
 }
 
-
-.img{
-    padding: 20px 20px 20px 40px;
-    width: 120px;
-
-}
-
-.productList{
-    border: 4px solid #f7f8fa;
-    margin-left: 75px;
-    display: flex;
-}
-
-.infoProduct{
-    display: flex;
-}
-
-.nameProduct{
-    width: 220px;
-}
-
-.article{
-    display: inline;
-    font-size: 12px;
+.yourOrder{
     font-weight: normal;
-}
-.quality{
-    width: 100px;
-    padding-top: 60px;
-    padding-left: 440px;
-    font-weight: normal;
-    display: inline;
+    padding-top: 15px;
 }
 
-.qualityInput{
-    width: 38px;
-}
-
-.price{
-    width: 120px;
-    padding-top: 60px;
-    padding-left: 35px;
-    font-style: 14px;
+.orderInfo{
     color: #ffa627;
+    padding-top: 15px;
 }
-
-.del{
-    color: #b2aeba;
-    font-size: 9px;
-    text-decoration: underline;
-}
-
-
-.btn {
-    margin-top: 40px;
-    margin-left: 970px;
-    font-family: 'Montserrat', sans-serif;
-    background: #ffa627;
-    display: block;
-    width: 200px;
-    height: 60px;
-    padding: 16px 0;
-    text-align: center;
-    font-weight: normal;
-    font-size: 16px;
-    margin-bottom: 40px;
-    border-radius: 15px;
-}
-
-.basketList{
-    margin-top: 35px;
-    margin-bottom: 60px;
-}
-
-.textBasket{
-    margin-left: 50%;
-    margin-right: -50%;
-    margin-bottom: 35px;
+.allOrderCheck{
+    width: 490px;
+    margin: 40px 0px 100px 420px;
 }
 
 .err{
     color: red;
-    font-size: 18px;
-    margin-left: 500px;
 }
-
 
 
 

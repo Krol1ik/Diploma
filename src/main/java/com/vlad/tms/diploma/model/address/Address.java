@@ -101,18 +101,6 @@ public class Address {
         this.city = city;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", numberHouse='" + numberHouse + '\'' +
-                ", numberApartment='" + numberApartment + '\'' +
-                ", country=" + country +
-                ", city=" + city +
-                ", user=" + user +
-                ", customer=" + customer +
-                '}';
-    }
+
 }
 

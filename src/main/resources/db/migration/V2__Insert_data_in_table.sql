@@ -1,16 +1,3 @@
-insert into user (username, password, email, First_name, Last_name, Phone_number, active)
-values ( 'user', 'user', 'user@user.ru', 'Name', 'User', 80299998877, true );
-
-insert into user_role (user_id, role_users)
-values (1, 'USER');
-
-insert into user (username, password, email, First_name, Last_name, Phone_number, active)
-values ( 'admin', 'admin', 'admin@admin.ru', 'Name', 'Admin', 80291112233, true );
-
-insert into user_role (user_id, role_users)
-values (2, 'USER'), (2, 'ADMIN');
-
-
 insert into country (Country_name)
 values ('Беларусь');
 
@@ -27,6 +14,22 @@ insert into city (City_name, Country_id)
 values ('Могилев', 1);
 insert into city (City_name, Country_id)
 values ('Гродно', 1);
+
+
+insert into address (country_id, city_id, street, number_house)
+values ( 1, 1, 'Сталина', 22 );
+insert into user (username, password, email, First_name, Last_name, Phone_number,address_id, active)
+values ( 'user', 'user', 'user@user.ru', 'Name', 'User', 80299998877, 1, true );
+insert into user_role (user_id, role_users)
+values (1, 'USER');
+
+insert into address (country_id, city_id, street, number_house)
+values ( 1, 3, 'Центральная', 13 );
+insert into user (username, password, email, First_name, Last_name, Phone_number, address_id, active)
+values ( 'admin', 'admin', 'admin@admin.ru', 'Name', 'Admin', 80291112233, 2, true );
+insert into user_role (user_id, role_users)
+values (2, 'USER'), (2, 'ADMIN');
+
 
 
 insert into Type_product (Type_name)

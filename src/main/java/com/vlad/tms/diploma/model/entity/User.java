@@ -189,5 +189,24 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoleUsers();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", active=" + active +
+                ", activationCode='" + activationCode + '\'' +
+                ", roleUsers=" + roleUsers +
+                ", address=" + address +
+                ", orderItems=" + orderItems +
+                ", order=" + order +
+                '}';
+    }
 }
 

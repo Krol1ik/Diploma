@@ -21,6 +21,8 @@ import java.util.UUID;
 public class UserService implements UserDetailsService {
 
     @Autowired
+    private CityService cityService;
+    @Autowired
     private AddressService addressService;
     @Autowired
     private CountryService countryService;
@@ -46,9 +48,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    public boolean addUser (User user, City city, Address address){
+    public boolean addUser(User user, City city, Address address) {
         User userFromBD = userRepository.findByUsername(user.getUsername());
-        if(userFromBD != null){
+        if (userFromBD != null) {
             return false;
         }
         address.setCity(city);
@@ -67,22 +69,36 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
+    public void updateProfile(User user, User userNew) {
+            user.setEmail(userNew.getEmail());
+            user.setUsername(userNew.getUsername());
+            user.setPhoneNumber(userNew.getPhoneNumber());
+            user.setFirstName(userNew.getFirstName());
+            user.setLastName(userNew.getLastName());
+            user.getAddress().setCity(userNew.getAddress().getCity());
+            user.getAddress().setCountry(countryService.addCountryBLR());
+            user.getAddress().setStreet(userNew.getAddress().getStreet());
+            user.getAddress().setNumberHouse(userNew.getAddress().getNumberHouse());
+
+            userRepository.save(user);
+    }
+
     private void sendMessag(User user) {
-        if(!StringUtils.isEmpty(user.getEmail())){
+        if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
                             "Welcome to my site. Please, visit next link: http://localhost:8080/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );
-            mailSenderService.send(user.getEmail(),"Activation code", message);
+            mailSenderService.send(user.getEmail(), "Activation code", message);
         }
     }
 
     public boolean activateUser(String code) {
         User user = userRepository.findByActivationCode(code);
 
-        if(user == null){   //если пользователь не будет найден по коду, то активация не удалась
+        if (user == null) {   //если пользователь не будет найден по коду, то активация не удалась
             return false;
         }
 

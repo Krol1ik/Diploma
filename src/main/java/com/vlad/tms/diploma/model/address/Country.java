@@ -51,4 +51,9 @@ public class Country {
     public void setCity(List<City> city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return countryName;
+    }
 }

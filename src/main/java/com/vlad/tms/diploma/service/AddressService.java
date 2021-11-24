@@ -14,4 +14,12 @@ public class AddressService {
     public void saveAddress(Address address){
         addressRepository.save(address);
     }
+
+    public Address findByUser(String name) {
+        return addressRepository.findByUserUsername(name);
+    }
+
+    public Address findById(Long id) {
+        return addressRepository.getById(id);
+    }
 }

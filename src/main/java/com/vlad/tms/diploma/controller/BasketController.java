@@ -9,10 +9,7 @@ import com.vlad.tms.diploma.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,16 +31,26 @@ public class BasketController {
     }
 
     @PostMapping("/basket")
-    public String placedOrder(@RequestParam("orderId") List<OrderItem> orderItem,
-                              @RequestParam("orderCount") List<Integer> count,
+    public String placedOrder(@RequestParam(value = "orderId", required = false) List<OrderItem> orderItem,
+                              @RequestParam(value = "orderCount", required = false) List<Integer> count,
                               Model model) {
 
+        if(orderItem == null){
+            model.addAttribute("messages", "У вас еще нет товаров в корзине");
+            return "basket";
+        }
         for (int i = 0; i < orderItem.size(); i++) {
             orderItem.get(i).setCount(count.get(i));
             orderItemService.saveOrder(orderItem.get(i));
         }
         orderItemService.priceProductInRow();
         return "redirect:checkoutOrder";
+    }
+
+    @GetMapping ("/basket/{id}")
+    public String deleteProductInBasket (@PathVariable ("id") Long id){
+        orderItemService.delete(id);
+        return "basket";
     }
 
     @GetMapping("/checkoutOrder")
