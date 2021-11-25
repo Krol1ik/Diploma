@@ -64,7 +64,7 @@
 
             <h3 class="qualityProduct">Количество купленных товаров: ${orderData.count}</h3>
             <h3 class="sumProduct">Сумма заказа: ${orderData.priceOrder} руб</h3>
-            <h3 class="sumProduct">Дата заказа: 18.11.2021 18:37</h3>
+            <h3 class="sumProduct">${orderData.dataOrders.dateOrder}</h3>
         </div>
                 </c:forEach>
 

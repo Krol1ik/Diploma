@@ -8,6 +8,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name = "Article")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long article;

@@ -10,6 +10,8 @@ import com.vlad.tms.diploma.repository.DataOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -52,7 +54,10 @@ public class DataOrderService {
         DataOrder dataOrder = new DataOrder();
         dataOrder.setOrderItem(orderItem);
         dataOrder.setUser(user);
-
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("'Дата заказа: 'yyyy.MM.dd 'время: 'kk:mm");
+        String dateTime = simpleDateFormat.format(date);
+        dataOrder.setDateOrder(dateTime);
         dataOrderRepository.save(dataOrder);
         for (int i = 0; i < orderItem.size(); i++) {
             orderItem.get(i).setDataOrders(dataOrder);

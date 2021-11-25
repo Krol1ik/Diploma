@@ -23,11 +23,21 @@ public class DataOrder {
     @JoinColumn (name = "Customer_id")
     private Customer customer;
 
+    @Column (name = "Order_date")
+    private String dateOrder;
 
     @OneToMany (mappedBy = "dataOrders", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItem;
 
     public DataOrder() {
+    }
+
+    public String getDateOrder() {
+        return dateOrder;
+    }
+
+    public void setDateOrder(String dateOrder) {
+        this.dateOrder = dateOrder;
     }
 
     public Long getId() {
