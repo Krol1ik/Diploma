@@ -175,6 +175,21 @@ a{
     margin-bottom: 41px;
 }
 
+.profile{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    width: 152px;
+    height: 42px;
+    padding: 10px 0;
+    padding-left: 17px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: 40px;
+}
+
 .chekInfo{
     flex-wrap: wrap;
     display: flex;
@@ -272,6 +287,12 @@ a{
     margin: 40px 0px 100px 420px;
 }
 
+.redactorProfile{
+    padding-top: 15px;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-left: 115px;
+}
 
 
 

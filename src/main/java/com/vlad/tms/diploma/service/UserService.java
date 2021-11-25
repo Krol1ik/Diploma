@@ -69,18 +69,25 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public void updateProfile(User user, User userNew) {
+    public boolean updateProfile(User user, User userNew, Address address, String cityName) {
+        User userFromBD = userRepository.findByUsername(userNew.getUsername());
+
+        if (user.getUsername().equals(userNew.getUsername()) || userFromBD == null) {
             user.setEmail(userNew.getEmail());
             user.setUsername(userNew.getUsername());
             user.setPhoneNumber(userNew.getPhoneNumber());
             user.setFirstName(userNew.getFirstName());
             user.setLastName(userNew.getLastName());
-            user.getAddress().setCity(userNew.getAddress().getCity());
+            user.getAddress().setCity(cityService.getCity(cityName));
             user.getAddress().setCountry(countryService.addCountryBLR());
-            user.getAddress().setStreet(userNew.getAddress().getStreet());
-            user.getAddress().setNumberHouse(userNew.getAddress().getNumberHouse());
+            user.getAddress().setStreet(address.getStreet());
+            user.getAddress().setNumberHouse(address.getNumberHouse());
 
             userRepository.save(user);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void sendMessag(User user) {

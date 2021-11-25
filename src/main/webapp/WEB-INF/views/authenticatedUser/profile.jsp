@@ -10,7 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/registration.css">
+<link rel="stylesheet" href="/static/css/authenticated/profile.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,12 +33,20 @@
             <a href="/" class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
-            <a href="/basket" class="basket">Корзина</a>
             <sec:authorize access="isAnonymous()">
+                <a href="/basket" class="basket">Корзина</a>
+
                 <a href="/login" class="log">Войти</a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <a href="/profile" class="profile">Профиль</a>
+                <a href="/basket/user" class="basket">Корзина</a>
+                <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
+                    <option>Профиль</option>
+                    <option value="http://localhost:8080/profile">Личные данные</option>
+                    <option value="http://localhost:8080/history">История заказов</option>
+                    <option></option>
+                    <option value="http://localhost:8080/logout">Выход</option>
+                </select>
             </sec:authorize>
         </div>
     </div>
@@ -47,7 +55,7 @@
     <div class="container">
         <div class="container">
             <div class="chekoutInfo">
-                <h1 class="registrationOrder">Форма регистрации</h1>
+                <h1 class="registrationOrder">Личные данные</h1>
                 <div class="dataCostumer">
                     <form:form action="/profile" modelAttribute="user" method="post">
                         <div class="loginForm">
@@ -55,9 +63,9 @@
                             <form:input path="username" class="inputsBlock" name="username"/>
                             <br>
                             <form:errors path="username" class="err" />
-<%--                            <c:if test="${!messages}">--%>
-<%--                                <p class="err">${messages}</p>--%>
-<%--                            </c:if>--%>
+                            <c:if test="${!messages}">
+                                <p class="err">${messages}</p>
+                            </c:if>
                             <input type="hidden" name="_csrf" value="${_csrf.token}" />
                         </div>
                         <div class="email">
@@ -97,24 +105,24 @@
                                     <p class="err">${messagesErrorCity}</p>
                                 </c:if>
                             </div>
+                        <form:form action="/profile" modelAttribute="address" method="post">
                             <div class="street">
-
-                                <form:label path="address.street">Улица: </form:label>
-                                <form:input path="address.street" class="inputsBlock"/>
+                                <form:label path="street">Улица: </form:label>
+                                <form:input path="street" class="inputsBlock"/>
                                 <br>
-                                <form:errors path="address.street" class="err"/>
-
+                                <form:errors path="street" class="err"/>
                                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                             </div>
                             <div class="numberHouse">
-                                <form:label path="address.numberHouse">Дом: </form:label>
-                                <form:input path="address.numberHouse" class="inputsBlock"/>
+                                <form:label path="numberHouse">Дом: </form:label>
+                                <form:input path="numberHouse" class="inputsBlock"/>
                                 <br>
-                                <form:errors path="address.numberHouse" class="err"/>
+                                <form:errors path="numberHouse" class="err"/>
                             </div>
                             <div class="btnOrder">
-                                <button type="submit" class="sendOrder">Зарегистрироваться</button>
+                                <button type="submit" class="sendOrder">Обновить</button>
                             </div>
+                        </form:form>
                         </form:form>
                 </div>
             </div>

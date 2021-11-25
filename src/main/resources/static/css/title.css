@@ -183,12 +183,6 @@ a{
     border: 1px solid grey;
     border-radius: 10px;
     margin-left: 40px;
-    text-decoration: none;
-    transition: all 1s ease;
-}
-
-.profile:hover{
-    background-color: #ffa627;
 }
 
 .title{

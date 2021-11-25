@@ -32,17 +32,20 @@
             <a href="/" class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
-            <a href="/basket" class="basket">Корзина</a>
             <sec:authorize access="isAnonymous()">
+                <a href="/basket" class="basket">Корзина</a>
+
                 <a href="/login" class="log">Войти</a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-            <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
-                <option>Профиль</option>
-                <option value="http://localhost:8080/profile">Личные данные</option>
-                <option value="">История заказов</option>
-                <option></option>
-                <option value="http://localhost:8080/logout">Выход</option>
+                <a href="/basket/user" class="basket">Корзина</a>
+                <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
+                    <option>Профиль</option>
+                    <option value="http://localhost:8080/profile">Личные данные</option>
+                    <option value="http://localhost:8080/history">История заказов</option>
+                    <option></option>
+                    <option value="http://localhost:8080/logout">Выход</option>
+                </select>
             </sec:authorize>
         </div>
     </div>
@@ -52,6 +55,8 @@
 <section class="basketList">
     <h1 class="textBasket">Корзина</h1>
     <div class="container">
+
+<sec:authorize access="isAnonymous()">
         <c:if test="${!messages}">
             <p class="err">${messages}</p>
         </c:if>
@@ -74,6 +79,33 @@
             </c:forEach>
             <button type="submit" class="btn">Оформить заказ</button>
         </form>
+</sec:authorize>
+
+        <sec:authorize access="isAuthenticated()">
+            <c:if test="${!messages}">
+                <p class="err">${messages}</p>
+            </c:if>
+            <form action="/basket" method="post">
+                <c:forEach items="${orderForUser}" var="ord">
+                    <div class="productList">
+                        <img src="${ord.productOrder.filename}" alt="No images" class="img">
+                        <div class="infoProduct">
+                            <br>
+                            <h4 class="nameProduct"><span class="article"><br>Артикул: ${ord.productOrder.article}</span>
+                                <br><br><br>${ord.productOrder.category} ${ord.productOrder.type} ${ord.productOrder.brand} ${ord.productOrder.model}
+                            </h4>
+                            <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="${ord.count}"
+                                                               name="orderCount"></h5>
+                            <h3 class="price">${ord.productOrder.price} руб <br>
+                                <a href="/basket/${ord.id}" class="del">Удалить из корзины</a></h3>
+                            <input type="hidden" value="${ord.id}" name="orderId">
+                        </div>
+                    </div>
+                </c:forEach>
+                <button type="submit" class="btn">Оформить заказ</button>
+            </form>
+        </sec:authorize>
+        
     </div>
 </section>
 

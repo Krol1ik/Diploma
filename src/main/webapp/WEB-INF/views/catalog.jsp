@@ -32,13 +32,21 @@
             <a href="/"class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
-            <a href="/basket" class="basket">Корзина</a>
             <sec:authorize access="isAnonymous()">
+            <a href="/basket" class="basket">Корзина</a>
+
                 <a href="/login" class="log">Войти</a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <a href="/profile" class="profile">Профиль</a>
-            </sec:authorize>
+                <a href="/basket/user" class="basket">Корзина</a>
+            <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
+                <option>Профиль</option>
+                <option value="http://localhost:8080/profile">Личные данные</option>
+                <option value="http://localhost:8080/history">История заказов</option>
+                <option></option>
+                <option value="http://localhost:8080/logout">Выход</option>
+            </select>
+                </sec:authorize>
         </div>
     </div>
 </header>
@@ -61,6 +69,7 @@
             </div>
             <div class="products">
 
+<sec:authorize access="isAnonymous()">
 <c:forEach items="${productList}" var="prod">
                 <div class="prodouctStyle">
                     <img src="${prod.filename}" alt="No images" class="img">
@@ -73,6 +82,22 @@
                     </div>
                 </div>
 </c:forEach>
+</sec:authorize>
+<sec:authorize access="isAuthenticated()">
+    <c:forEach items="${productList}" var="prod">
+    <div class="prodouctStyle">
+        <img src="${prod.filename}" alt="No images" class="img">
+        <br>
+        <h4 class="nameProduct">${prod.category} <br> ${prod.type.toString()} ${prod.brand} ${prod.model}</h4>
+        <p class="nameProduct">Артикул: ${prod.article}</p>
+        <div class="by">
+            <h3 class="price">${prod.price} руб</h3>
+            <button type="submit" class="btnBy"><a href="/catalog/user/${prod.id}">В корзину</a></button>
+        </div>
+    </div>
+    </c:forEach>
+</sec:authorize>
+
             </div>
         </div>
     </div>

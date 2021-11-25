@@ -175,13 +175,28 @@ a{
     margin-bottom: 41px;
 }
 
+.profile{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    width: 152px;
+    height: 42px;
+    padding: 10px 0;
+    padding-left: 17px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-left: 40px;
+}
+
 .chekInfo{
     flex-wrap: wrap;
     display: flex;
 }
 
 .registrationOrder{
-    margin-left: 40%;
+    margin-left: 45%;
 }
 .dataCostumer{
     width: 70%;

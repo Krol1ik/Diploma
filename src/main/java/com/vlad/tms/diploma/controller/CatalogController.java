@@ -1,10 +1,12 @@
 package com.vlad.tms.diploma.controller;
 
 
+import com.vlad.tms.diploma.model.entity.User;
 import com.vlad.tms.diploma.service.CategoryService;
 import com.vlad.tms.diploma.service.OrderItemService;
 import com.vlad.tms.diploma.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,22 +26,30 @@ public class CatalogController {
 
 
     @GetMapping()
-    public String catalogPage(Model model){
+    public String catalogPage(Model model) {
         model.addAttribute("productList", productService.findAll());
         model.addAttribute("categoryList", categoryService.categoryAll());
         return "catalog";
     }
 
     @GetMapping("/category/{id}")
-    public String catalogOnCategory(@PathVariable("id") Long id, Model model){
+    public String catalogOnCategory(@PathVariable("id") Long id, Model model) {
         model.addAttribute("productList", productService.findByCategory(id));
         model.addAttribute("categoryList", categoryService.categoryAll());
         return "catalog";
     }
 
-    @GetMapping ("/{id}")
-    public String addInBasket (@PathVariable("id") Long id, Model model){
+    @GetMapping("/{id}")
+    public String addInBasket(@PathVariable("id") Long id, Model model) {
         orderItemService.addOrder(id);
+        model.addAttribute("product", productService.findById(id));
+        return "redirect:/catalog";
+    }
+
+    @GetMapping("/user/{id}")
+    public String addInBasketForUser(@AuthenticationPrincipal User user,
+                                     @PathVariable("id") Long id, Model model) {
+        orderItemService.addOrderForUser(id, user);
         model.addAttribute("product", productService.findById(id));
         return "redirect:/catalog";
     }

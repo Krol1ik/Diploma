@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/title.css">
+<link rel="stylesheet" href="/static/css/authenticated/updateComplete.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -50,31 +50,9 @@
 </header>
 <section class="title">
     <div class="container">
-        <div class="benefistSection">
-            <div class="oneDel">
-                <h3 class="textDelivery">Бесплатная</h3>
-                <h3 class="textDeliveryTwo">доставка</h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee">Гарантия</h3>
-                <h3 class="textGuaranteeTwo">18 месяцев</h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee">Лучшее</h3>
-                <h3 class="textQualityTwo">качество</h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee">Доставляем</h3>
-                <h3 class="deliveryBenefist">По всей Беларуси</h3>
-            </div>
-        </div>
-    </div>
-    <div class="container">
         <div class="category">
-            <a href="/catalog/category/${categoryList.get(0).id}" class="btn" >Турники</a>
-            <a href="/catalog/category/${categoryList.get(1).id}" class="btn" >Шведские стены</a>
-            <a href="/catalog/category/${categoryList.get(2).id}" class="btn" >Железо</a>
-            <a href="/catalog/category/${categoryList.get(3).id}" class="btn" >Тренажеры</a>
+            <h1 class="thanks">Профиль успешно обновлен</h1>
+            <a href="/" class="btn">Вернуться на главную страницу</a>
         </div>
     </div>
 </section>

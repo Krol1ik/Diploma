@@ -1,13 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@page isELIgnored="false" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
-  Date: 09.11.2021
-  Time: 16:09
+  Date: 11.11.2021
+  Time: 10:20
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/title.css">
+<link rel="stylesheet" href="/static/css/authenticated/historyOrder.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,7 +29,7 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <a href="/"class="logo">SPORT LINE</a>
+            <a href="/" class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
             <sec:authorize access="isAnonymous()">
@@ -47,37 +49,28 @@
             </sec:authorize>
         </div>
     </div>
+
 </header>
-<section class="title">
+
+<section class="basketList">
+    <h1 class="textBasket">История заказов</h1>
     <div class="container">
-        <div class="benefistSection">
-            <div class="oneDel">
-                <h3 class="textDelivery">Бесплатная</h3>
-                <h3 class="textDeliveryTwo">доставка</h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee">Гарантия</h3>
-                <h3 class="textGuaranteeTwo">18 месяцев</h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee">Лучшее</h3>
-                <h3 class="textQualityTwo">качество</h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee">Доставляем</h3>
-                <h3 class="deliveryBenefist">По всей Беларуси</h3>
-            </div>
+
+
+            <c:forEach items="${dataOrder}" var="orderData">
+        <div class="productList">
+            <h4 class="nameOrder"> Заказ номер: ${orderData.dataOrders.id}</h4>
+            <br>
+
+            <h3 class="qualityProduct">Количество купленных товаров: ${orderData.count}</h3>
+            <h3 class="sumProduct">Сумма заказа: ${orderData.priceOrder} руб</h3>
+            <h3 class="sumProduct">Дата заказа: 18.11.2021 18:37</h3>
         </div>
-    </div>
-    <div class="container">
-        <div class="category">
-            <a href="/catalog/category/${categoryList.get(0).id}" class="btn" >Турники</a>
-            <a href="/catalog/category/${categoryList.get(1).id}" class="btn" >Шведские стены</a>
-            <a href="/catalog/category/${categoryList.get(2).id}" class="btn" >Железо</a>
-            <a href="/catalog/category/${categoryList.get(3).id}" class="btn" >Тренажеры</a>
-        </div>
+                </c:forEach>
+
     </div>
 </section>
+
 <footer class="footer">
     <div class="container">
         <div class="footerLineOne">
@@ -111,3 +104,4 @@
 </footer>
 </body>
 </html>
+
