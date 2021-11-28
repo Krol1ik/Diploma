@@ -27,7 +27,7 @@
     <hr class="topLine">
     <div class="container">
         <div class="headLineTwo">
-            <a href="/"class="logo">SPORT LINE</a>
+            <a href="/" class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog">Каталог товаров</a>
             <input type="text" class="search" placeholder="поиск товаров">
             <sec:authorize access="isAnonymous()">
@@ -41,6 +41,11 @@
                     <option>Профиль</option>
                     <option value="http://localhost:8080/profile">Личные данные</option>
                     <option value="http://localhost:8080/history">История заказов</option>
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <option></option>
+                        <option value="http://localhost:8080/admin/userList">Список пользователей</option>
+                        <option value="http://localhost:8080/admin/addProduct">Добавить товар</option>
+                    </sec:authorize>
                     <option></option>
                     <option value="http://localhost:8080/logout">Выход</option>
                 </select>
@@ -71,10 +76,10 @@
     </div>
     <div class="container">
         <div class="category">
-            <a href="/catalog/category/${categoryList.get(0).id}" class="btn" >Турники</a>
-            <a href="/catalog/category/${categoryList.get(1).id}" class="btn" >Шведские стены</a>
-            <a href="/catalog/category/${categoryList.get(2).id}" class="btn" >Железо</a>
-            <a href="/catalog/category/${categoryList.get(3).id}" class="btn" >Тренажеры</a>
+            <a href="/catalog/category/${categoryList.get(0).id}" class="btn">Турники</a>
+            <a href="/catalog/category/${categoryList.get(1).id}" class="btn">Шведские стены</a>
+            <a href="/catalog/category/${categoryList.get(2).id}" class="btn">Железо</a>
+            <a href="/catalog/category/${categoryList.get(3).id}" class="btn">Тренажеры</a>
         </div>
     </div>
 </section>
