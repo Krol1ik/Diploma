@@ -10,6 +10,8 @@ import java.util.List;
 @Service
 public class ProductService {
     @Autowired
+    private OrderItemService orderItemService;
+    @Autowired
     private ModelService modelService;
     @Autowired
     private CategoryService categoryService;
@@ -34,21 +36,23 @@ public class ProductService {
 
 
     public void addFromAdmin (String brandName, String modelName, String typeName, String categoryName,
-                              String description, Double price, int discount, String resultFilename){
+                              String description, Double price, int discount, String resultFilename) {
         Product product = new Product();
         product.setFilename("/static/img/" + resultFilename);
         product.setDescriptionProduct(description);
         product.setDiscount(discount);
         product.setPrice(price);
 
-        if(brandService.checkBrandName(brandName) !=null){
+        if (brandService.checkBrandName(brandName) != null) {
             product.setBrand(brandService.checkBrandName(brandName));
         } else {
             product.setBrand(brandService.createNewBrand(brandName));
         }
 
-        if (typeService.checkTypeName(typeName) != null){
+        if (typeService.checkTypeName(typeName) != null) {
             product.setType(typeService.checkTypeName(typeName));
+        } else if (typeName == "" || typeName == null){
+            product.setType(null);
         } else {
             product.setType(typeService.createNewType(typeName));
         }
@@ -66,5 +70,11 @@ public class ProductService {
         }
 
         productRepository.save(product);
+    }
+
+    public void delete(Long id) {
+        Product product = productRepository.getById(id);
+        orderItemService.deleteByProduct(product);
+        productRepository.deleteById(id);
     }
 }

@@ -58,7 +58,7 @@ public class BasketController {
     @GetMapping("/basket/{id}")
     public String deleteProductInBasket(@PathVariable("id") Long id) {
         orderItemService.delete(id);
-        return "basket";
+        return "redirect:/basket";
     }
 
     @GetMapping("/checkoutOrder")

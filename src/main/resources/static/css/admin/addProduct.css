@@ -1,0 +1,84 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+div, p, input, button, span, form, ul, li,a {
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 0;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.container{
+    width: 1171px;
+    margin: 0 auto;
+}
+
+.header{
+    background: #f7f8fa;
+}
+
+.titleHead{
+    padding-top: 60px;
+}
+
+
+.row{
+    width: 600px;
+    height: 30px;
+    display: block;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.wrapped{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 300px;
+}
+
+.fileAdd{
+    width: 600px;
+    height: 30px;
+    display: block;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.profile{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    display: block;
+    width: 152px;
+    height: 42px;
+    padding: 10px 0;
+    padding-left: 17px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid grey;
+    margin-left: 273px;
+    display: inline;
+}
+
+.logo{
+    width: 139px;
+    height: 66px;
+    display: inline;
+    padding-right: 300px;
+    color: black;
+}

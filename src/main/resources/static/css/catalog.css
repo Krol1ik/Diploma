@@ -237,6 +237,13 @@ a{
     width: 300px;
 }
 
+.deleteProduct{
+    font-size: 12px;
+    align-items: center;
+    margin-left: 40%;
+    color: red;
+}
+
 .img{
     padding-top: 20px;
     padding-bottom: 20px;

@@ -8,6 +8,7 @@ import com.vlad.tms.diploma.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +52,12 @@ public class CatalogController {
                                      @PathVariable("id") Long id, Model model) {
         orderItemService.addOrderForUser(id, user);
         model.addAttribute("product", productService.findById(id));
+        return "redirect:/catalog";
+    }
+    @Transactional
+    @GetMapping ("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long id){
+        productService.delete(id);
         return "redirect:/catalog";
     }
 

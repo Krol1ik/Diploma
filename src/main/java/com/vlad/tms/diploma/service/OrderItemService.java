@@ -66,6 +66,10 @@ public class OrderItemService {
         orderItemRepository.deleteById(id);
     }
 
+    public void deleteByProduct(Product product){
+        orderItemRepository.deleteByProductOrder(product);
+    }
+
     public void addOrderForUser(Long id, User user) {
         OrderItem orderItem = new OrderItem();
         Product product = productService.findById(id);

@@ -11,10 +11,9 @@ import java.util.List;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
-    public List<OrderItem> findOrderItemByStatusOrderAndUser(boolean status, User user);
+    List<OrderItem> findOrderItemByStatusOrderAndUser(boolean status, User user);
 
-//    public OrderItem findOrderItemById(Long id);
+    List<OrderItem> findOrderItemByUserAndStatusOrder(User user, boolean status);
 
-    public List<OrderItem> findOrderItemByUserAndStatusOrder(User user, boolean status);
-
+    void deleteByProductOrder(Product product);
 }

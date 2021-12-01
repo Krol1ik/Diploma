@@ -94,6 +94,9 @@
             <h3 class="price">${prod.price} руб</h3>
             <button type="submit" class="btnBy"><a href="/catalog/user/${prod.id}">В корзину</a></button>
         </div>
+        <sec:authorize access="hasAuthority('ADMIN')">
+        <a href="/catalog/delete/${prod.id}" class="deleteProduct">Удалить товар</a>
+        </sec:authorize>
     </div>
     </c:forEach>
 </sec:authorize>
