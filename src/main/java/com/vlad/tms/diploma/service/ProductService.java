@@ -9,9 +9,16 @@ import java.util.List;
 
 @Service
 public class ProductService {
-
     @Autowired
-    ProductRepository productRepository;
+    private ModelService modelService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private TypeService typeService;
+    @Autowired
+    private BrandService brandService;
+    @Autowired
+    private ProductRepository productRepository;
 
     public List<Product> findByCategory(Long id){
         return productRepository.findProductByCategoryId(id);
@@ -23,5 +30,41 @@ public class ProductService {
 
     public Product findById(Long id){
         return productRepository.getById(id);
+    }
+
+
+    public void addFromAdmin (String brandName, String modelName, String typeName, String categoryName,
+                              String description, Double price, int discount, String resultFilename){
+        Product product = new Product();
+        product.setFilename("/static/img/" + resultFilename);
+        product.setDescriptionProduct(description);
+        product.setDiscount(discount);
+        product.setPrice(price);
+
+        if(brandService.checkBrandName(brandName) !=null){
+            product.setBrand(brandService.checkBrandName(brandName));
+        } else {
+            product.setBrand(brandService.createNewBrand(brandName));
+        }
+
+        if (typeService.checkTypeName(typeName) != null){
+            product.setType(typeService.checkTypeName(typeName));
+        } else {
+            product.setType(typeService.createNewType(typeName));
+        }
+
+        if(categoryService.checkCategoryName(categoryName) != null){
+            product.setCategory(categoryService.checkCategoryName(categoryName));
+        } else {
+            product.setCategory(categoryService.createNewCategory(categoryName));
+        }
+
+        if(modelService.checkModelName(modelName) != null){
+            product.setModel(modelService.checkModelName(modelName));
+        } else {
+            product.setModel(modelService.createNewModel(modelName));
+        }
+
+        productRepository.save(product);
     }
 }

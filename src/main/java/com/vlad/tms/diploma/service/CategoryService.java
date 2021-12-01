@@ -16,4 +16,15 @@ public class CategoryService {
     public List<Category> categoryAll(){
         return categoryRepository.findAll();
     }
+
+    public Category checkCategoryName(String nameCategory){
+        return categoryRepository.findByCategoryName(nameCategory);
+    }
+
+    public Category createNewCategory(String nameCategory){
+        Category category = new Category();
+        category.setCategoryName(nameCategory);
+        categoryRepository.save(category);
+        return category;
+    }
 }

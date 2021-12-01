@@ -241,6 +241,8 @@ a{
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 50px;
+    height: 150px;
+    width: 150px;
 }
 .nameProduct{
     padding-left: 20px;
