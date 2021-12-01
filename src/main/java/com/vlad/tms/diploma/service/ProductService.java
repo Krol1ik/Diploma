@@ -36,9 +36,8 @@ public class ProductService {
 
 
     public void addFromAdmin (String brandName, String modelName, String typeName, String categoryName,
-                              String description, Double price, int discount, String resultFilename) {
-        Product product = new Product();
-        product.setFilename("/static/img/" + resultFilename);
+                              String description, Double price, int discount, Product product) {
+
         product.setDescriptionProduct(description);
         product.setDiscount(discount);
         product.setPrice(price);

@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping ("/admin")
@@ -82,14 +83,20 @@ public class AdminController {
                               @RequestParam ("discount") int discount,
                               @ModelAttribute Product product, Model model) throws IOException {
 
-            if (file != null && !file.getOriginalFilename().isEmpty()) { // если файл не равен 0, то мы его добавим
-            String resultFilename = file.getOriginalFilename();
-            file.transferTo(new File(uploadPath + "/" + resultFilename));
+        if (file != null && !file.getOriginalFilename().isEmpty()) { // если файл не равен 0, то мы его добавим в класс
+            File uploadDir = new File(uploadPath);
 
-            productService.addFromAdmin(brand, modelProduct, type, category, description, price, discount, resultFilename);
+            if (uploadDir.exists()) {   //Если uploadDir не существует, то мы ее создаем
+                uploadDir.mkdir();
+            }
+            //обезопасили себя от коолизии и создаем уникальное имя файла
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + file.getOriginalFilename();
 
+            file.transferTo(new File(uploadPath + "/" + resultFilename));   //загружаем наш файл
+            product.setFilename("img/" + resultFilename);
+            productService.addFromAdmin(brand, modelProduct, type, category, description, price, discount, product);
 
-            model.addAttribute("messages", "Товар был добавлен");
             return "admin/addProduct";
         } else {
             model.addAttribute("messages", "Товар не был добавлен, неверно заполнена форма.");
