@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page isELIgnored="false" %>
 <%--
   Created by IntelliJ IDEA.
@@ -22,38 +23,48 @@
             <p class="number">+375 29 111 11 11</p>
             <a href="" class="viber">Viber</a>
             <a href="" class="telegram">Telegram</a>
-            <p class="workTime">график работы <br> пн-пт: 9:00-18:00</p>
-            <p class="lang">ENG</p>
+            <p class="workTime"><spring:message code="app.lang.schedule"/> <br> <spring:message code="app.lang.dayWeek"/>: 9:00-18:00</p>
+            <div class="dropdown">
+                <button class="dropbtn"><spring:message code="app.lang.change"/></button>
+                <div class="dropdown-content">
+                    <a href="?lang=en"><spring:message code="app.lang.english"/></a>
+                    <a href="?lang=ru"><spring:message code="app.lang.russia"/></a>
+                </div>
+            </div>
         </div>
     </div>
-    <hr class="topLine">
+    <hr class="topLine" style="margin-top: 10px">
     <div class="container">
         <div class="headLineTwo">
             <a href="/" class="logo">SPORT LINE</a>
-            <a href="/catalog" class="catalog">Каталог товаров</a>
-            <input type="text" class="search" placeholder="поиск товаров">
+            <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
+            <input type="text" class="search" placeholder="<spring:message code="app.lang.search"/>">
             <sec:authorize access="isAnonymous()">
-                <a href="/basket" class="basket">Корзина</a>
+                <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
 
-                <a href="/login" class="log">Войти</a>
+                <a href="/login" class="log"><spring:message code="app.lang.log"/></a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <a href="/basket/user" class="basket">Корзина</a>
+                <a href="/basket/user" class="basket"><spring:message code="app.lang.basket"/></a>
                 <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
-                    <option>Профиль</option>
-                    <option value="http://localhost:8080/profile">Личные данные</option>
-                    <option value="http://localhost:8080/history">История заказов</option>
+                    <option><spring:message code="app.lang.profile"/></option>
+                    <option value="http://localhost:8080/profile"><spring:message code="app.lang.personalData"/></option>
+                    <option value="http://localhost:8080/history"><spring:message code="app.lang.history"/></option>
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <option></option>
+                        <option value="http://localhost:8080/admin/userList"><spring:message code="app.lang.list"/></option>
+                        <option value="http://localhost:8080/admin/addProduct"><spring:message code="app.lang.addProd"/></option>
+                    </sec:authorize>
                     <option></option>
-                    <option value="http://localhost:8080/logout">Выход</option>
+                    <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
                 </select>
             </sec:authorize>
         </div>
     </div>
-
 </header>
 
 <section class="basketList">
-    <h1 class="textBasket">Корзина</h1>
+    <h1 class="textBasket"><spring:message code="app.lang.basket"/></h1>
     <div class="container">
 
 <sec:authorize access="isAnonymous()">
@@ -66,18 +77,18 @@
                     <img src="${ord.productOrder.filename}" alt="No images" class="img">
                     <div class="infoProduct">
                         <br>
-                        <h4 class="nameProduct"><span class="article"><br>Артикул: ${ord.productOrder.article}</span>
+                        <h4 class="nameProduct"><span class="article"><br><spring:message code="app.lang.article"/>: ${ord.productOrder.article}</span>
                             <br><br><br>${ord.productOrder.category} ${ord.productOrder.type} ${ord.productOrder.brand} ${ord.productOrder.model}
                         </h4>
-                        <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="${ord.count}"
+                        <h5 class="quality"><spring:message code="app.lang.qualityProd"/>: <input type="number" class="qualityInput" value="${ord.count}"
                                                            name="orderCount"></h5>
-                        <h3 class="price">${ord.productOrder.price} руб <br>
-                            <a href="/basket/${ord.id}" class="del">Удалить из корзины</a></h3>
+                        <h3 class="price">${ord.productOrder.price} <spring:message code="app.lang.price"/> <br>
+                            <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a></h3>
                         <input type="hidden" value="${ord.id}" name="orderId">
                     </div>
                 </div>
             </c:forEach>
-            <button type="submit" class="btn">Оформить заказ</button>
+            <button type="submit" class="btn"><spring:message code="app.lang.makeOrder"/></button>
         </form>
 </sec:authorize>
 
@@ -91,18 +102,18 @@
                         <img src="${ord.productOrder.filename}" alt="No images" class="img">
                         <div class="infoProduct">
                             <br>
-                            <h4 class="nameProduct"><span class="article"><br>Артикул: ${ord.productOrder.article}</span>
+                            <h4 class="nameProduct"><span class="article"><br><spring:message code="app.lang.article"/>: ${ord.productOrder.article}</span>
                                 <br><br><br>${ord.productOrder.category} ${ord.productOrder.type} ${ord.productOrder.brand} ${ord.productOrder.model}
                             </h4>
-                            <h5 class="quality">Кол-во: <input type="number" class="qualityInput" value="${ord.count}"
+                            <h5 class="quality"><spring:message code="app.lang.qualityProd"/>: <input type="number" class="qualityInput" value="${ord.count}"
                                                                name="orderCount"></h5>
-                            <h3 class="price">${ord.productOrder.price} руб <br>
-                                <a href="/basket/${ord.id}" class="del">Удалить из корзины</a></h3>
+                            <h3 class="price">${ord.productOrder.price} <spring:message code="app.lang.price"/> <br>
+                                <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a></h3>
                             <input type="hidden" value="${ord.id}" name="orderId">
                         </div>
                     </div>
                 </c:forEach>
-                <button type="submit" class="btn">Оформить заказ</button>
+                <button type="submit" class="btn"><spring:message code="app.lang.makeOrder"/></button>
             </form>
         </sec:authorize>
         
@@ -113,28 +124,29 @@
     <div class="container">
         <div class="footerLineOne">
             <p class="footerInfo">
-                Режим работы интернет-магазина: с 9:00 до 18:00. Оформить заказ можно в любое время (круглосуточно)
+                <spring:message code="app.lang.footerInfoOne"/>
             </p>
             <p class="footerInfo">
-                Товары можно оплатить наличным и/или безналичным способом при его получении.
+                <spring:message code="app.lang.footerInfoTwo"/>
             </p>
             <p class="footerInfo">
-                Способо доставка товара: самовывоз, доставка.</p>
+                <spring:message code="app.lang.footerInfoThree"/>
+            </p>
         </div>
         <hr>
         <div class="container">
             <div class="footerRequisites">
                 <p class="footerText">
-                    Общество с ограниченной ответственностью "Спорт Лайн"
+                    <spring:message code="app.lang.requisitesOne"/>
                 </p>
                 <p class="footerText">
-                    Свидетельство №1237618726123 от 01.01.2001 выдно Минским городским исполкомом,
+                    <spring:message code="app.lang.requisitesTwo"/>
                 </p>
                 <p class="footerText">
-                    УНП 12882711
+                    <spring:message code="app.lang.requisitesThree"/>
                 </p>
                 <p class="footerText">
-                    Юр.адрес: г. Минск, ул. Центральная, дом 11, офис 11
+                    <spring:message code="app.lang.requisitesFor"/>
                 </p>
             </div>
         </div>

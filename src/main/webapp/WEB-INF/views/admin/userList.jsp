@@ -1,5 +1,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -14,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/admin/userList.css">
-    <title>Document</title>
+
     <head>
         <title>Sport line</title>
     </head>
@@ -22,16 +23,16 @@
 <header class="header" id="header">
     <div class="container">
         <div class="wrapper">
-            <h2 class="listUser"><a href="/" class="logo">SPORT LINE</a>Список пользователей
+            <h2 class="listUser"><a href="/" class="logo">SPORT LINE</a><spring:message code="app.lang.list"/>
                 <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
-                    <option>Профиль</option>
-                    <option value="http://localhost:8080/profile">Личные данные</option>
-                    <option value="http://localhost:8080/history">История заказов</option>
+                    <option><spring:message code="app.lang.profile"/></option>
+                    <option value="http://localhost:8080/profile"><spring:message code="app.lang.personalData"/></option>
+                    <option value="http://localhost:8080/history"><spring:message code="app.lang.history"/></option>
                     <option></option>
-                    <option value="http://localhost:8080/admin/userList">Список пользователей</option>
-                    <option value="http://localhost:8080/admin/addProduct">Добавить товар</option>
+                    <option value="http://localhost:8080/admin/userList"><spring:message code="app.lang.list"/></option>
+                    <option value="http://localhost:8080/admin/addProduct"><spring:message code="app.lang.addProd"/></option>
                     <option></option>
-                    <option value="http://localhost:8080/logout">Выход</option>
+                    <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
                 </select>
             </h2>
         </div>

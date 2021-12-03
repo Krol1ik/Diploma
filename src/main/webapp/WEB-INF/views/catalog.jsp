@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page isELIgnored = "false" %>
 <%--
   Created by IntelliJ IDEA.
@@ -22,50 +23,63 @@
             <p class="number">+375 29 111 11 11</p>
             <a href="" class="viber">Viber</a>
             <a href="" class="telegram">Telegram</a>
-            <p class="workTime">график работы <br> пн-пт: 9:00-18:00</p>
-            <p class="lang">ENG</p>
+            <p class="workTime"><spring:message code="app.lang.schedule"/> <br> <spring:message code="app.lang.dayWeek"/>: 9:00-18:00</p>
+            <div class="dropdown">
+                <button class="dropbtn"><spring:message code="app.lang.change"/></button>
+                <div class="dropdown-content">
+                    <a href="?lang=en"><spring:message code="app.lang.english"/></a>
+                    <a href="?lang=ru"><spring:message code="app.lang.russia"/></a>
+                </div>
+            </div>
         </div>
     </div>
-    <hr class="topLine">
+    <hr class="topLine" style="margin-top: 10px">
     <div class="container">
         <div class="headLineTwo">
-            <a href="/"class="logo">SPORT LINE</a>
-            <a href="/catalog" class="catalog">Каталог товаров</a>
-            <input type="text" class="search" placeholder="поиск товаров">
+            <a href="/" class="logo">SPORT LINE</a>
+            <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
+            <input type="text" class="search" placeholder="<spring:message code="app.lang.search"/>">
             <sec:authorize access="isAnonymous()">
-            <a href="/basket" class="basket">Корзина</a>
+                <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
 
-                <a href="/login" class="log">Войти</a>
+                <a href="/login" class="log"><spring:message code="app.lang.log"/></a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <a href="/basket/user" class="basket">Корзина</a>
-            <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
-                <option>Профиль</option>
-                <option value="http://localhost:8080/profile">Личные данные</option>
-                <option value="http://localhost:8080/history">История заказов</option>
-                <option></option>
-                <option value="http://localhost:8080/logout">Выход</option>
-            </select>
-                </sec:authorize>
+                <a href="/basket/user" class="basket"><spring:message code="app.lang.basket"/></a>
+                <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
+                    <option><spring:message code="app.lang.profile"/></option>
+                    <option value="http://localhost:8080/profile"><spring:message code="app.lang.personalData"/></option>
+                    <option value="http://localhost:8080/history"><spring:message code="app.lang.history"/></option>
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <option></option>
+                        <option value="http://localhost:8080/admin/userList"><spring:message code="app.lang.list"/></option>
+                        <option value="http://localhost:8080/admin/addProduct"><spring:message code="app.lang.addProd"/></option>
+                    </sec:authorize>
+                    <option></option>
+                    <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
+                </select>
+            </sec:authorize>
         </div>
     </div>
 </header>
 <section class="sectionOne">
     <div class="container">
         <div class="category">
-            <a href="/catalog/category/${categoryList.get(0).id}" class="btn" >Турники</a>
-            <a href="/catalog/category/${categoryList.get(1).id}" class="btn" >Шведские стены</a>
-            <a href="/catalog/category/${categoryList.get(2).id}" class="btn" >Железо</a>
-            <a href="/catalog/category/${categoryList.get(3).id}" class="btn" >Тренажеры</a>
+            <a href="/catalog/category/${categoryList.get(0).id}" class="btn"><spring:message code="app.lang.bars"/></a>
+            <a href="/catalog/category/${categoryList.get(1).id}" class="btn"><spring:message
+                    code="app.lang.swedish"/></a>
+            <a href="/catalog/category/${categoryList.get(2).id}" class="btn"><spring:message code="app.lang.iron"/></a>
+            <a href="/catalog/category/${categoryList.get(3).id}" class="btn"><spring:message
+                    code="app.lang.simulators"/></a>
         </div>
     </div>
 </section>
 <section class="sectionTwo">
     <div class="container">
-        <p>Физические упражнения – залог красивого тела и отличного самочувствия. Всем, у кого нет времени посещать спортзал, рекомендуем купить настенный турник и уделять занятиям всего несколько минут в день.</p>
+        <p><spring:message code="app.lang.infoCatalog"/></p>
         <div class="pageProduct">
             <div class="filter">
-            <h3>Фильтр в разработке <br>_________________________</h3>
+            <h3><spring:message code="app.lang.filter"/> <br>_________________________</h3>
             </div>
             <div class="products">
 
@@ -78,7 +92,7 @@
                     <p class="nameProduct">Артикул: ${prod.article}</p>
                     <div class="by">
                         <h3 class="price">${prod.price} руб</h3>
-                        <button type="submit" class="btnBy"><a href="/catalog/${prod.id}">В корзину</a></button>
+                        <button type="submit" class="btnBy"><a href="/catalog/${prod.id}"><spring:message code="app.lang.inBasket"/></a></button>
                     </div>
                 </div>
 </c:forEach>
@@ -109,28 +123,29 @@
     <div class="container">
         <div class="footerLineOne">
             <p class="footerInfo">
-                Режим работы интернет-магазина: с 9:00 до 18:00. Оформить заказ можно в любое время (круглосуточно)
+                <spring:message code="app.lang.footerInfoOne"/>
             </p>
             <p class="footerInfo">
-                Товары можно оплатить наличным и/или безналичным способом при его получении.
+                <spring:message code="app.lang.footerInfoTwo"/>
             </p>
             <p class="footerInfo">
-                Способо доставка товара: самовывоз, доставка.</p>
+                <spring:message code="app.lang.footerInfoThree"/>
+            </p>
         </div>
         <hr>
         <div class="container">
             <div class="footerRequisites">
                 <p class="footerText">
-                    Общество с ограниченной ответственностью "Спорт Лайн"
+                    <spring:message code="app.lang.requisitesOne"/>
                 </p>
                 <p class="footerText">
-                    Свидетельство №1237618726123 от 01.01.2001 выдно Минским городским исполкомом,
+                    <spring:message code="app.lang.requisitesTwo"/>
                 </p>
                 <p class="footerText">
-                    УНП 12882711
+                    <spring:message code="app.lang.requisitesThree"/>
                 </p>
                 <p class="footerText">
-                    Юр.адрес: г. Минск, ул. Центральная, дом 11, офис 11
+                    <spring:message code="app.lang.requisitesFor"/>
                 </p>
             </div>
         </div>

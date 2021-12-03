@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -20,29 +21,40 @@
             <p class="number">+375 29 111 11 11</p>
             <a href="" class="viber">Viber</a>
             <a href="" class="telegram">Telegram</a>
-            <p class="workTime">график работы <br> пн-пт: 9:00-18:00</p>
-            <p class="lang">ENG</p>
+            <p class="workTime"><spring:message code="app.lang.schedule"/> <br> <spring:message code="app.lang.dayWeek"/>: 9:00-18:00</p>
+            <div class="dropdown">
+                <button class="dropbtn"><spring:message code="app.lang.change"/></button>
+                <div class="dropdown-content">
+                    <a href="?lang=en"><spring:message code="app.lang.english"/></a>
+                    <a href="?lang=ru"><spring:message code="app.lang.russia"/></a>
+                </div>
+            </div>
         </div>
     </div>
-    <hr class="topLine">
+    <hr class="topLine" style="margin-top: 10px">
     <div class="container">
         <div class="headLineTwo">
-            <a href="/"class="logo">SPORT LINE</a>
-            <a href="/catalog" class="catalog">Каталог товаров</a>
+            <a href="/" class="logo">SPORT LINE</a>
+            <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
             <input type="text" class="search" placeholder="поиск товаров">
             <sec:authorize access="isAnonymous()">
-                <a href="/basket" class="basket">Корзина</a>
+                <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
 
-                <a href="/login" class="log">Войти</a>
+                <a href="/login" class="log"><spring:message code="app.lang.log"/></a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <a href="/basket/user" class="basket">Корзина</a>
+                <a href="/basket/user" class="basket"><spring:message code="app.lang.basket"/></a>
                 <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
-                    <option>Профиль</option>
-                    <option value="http://localhost:8080/profile">Личные данные</option>
-                    <option value="http://localhost:8080/history">История заказов</option>
+                    <option><spring:message code="app.lang.profile"/></option>
+                    <option value="http://localhost:8080/profile"><spring:message code="app.lang.personalData"/></option>
+                    <option value="http://localhost:8080/history"><spring:message code="app.lang.history"/></option>
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <option></option>
+                        <option value="http://localhost:8080/admin/userList"><spring:message code="app.lang.list"/></option>
+                        <option value="http://localhost:8080/admin/addProduct"><spring:message code="app.lang.addProd"/></option>
+                    </sec:authorize>
                     <option></option>
-                    <option value="http://localhost:8080/logout">Выход</option>
+                    <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
                 </select>
             </sec:authorize>
         </div>
