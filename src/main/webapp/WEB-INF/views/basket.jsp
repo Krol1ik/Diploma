@@ -11,6 +11,7 @@
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/static/css/basket.css">
+<script src="/static/js/main.js" />"></script>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -80,10 +81,11 @@
                         <h4 class="nameProduct"><span class="article"><br><spring:message code="app.lang.article"/>: ${ord.productOrder.article}</span>
                             <br><br><br>${ord.productOrder.category} ${ord.productOrder.type} ${ord.productOrder.brand} ${ord.productOrder.model}
                         </h4>
-                        <h5 class="quality"><spring:message code="app.lang.qualityProd"/>: <input type="number" class="qualityInput" value="${ord.count}"
+                        <h5 class="quality"><spring:message code="app.lang.qualityProd"/>: <input onclick="sum(document.getElementById('${ord.productOrder.id}').id, document.getElementById('${ord.productOrder.id + 1000}').id, document.getElementById('${ord.productOrder.id + 1100}').id)" id="${ord.productOrder.id}" type="number" class="qualityInput" value="${ord.count}"
                                                            name="orderCount"></h5>
-                        <h3 class="price">${ord.productOrder.price} <spring:message code="app.lang.price"/> <br>
-                            <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a></h3>
+                        <input type="hidden" id="${ord.productOrder.id + 1000}" value="${ord.productOrder.price}">
+                        <h3 id="${ord.productOrder.id + 1100}" class="price">${ord.productOrder.price}</h3><h3 class="priceStr"><spring:message code="app.lang.price"/> </h3>
+                            <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a>
                         <input type="hidden" value="${ord.id}" name="orderId">
                     </div>
                 </div>
@@ -105,10 +107,11 @@
                             <h4 class="nameProduct"><span class="article"><br><spring:message code="app.lang.article"/>: ${ord.productOrder.article}</span>
                                 <br><br><br>${ord.productOrder.category} ${ord.productOrder.type} ${ord.productOrder.brand} ${ord.productOrder.model}
                             </h4>
-                            <h5 class="quality"><spring:message code="app.lang.qualityProd"/>: <input type="number" class="qualityInput" value="${ord.count}"
-                                                               name="orderCount"></h5>
-                            <h3 class="price">${ord.productOrder.price} <spring:message code="app.lang.price"/> <br>
-                                <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a></h3>
+                            <h5 class="quality"><spring:message code="app.lang.qualityProd"/>: <input onclick="sum(document.getElementById('${ord.productOrder.id}').id, document.getElementById('${ord.productOrder.id + 1000}').id, document.getElementById('${ord.productOrder.id + 1100}').id)" id="${ord.productOrder.id}" type="number" class="qualityInput" value="${ord.count}"
+                                                                                                      name="orderCount"></h5>
+                            <input type="hidden" id="${ord.productOrder.id + 1000}" value="${ord.productOrder.price}">
+                            <h3 id="${ord.productOrder.id + 1100}" class="price">${ord.productOrder.price}</h3><h3 class="priceStr"><spring:message code="app.lang.price"/> </h3>
+                            <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a>
                             <input type="hidden" value="${ord.id}" name="orderId">
                         </div>
                     </div>

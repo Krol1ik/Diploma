@@ -62,6 +62,15 @@ public class OrderItemService {
         return sumPrice;
     }
 
+    public double priceAllOrderUser(User user) {
+        double sumPrice = 0;
+        List<OrderItem> sumOrder = placedOrderForUser(user);
+        for (int i = 0; i < sumOrder.size(); i++) {
+            sumPrice = sumPrice + sumOrder.get(i).getPriceOrder();
+        }
+        return sumPrice;
+    }
+
     public void delete(Long id) {
         orderItemRepository.deleteById(id);
     }

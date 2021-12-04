@@ -39,7 +39,7 @@
         <div class="headLineTwo">
             <a href="/" class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
-            <input type="text" class="search" placeholder="поиск товаров">
+            <input type="text" class="search" placeholder="<spring:message code="app.lang.search"/>">
             <sec:authorize access="isAnonymous()">
                 <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
 
@@ -67,11 +67,11 @@
     <div class="container">
         <div class="container">
             <div class="chekoutInfo">
-                <h1 class="registrationOrder">Личные данные</h1>
+                <h1 class="registrationOrder"><spring:message code="app.lang.dataProfile"/></h1>
                 <div class="dataCostumer">
                     <form:form action="/profile" modelAttribute="user" method="post">
                         <div class="loginForm">
-                            <form:label path="username">Логин: </form:label>
+                            <form:label path="username"><spring:message code="app.lang.login"/>: </form:label>
                             <form:input path="username" class="inputsBlock" name="username"/>
                             <br>
                             <form:errors path="username" class="err" />
@@ -87,25 +87,25 @@
                             <form:errors path="email" class="err"/>
                         </div>
                         <div class="firstName">
-                            <form:label path="firstName">Имя: </form:label>
+                            <form:label path="firstName"><spring:message code="app.lang.firstName"/>: </form:label>
                             <form:input path="firstName" class="inputsBlock" name="firstName"/>
                             <br>
                             <form:errors path="firstName" class="err"/>
                         </div>
                         <div class="lastName">
-                            <form:label path="lastName">Фамилия: </form:label>
+                            <form:label path="lastName"><spring:message code="app.lang.lastName"/>: </form:label>
                             <form:input path="lastName" class="inputsBlock" name="lastName"/>
                             <br>
                             <form:errors path="lastName" class="err"/>
                         </div>
                         <div class="phone">
-                            <form:label path="phoneNumber">Телефон: </form:label>
+                            <form:label path="phoneNumber"><spring:message code="app.lang.phone"/>: </form:label>
                             <form:input path="phoneNumber" type="phone" class="inputsBlock" name="phoneNumber"/>
                             <br>
                             <form:errors path="phoneNumber" class="err"/>
                         </div>
                             <div class="city">
-                                Город: <input list="browsers" name="cityName" class="inputsBlock" value="${cityUser}"/>
+                                <spring:message code="app.lang.city"/>: <input list="browsers" name="cityName" class="inputsBlock" value="${cityUser}"/>
                                 <datalist id="browsers" lass="inputsBlock">
                                     <option value="${cityUser}">
                                         <c:forEach items="${cityList}" var="city">
@@ -119,20 +119,20 @@
                             </div>
                         <form:form action="/profile" modelAttribute="address" method="post">
                             <div class="street">
-                                <form:label path="street">Улица: </form:label>
+                                <form:label path="street"><spring:message code="app.lang.street"/>: </form:label>
                                 <form:input path="street" class="inputsBlock"/>
                                 <br>
                                 <form:errors path="street" class="err"/>
                                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                             </div>
                             <div class="numberHouse">
-                                <form:label path="numberHouse">Дом: </form:label>
+                                <form:label path="numberHouse"><spring:message code="app.lang.numberHouse"/>: </form:label>
                                 <form:input path="numberHouse" class="inputsBlock"/>
                                 <br>
                                 <form:errors path="numberHouse" class="err"/>
                             </div>
                             <div class="btnOrder">
-                                <button type="submit" class="sendOrder">Обновить</button>
+                                <button type="submit" class="sendOrder"><spring:message code="app.lang.update"/></button>
                             </div>
                         </form:form>
                         </form:form>
@@ -145,28 +145,29 @@
     <div class="container">
         <div class="footerLineOne">
             <p class="footerInfo">
-                Режим работы интернет-магазина: с 9:00 до 18:00. Оформить заказ можно в любое время (круглосуточно)
+                <spring:message code="app.lang.footerInfoOne"/>
             </p>
             <p class="footerInfo">
-                Товары можно оплатить наличным и/или безналичным способом при его получении.
+                <spring:message code="app.lang.footerInfoTwo"/>
             </p>
             <p class="footerInfo">
-                Способо доставка товара: самовывоз, доставка.</p>
+                <spring:message code="app.lang.footerInfoThree"/>
+            </p>
         </div>
         <hr>
         <div class="container">
             <div class="footerRequisites">
                 <p class="footerText">
-                    Общество с ограниченной ответственностью "Спорт Лайн"
+                    <spring:message code="app.lang.requisitesOne"/>
                 </p>
                 <p class="footerText">
-                    Свидетельство №1237618726123 от 01.01.2001 выдно Минским городским исполкомом,
+                    <spring:message code="app.lang.requisitesTwo"/>
                 </p>
                 <p class="footerText">
-                    УНП 12882711
+                    <spring:message code="app.lang.requisitesThree"/>
                 </p>
                 <p class="footerText">
-                    Юр.адрес: г. Минск, ул. Центральная, дом 11, офис 11
+                    <spring:message code="app.lang.requisitesFor"/>
                 </p>
             </div>
         </div>

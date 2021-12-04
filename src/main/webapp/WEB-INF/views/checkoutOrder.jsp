@@ -121,7 +121,7 @@
             <c:forEach items="${orderForUser}" var="ord">
                 <h4 class="yourOrder">${ord.productOrder.category} ${ord.productOrder.brand} ${ord.productOrder.brand}, <spring:message code="app.lang.inQuantity"/> ${ord.count} <spring:message code="app.lang.totalCoast"/> ${ord.priceOrder} <spring:message code="app.lang.price"/></h4>
             </c:forEach>
-            <h3 class="orderInfo"><spring:message code="app.lang.totalPrice"/>: ${finalPrice} <spring:message code="app.lang.price"/>.</h3>
+            <h3 class="orderInfo"><spring:message code="app.lang.totalPrice"/>: ${finalPriceUser} <spring:message code="app.lang.price"/>.</h3>
             <h5 class="yourOrder"><spring:message code="app.lang.confirm"/></h5>
         </div>
     </div>

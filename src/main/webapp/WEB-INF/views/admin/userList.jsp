@@ -34,6 +34,13 @@
                     <option></option>
                     <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
                 </select>
+                <div class="dropdown">
+                    <button class="dropbtn"><spring:message code="app.lang.change"/></button>
+                    <div class="dropdown-content">
+                        <a href="?lang=en"><spring:message code="app.lang.english"/></a>
+                        <a href="?lang=ru"><spring:message code="app.lang.russia"/></a>
+                    </div>
+                </div>
             </h2>
         </div>
     </div>
@@ -42,10 +49,10 @@
     <div class="container">
         <div class="wrapped">
         <TABLE BORDER="1" CELLSPACING="0" class="tableUsers" >
-            <TH class="row"> Логин </TH>
-            <TH class="row"> Имя </TH>
-            <TH class="row"> Фамилия </TH>
-            <TH class="row"> Город </TH>
+            <TH class="row"> <spring:message code="app.lang.login"/> </TH>
+            <TH class="row"> <spring:message code="app.lang.firstName"/> </TH>
+            <TH class="row"> <spring:message code="app.lang.lastName"/> </TH>
+            <TH class="row"> <spring:message code="app.lang.city"/> </TH>
             <TH class="row"> E-mail </TH>
             <TR>
             <c:forEach items="${user}" var="user">
@@ -59,14 +66,14 @@
                 </c:forEach>
         </TABLE>
         <TABLE BORDER="1" CELLSPACING="0" class="tableUsers">
-                    <TH class="row"> Сумма заказов </TH>
+                    <TH class="row"> <spring:message code="app.lang.sumOrders"/> </TH>
                     <c:forEach items="${priceOrder}" var="price">
                          <TR>
                          <TD class="tableData"> ${price} </TD>
                     </c:forEach>
         </TABLE>
         <TABLE BORDER="1" CELLSPACING="0" class="tableUsers">
-                     <TH class="row"> Кол-во товаров </TH>
+                     <TH class="row"> <spring:message code="app.lang.quantityProduct"/> </TH>
                     <c:forEach items="${countOrder}" var="count">
                          <TR>
                         <TD class="tableData"> ${count} </TD>

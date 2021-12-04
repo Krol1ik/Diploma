@@ -36,7 +36,7 @@
         <div class="headLineTwo">
             <a href="/" class="logo">SPORT LINE</a>
             <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
-            <input type="text" class="search" placeholder="поиск товаров">
+            <input type="text" class="search" placeholder="<spring:message code="app.lang.search"/>">
             <sec:authorize access="isAnonymous()">
                 <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
 
@@ -63,8 +63,8 @@
 <section class="title">
     <div class="container">
         <div class="category">
-            <h1 class="thanks">Профиль успешно обновлен</h1>
-            <a href="/" class="btn">Вернуться на главную страницу</a>
+            <h1 class="thanks"><spring:message code="app.lang.profileUpdate"/></h1>
+            <a href="/" class="btn"><spring:message code="app.lang.backTitle"/></a>
         </div>
     </div>
 </section>
@@ -72,28 +72,29 @@
     <div class="container">
         <div class="footerLineOne">
             <p class="footerInfo">
-                Режим работы интернет-магазина: с 9:00 до 18:00. Оформить заказ можно в любое время (круглосуточно)
+                <spring:message code="app.lang.footerInfoOne"/>
             </p>
             <p class="footerInfo">
-                Товары можно оплатить наличным и/или безналичным способом при его получении.
+                <spring:message code="app.lang.footerInfoTwo"/>
             </p>
             <p class="footerInfo">
-                Способо доставка товара: самовывоз, доставка.</p>
+                <spring:message code="app.lang.footerInfoThree"/>
+            </p>
         </div>
         <hr>
         <div class="container">
             <div class="footerRequisites">
                 <p class="footerText">
-                    Общество с ограниченной ответственностью "Спорт Лайн"
+                    <spring:message code="app.lang.requisitesOne"/>
                 </p>
                 <p class="footerText">
-                    Свидетельство №1237618726123 от 01.01.2001 выдно Минским городским исполкомом,
+                    <spring:message code="app.lang.requisitesTwo"/>
                 </p>
                 <p class="footerText">
-                    УНП 12882711
+                    <spring:message code="app.lang.requisitesThree"/>
                 </p>
                 <p class="footerText">
-                    Юр.адрес: г. Минск, ул. Центральная, дом 11, офис 11
+                    <spring:message code="app.lang.requisitesFor"/>
                 </p>
             </div>
         </div>

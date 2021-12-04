@@ -225,6 +225,8 @@ a{
 
 .infoProduct{
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .nameProduct{
@@ -238,7 +240,7 @@ a{
 }
 .quality{
     width: 100px;
-    padding-top: 60px;
+    padding-top: 30px;
     padding-left: 440px;
     font-weight: normal;
     display: inline;
@@ -249,10 +251,14 @@ a{
 }
 
 .price{
-    width: 120px;
-    padding-top: 60px;
-    padding-left: 35px;
-    font-style: 14px;
+    padding-left: 30px;
+    font-style: 15px;
+    color: #ffa627;
+}
+
+.priceStr{
+    padding-left: 5px;
+    font-style: 15px;
     color: #ffa627;
 }
 
@@ -260,6 +266,8 @@ a{
     color: #b2aeba;
     font-size: 9px;
     text-decoration: underline;
+    padding-left: 790px;
+    margin-bottom: 50px;
 }
 
 

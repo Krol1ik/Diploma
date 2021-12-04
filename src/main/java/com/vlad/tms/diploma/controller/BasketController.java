@@ -72,6 +72,7 @@ public class BasketController {
 
         model.addAttribute("orderForUser", orderItemService.placedOrderForUser(user));
         model.addAttribute("user", user);
+        model.addAttribute("finalPriceUser", orderItemService.priceAllOrderUser(user));
         return "checkoutOrder";
     }
 
