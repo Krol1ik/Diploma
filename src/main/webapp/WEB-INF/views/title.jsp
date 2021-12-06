@@ -22,8 +22,8 @@
     <div class="container">
         <div class="headLineOne">
             <p class="number">+375 29 111 11 11</p>
-            <a href="" class="viber">Viber</a>
-            <a href="" class="telegram">Telegram</a>
+            <a href="https://viber.click/375259624389" target="_blank" class="viber">Viber</a>
+            <a href="https://t.me/krol1ik" target="_blank" class="telegram">Telegram</a>
             <p class="workTime"><spring:message code="app.lang.schedule"/> <br> <spring:message code="app.lang.dayWeek"/>: 9:00-18:00</p>
             <div class="dropdown">
                 <button class="dropbtn"><spring:message code="app.lang.change"/></button>

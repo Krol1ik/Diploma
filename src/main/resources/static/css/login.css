@@ -217,7 +217,7 @@ a{
     display: flex;
     border: 5px solid #ffa627;
     width: 600px;
-    height: 200px;
+    height: 260px;
     margin-top: 60px;
     margin-bottom: 60px;
     border-radius: 10px;
@@ -230,25 +230,31 @@ a{
 }
 
 .inputPlace{
-    margin-top: 10px;
-    width: 300px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    width: 400px;
     margin-left: 10px;
     border-radius: 5px;
     height: 30px;
 }
 
+.nameInput{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold;
+}
+
 .btn {
-    margin-top: 20px;
-    margin-left: 80px;
+    margin-left: 55px;
     border: 1px solid grey;
     font-family: 'Montserrat', sans-serif;
-    background: #f7f8fa;
+    background: #fff;
     display: inline;
     width: 60px;
     height: 37px;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     border-radius: 5px;
     text-decoration: none;
     transition: all 1s ease;
@@ -260,16 +266,15 @@ a{
 
 .btnReg {
     border: 1px solid grey;
-    margin-top: 20px;
     margin-left: 120px;
-    padding-top: 5px;
+    padding-top: 8px;
     font-family: 'Montserrat', sans-serif;
     display: inline;
     width: 120px;
     height: 37px;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     border-radius: 5px;
     text-decoration: none;
     transition: all 1s ease;
@@ -297,6 +302,11 @@ a{
     padding-left: 10px;
     padding-bottom: 113px;
     padding-top: 24px;
+}
+
+.err{
+    color: #ffa627;
+    padding-left: 85px;
 }
 
 .footerInfo{

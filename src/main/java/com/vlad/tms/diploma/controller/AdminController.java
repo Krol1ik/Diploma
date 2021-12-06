@@ -94,7 +94,7 @@ public class AdminController {
             String resultFilename = uuidFile + "." + file.getOriginalFilename();
 
             file.transferTo(new File(uploadPath + "/" + resultFilename));   //загружаем наш файл
-            product.setFilename("img/" + resultFilename);
+            product.setFilename("/img/" + resultFilename);
             productService.addFromAdmin(brand, modelProduct, type, category, description, price, discount, product);
 
             return "admin/addProduct";

@@ -37,7 +37,7 @@ public class User implements UserDetails {
     @Column (name = "Last_name", nullable = false)
     private String lastName;
     @Size(min = 9, message = "Телефон должен содержать более 9 цифр")
-    @Size(max = 13, message = "Телефон должен содержать не более 13 цифр")
+    @Size(max = 15, message = "Телефон должен содержать не более 15 цифр")
     @Column (name = "Phone_number", nullable = false)
     private String phoneNumber;
     private boolean active;

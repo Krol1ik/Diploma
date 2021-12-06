@@ -22,8 +22,8 @@
     <div class="container">
         <div class="headLineOne">
             <p class="number">+375 29 111 11 11</p>
-            <a href="" class="viber">Viber</a>
-            <a href="" class="telegram">Telegram</a>
+            <a href="https://viber.click/375259624389" target="_blank" class="viber">Viber</a>
+            <a href="https://t.me/krol1ik" target="_blank" class="telegram">Telegram</a>
             <p class="workTime"><spring:message code="app.lang.schedule"/> <br> <spring:message code="app.lang.dayWeek"/>: 9:00-18:00</p>
             <div class="dropdown">
                 <button class="dropbtn"><spring:message code="app.lang.change"/></button>
@@ -70,9 +70,10 @@
                 <h1 class="registrationOrder"><spring:message code="app.lang.dataProfile"/></h1>
                 <div class="dataCostumer">
                     <form:form action="/profile" modelAttribute="user" method="post">
-                        <div class="loginForm">
-                            <form:label path="username"><spring:message code="app.lang.login"/>: </form:label>
-                            <form:input path="username" class="inputsBlock" name="username"/>
+                        <div class="inputForm">
+                            <p class="nameInput"><spring:message code="app.lang.login"/></p>
+                            <spring:message code="app.lang.placeholderLogin" var="placeholderLogin" />
+                            <form:input path="username" class="inputsBlock" name="username" placeholder='${placeholderLogin}'/>
                             <br>
                             <form:errors path="username" class="err" />
                             <c:if test="${!messages}">
@@ -80,32 +81,38 @@
                             </c:if>
                             <input type="hidden" name="_csrf" value="${_csrf.token}" />
                         </div>
-                        <div class="email">
-                            <form:label path="email">E-mail: </form:label>
-                            <form:input path="email" class="inputsBlock" name="email"/>
+                        <div class="inputForm">
+                            <p class="nameInput">E-mail</p>
+                            <spring:message code="app.lang.placeholderEmail" var="placeholderEmail" />
+                            <form:input path="email" class="inputsBlock" name="email" placeholder='${placeholderEmail}'/>
                             <br>
                             <form:errors path="email" class="err"/>
                         </div>
-                        <div class="firstName">
-                            <form:label path="firstName"><spring:message code="app.lang.firstName"/>: </form:label>
-                            <form:input path="firstName" class="inputsBlock" name="firstName"/>
+                        <div class="inputForm">
+                            <p class="nameInput"><spring:message code="app.lang.firstName"/></p>
+                            <spring:message code="app.lang.placeholderFirstName" var="placeholderFirstName" />
+                            <form:input path="firstName" class="inputsBlock" name="firstName" placeholder='${placeholderFirstName}'/>
                             <br>
                             <form:errors path="firstName" class="err"/>
                         </div>
-                        <div class="lastName">
-                            <form:label path="lastName"><spring:message code="app.lang.lastName"/>: </form:label>
-                            <form:input path="lastName" class="inputsBlock" name="lastName"/>
+                        <div class="inputForm">
+                            <p class="nameInput"><spring:message code="app.lang.lastName"/></p>
+                            <spring:message code="app.lang.placeholderLastName" var="placeholderLastName" />
+                            <form:input path="lastName" class="inputsBlock" name="lastName" placeholder='${placeholderLastName}'/>
                             <br>
                             <form:errors path="lastName" class="err"/>
                         </div>
-                        <div class="phone">
-                            <form:label path="phoneNumber"><spring:message code="app.lang.phone"/>: </form:label>
-                            <form:input path="phoneNumber" type="phone" class="inputsBlock" name="phoneNumber"/>
+                        <div class="inputForm">
+                            <p class="nameInput"><spring:message code="app.lang.phone"/></p>
+                            <spring:message code="app.lang.placeholderPhone" var="placeholderPhone" />
+                            <form:input path="phoneNumber" type="phone" class="inputsBlock" name="phoneNumber" placeholder='${placeholderPhone}'/>
                             <br>
                             <form:errors path="phoneNumber" class="err"/>
                         </div>
-                            <div class="city">
-                                <spring:message code="app.lang.city"/>: <input list="browsers" name="cityName" class="inputsBlock" value="${cityUser}"/>
+                            <div class="inputForm">
+                                <p class="nameInput"><spring:message code="app.lang.city"/></p>
+                                <spring:message code="app.lang.placeholderCity" var="placeholderCity" />
+                                <input list="browsers" name="cityName" class="inputsBlock" value="${cityUser}" placeholder='${placeholderCity}'/>
                                 <datalist id="browsers" lass="inputsBlock">
                                     <option value="${cityUser}">
                                         <c:forEach items="${cityList}" var="city">
@@ -118,16 +125,18 @@
                                 </c:if>
                             </div>
                         <form:form action="/profile" modelAttribute="address" method="post">
-                            <div class="street">
-                                <form:label path="street"><spring:message code="app.lang.street"/>: </form:label>
-                                <form:input path="street" class="inputsBlock"/>
+                            <div class="inputForm">
+                                <p class="nameInput"><spring:message code="app.lang.street"/></p>
+                                <spring:message code="app.lang.placeholderStreet" var="placeholderStreet" />
+                                <form:input path="street" class="inputsBlock" placeholder='${placeholderStreet}'/>
                                 <br>
                                 <form:errors path="street" class="err"/>
                                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
                             </div>
-                            <div class="numberHouse">
-                                <form:label path="numberHouse"><spring:message code="app.lang.numberHouse"/>: </form:label>
-                                <form:input path="numberHouse" class="inputsBlock"/>
+                            <div class="inputForm">
+                                <p class="nameInput"><spring:message code="app.lang.numberHouse"/></p>
+                                <spring:message code="app.lang.placeholderNumberHouse" var="placeholderHouse" />
+                                <form:input path="numberHouse" class="inputsBlock" placeholder='${placeholderHouse}'/>
                                 <br>
                                 <form:errors path="numberHouse" class="err"/>
                             </div>
