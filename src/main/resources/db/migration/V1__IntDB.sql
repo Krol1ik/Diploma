@@ -80,6 +80,7 @@ create table order_item
     order_id     bigint,
     product_id   bigint,
     status_order boolean,
+    cookie       varchar(255),
     user_id      bigint,
     primary key (id)
 );

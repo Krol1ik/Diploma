@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,17 +28,23 @@ public class BasketController {
     @Autowired
     private DataOrderService dataOrderService;
 
+
     @GetMapping("/basket")
-    public String basketPage(Model model) {
-        model.addAttribute("order", orderItemService.placedOrder());
+    public String basketPage(HttpSession session ,Model model) {
+        String sessionId = session.getId();
+        model.addAttribute("order", orderItemService.placedOrder(sessionId));
         return "basket";
     }
+
 
     @PostMapping("/basket")
     public String placedOrder(@AuthenticationPrincipal User user,
                               @RequestParam(value = "orderId", required = false) List<OrderItem> orderItem,
                               @RequestParam(value = "orderCount", required = false) List<Integer> count,
+                              HttpSession session,
                               Model model) {
+
+        String sessionId = session.getId();
 
         if (orderItem == null) {
             model.addAttribute("messages", "У вас еще нет товаров в корзине");
@@ -47,7 +55,7 @@ public class BasketController {
             orderItemService.saveOrder(orderItem.get(i));
         }
         if (user == null) {
-            orderItemService.priceProductInRow();
+            orderItemService.priceProductInRow(sessionId);
             return "redirect:checkoutOrder";
         } else {
             orderItemService.priceProductInRowForUser(user);
@@ -63,9 +71,12 @@ public class BasketController {
 
     @GetMapping("/checkoutOrder")
     public String checkout(@AuthenticationPrincipal User user,
+                           HttpSession session,
                            Model model) {
-        model.addAttribute("finalPrice", orderItemService.priceAllOrder());
-        model.addAttribute("order", orderItemService.placedOrder());
+        String sessionId = session.getId();
+
+        model.addAttribute("finalPrice", orderItemService.priceAllOrder(sessionId));
+        model.addAttribute("order", orderItemService.placedOrder(sessionId));
         model.addAttribute("customer", new Customer());
         model.addAttribute("address", new Address());
         model.addAttribute("cityList", cityService.allCity());
@@ -80,9 +91,11 @@ public class BasketController {
     public String orderComplete(Customer customer,
                                 Address address,
                                 @RequestParam("cityName") String cityName,
+                                HttpSession session,
                                 Model model) {
+        String sessionId = session.getId();
 
-        dataOrderService.saveOrder(orderItemService.placedOrder(), customer, cityName, address);
+        dataOrderService.saveOrder(orderItemService.placedOrder(sessionId), customer, cityName, address);
         return "redirect:thanksOrder";
     }
 

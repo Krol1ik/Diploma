@@ -92,9 +92,11 @@
                     <p class="nameProduct">Артикул: ${prod.article}</p>
                     <div class="by">
                         <h3 class="price">${prod.price} руб</h3>
-                        <button type="submit" class="btnBy"><a href="/catalog/${prod.id}"><spring:message code="app.lang.inBasket"/></a></button>
+                        <button type="submit" value="idProd" name="id" class="btnBy"><a href="/catalog/${prod.id}"><spring:message code="app.lang.inBasket"/></a></button>
                     </div>
                 </div>
+
+
 </c:forEach>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">

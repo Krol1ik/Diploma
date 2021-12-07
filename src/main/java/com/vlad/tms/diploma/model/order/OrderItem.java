@@ -30,10 +30,21 @@ public class OrderItem {
     @Column (name = "price_order")
     private double priceOrder;
 
+    @Column (name = "cookie")
+    private String cookie;
+
     @Column (name = "Count")
     private int count = 1;
 
     public OrderItem() {
+    }
+
+    public String getCookie() {
+        return cookie;
+    }
+
+    public void setCookie(String cookie) {
+        this.cookie = cookie;
     }
 
     public boolean isStatusOrder() {

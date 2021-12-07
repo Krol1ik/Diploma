@@ -92,6 +92,7 @@
             </c:forEach>
             <button type="submit" class="btn"><spring:message code="app.lang.makeOrder"/></button>
         </form>
+
 </sec:authorize>
 
         <sec:authorize access="isAuthenticated()">

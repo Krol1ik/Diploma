@@ -1,6 +1,9 @@
 package com.vlad.tms.diploma.model.product;
 
+import com.vlad.tms.diploma.model.order.OrderItem;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -32,6 +35,9 @@ public class Product {
     private Double price;
     @Column(name = "Discount")
     private int discount;
+
+    @OneToMany (mappedBy = "productOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItem;
 
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private StockBalance stockBalance;
@@ -127,6 +133,14 @@ public class Product {
 
     public void setStockBalance(StockBalance stockBalance) {
         this.stockBalance = stockBalance;
+    }
+
+    public List<OrderItem> getOrderItem() {
+        return orderItem;
+    }
+
+    public void setOrderItem(List<OrderItem> orderItem) {
+        this.orderItem = orderItem;
     }
 
     @Override

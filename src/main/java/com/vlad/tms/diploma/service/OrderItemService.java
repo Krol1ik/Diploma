@@ -19,8 +19,8 @@ public class OrderItemService {
     private ProductService productService;
 
 
-    public List<OrderItem> placedOrder() {
-        return orderItemRepository.findOrderItemByStatusOrderAndUser(false, null);
+    public List<OrderItem> placedOrder(String cookie) {
+        return orderItemRepository.findOrderItemByStatusOrderAndUserAndCookie(false, null, cookie);
     }
 
 
@@ -28,15 +28,16 @@ public class OrderItemService {
         orderItemRepository.save(orderItem);
     }
 
-    public void addOrder(Long id) {
+    public void addOrder(Long id, String cookie) {
         OrderItem orderItem = new OrderItem();
         Product product = productService.findById(id);
         orderItem.setProductOrder(product);
+        orderItem.setCookie(cookie);
         orderItemRepository.save(orderItem);
     }
 
-    public void priceProductInRow() {
-        List<OrderItem> orderSum = placedOrder();
+    public void priceProductInRow(String cookie) {
+        List<OrderItem> orderSum = placedOrder(cookie);
 
         for (int i = 0; i < orderSum.size(); i++) {
             orderSum.get(i).setPriceOrder(orderSum.get(i).getProductOrder().getPrice() * orderSum.get(i).getCount());
@@ -53,9 +54,9 @@ public class OrderItemService {
         }
     }
 
-    public double priceAllOrder() {
+    public double priceAllOrder(String cookie) {
         double sumPrice = 0;
-        List<OrderItem> sumOrder = placedOrder();
+        List<OrderItem> sumOrder = placedOrder(cookie);
         for (int i = 0; i < sumOrder.size(); i++) {
             sumPrice = sumPrice + sumOrder.get(i).getPriceOrder();
         }

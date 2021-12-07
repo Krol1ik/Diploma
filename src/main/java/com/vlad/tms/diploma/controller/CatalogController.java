@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/catalog")
 public class CatalogController {
@@ -41,11 +43,15 @@ public class CatalogController {
     }
 
     @GetMapping("/{id}")
-    public String addInBasket(@PathVariable("id") Long id, Model model) {
-        orderItemService.addOrder(id);
+    public String addInBasket(@PathVariable("id") Long id,
+                              HttpSession session,
+                              Model model) {
+        String sessionId = session.getId();
+        orderItemService.addOrder(id, sessionId);
         model.addAttribute("product", productService.findById(id));
         return "redirect:/catalog";
     }
+
 
     @GetMapping("/user/{id}")
     public String addInBasketForUser(@AuthenticationPrincipal User user,
@@ -62,3 +68,5 @@ public class CatalogController {
     }
 
 }
+
+

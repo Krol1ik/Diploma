@@ -11,7 +11,8 @@ import java.util.List;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
-    List<OrderItem> findOrderItemByStatusOrderAndUser(boolean status, User user);
+    List<OrderItem> findOrderItemByStatusOrderAndUserAndCookie(boolean status, User user, String cookie);
+
 
     List<OrderItem> findOrderItemByUserAndStatusOrder(User user, boolean status);
 
