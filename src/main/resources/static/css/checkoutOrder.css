@@ -217,13 +217,10 @@ a{
     margin-left: 40px;
 }
 
-.chekInfo{
-    flex-wrap: wrap;
-    display: flex;
-}
 
 .registrationOrder{
-    margin-left: 40%;
+    margin-left: 39%;
+    padding-bottom: 25px;
 }
 .dataCostumer{
     width: 70%;
@@ -232,55 +229,35 @@ a{
     border: 4px solid #f7f8fa;
 }
 
-.firstName{
-    margin-top: 15px;
-    padding-left: 134px;
-}
-
-.lastName{
-    margin-top: 15px;
-    padding-left: 98px;
-}
-
-.phone{
-    margin-top: 15px;
-    padding-left: 104px;
-}
-
-.email{
-    margin-top: 15px;
-    padding-left: 123px;
-}
-
-.country{
-    margin-top: 15px;
-    padding-left: 114px;
-}
-
-.city{
-    margin-top: 15px;
-    padding-left: 123px;
-}
-
-.street{
-    margin-top: 15px;
-    padding-left: 125px;
-}
-
-.numberHouse{
-    margin-top: 15px;
-    padding-left: 80px;
-}
-
 .inputsBlock{
     height: 30px;
-    margin-left: 15px;
-    border-radius: 5px;
+    margin-left: 155px;
+    border-radius: 7px;
     width: 500px;
+    text-align: center;
 }
 
-.btnOrder{
-    padding-left: 40%;
+.nameInput{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 6px;
+    font-weight:bold;
+}
+
+.inputForm{
+    margin-top: 5px;
+}
+
+.checkoutInfo{
+    border: 1px solid #ffa627;
+    border-radius: 9px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.err{
+    color: red;
+    margin-left: 155px;
 }
 
 .sendOrder{
@@ -296,7 +273,7 @@ a{
     font-weight: bold;
     border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
+    margin-left: 35%;
     background-color: #ffa627;
 }
 

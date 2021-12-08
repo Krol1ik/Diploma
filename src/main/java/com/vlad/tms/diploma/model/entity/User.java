@@ -28,8 +28,8 @@ public class User implements UserDetails {
     @Email(message = "Вы ввели e-mail некорректно")
     @NotEmpty(message = "E-mail не может быть пустым")
     private String email;
-    @Size(min = 2, message = "Имя должен быть более 2 символов")
-    @Size(max = 20, message = "Имя не должен превышать более 20 символов")
+    @Size(min = 2, message = "Имя должно быть более 2 символов")
+    @Size(max = 20, message = "Имя не должно превышать более 20 символов")
     @Column (name = "First_name", nullable = false)
     private String firstName;
     @Size(min = 2, message = "Фамилия должна быть более 2 символов")

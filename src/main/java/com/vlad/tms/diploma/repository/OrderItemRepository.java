@@ -13,7 +13,6 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
     List<OrderItem> findOrderItemByStatusOrderAndUserAndCookie(boolean status, User user, String cookie);
 
-
     List<OrderItem> findOrderItemByUserAndStatusOrder(User user, boolean status);
 
     void deleteByProductOrder(Product product);

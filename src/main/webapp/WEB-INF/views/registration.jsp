@@ -69,6 +69,7 @@
             <h1 class="registrationOrder"><spring:message code="app.lang.formReg"/></h1>
             <div class="dataCostumer">
             <form:form action="/registration" modelAttribute="user" method="post">
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <div class="inputForm">
                     <p class="nameInput"><spring:message code="app.lang.login"/></p>
                     <spring:message code="app.lang.placeholderLogin" var="placeholderLogin" />

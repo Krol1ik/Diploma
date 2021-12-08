@@ -6,14 +6,17 @@ import com.vlad.tms.diploma.model.entity.User;
 import com.vlad.tms.diploma.model.order.OrderItem;
 import com.vlad.tms.diploma.service.CityService;
 import com.vlad.tms.diploma.service.DataOrderService;
+import com.vlad.tms.diploma.service.MailSenderService;
 import com.vlad.tms.diploma.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class BasketController {
     private OrderItemService orderItemService;
     @Autowired
     private DataOrderService dataOrderService;
+
 
 
     @GetMapping("/basket")
@@ -88,14 +92,22 @@ public class BasketController {
     }
 
     @PostMapping("/checkoutOrder")
-    public String orderComplete(Customer customer,
-                                Address address,
+    public String orderComplete(@Valid Customer customer,BindingResult bindingResult,
+                                @Valid Address address, BindingResult errorAddress,
                                 @RequestParam("cityName") String cityName,
                                 HttpSession session,
                                 Model model) {
         String sessionId = session.getId();
 
-        dataOrderService.saveOrder(orderItemService.placedOrder(sessionId), customer, cityName, address);
+        if (bindingResult.hasErrors() || errorAddress.hasErrors()){
+            return "/checkoutOrder";
+        }
+        if (cityService.getCity(cityName) == null || cityName.isEmpty()){
+            model.addAttribute("messagesErrorCity", "К сожалению, мы не работает в данном городе.");
+            return "/checkoutOrder";
+
+        }
+        dataOrderService.saveOrder(orderItemService.placedOrder(sessionId), customer, cityName, address, sessionId);
         return "redirect:thanksOrder";
     }
 

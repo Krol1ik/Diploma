@@ -93,12 +93,12 @@ public class UserService implements UserDetailsService {
     private void sendMessag(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello, %s! \n" +
-                            "Welcome to my site. Please, visit next link: http://localhost:8080/activate/%s",
+                    "Здравствуйте, %s! \n" +
+                            "Пройдите по ссылке, чтобы подтвердить регистрацию: http://localhost:8080/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );
-            mailSenderService.send(user.getEmail(), "Activation code", message);
+            mailSenderService.send(user.getEmail(), "Код активации", message);
         }
     }
 

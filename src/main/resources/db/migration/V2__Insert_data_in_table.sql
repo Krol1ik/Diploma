@@ -19,7 +19,7 @@ values ('Гродно', 1);
 insert into address (country_id, city_id, street, number_house)
 values ( 1, 1, 'Сталина', 22 );
 insert into user (username, password, email, First_name, Last_name, Phone_number,address_id, active)
-values ( 'user', 'user', 'user@user.ru', 'Name', 'User', 80299998877, 1, true );
+values ( 'user', 'user', '2bwnb2@gmail.com', 'Name', 'User', 80299998877, 1, true );
 insert into user_role (user_id, role_users)
 values (1, 'USER');
 
