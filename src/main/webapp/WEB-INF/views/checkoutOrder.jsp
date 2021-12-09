@@ -165,27 +165,35 @@
         <div class="chekoutInfo">
             <h1 class="registrationOrder"><spring:message code="app.lang.orderYour"/></h1>
             <form method="post" action="/checkoutOrder/user">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <div class="dataCostumer">
-                    <div class="firstName">
-                        <spring:message code="app.lang.firstName"/>: <input disabled type="text" class="inputsBlock" value="${user.firstName}" name="firstName">
+                    <div class="inputForm">
+                        <p class="nameInput"> <spring:message code="app.lang.firstName"/></p>
+                       <input disabled type="text" class="inputsBlock" value="${user.firstName}" name="firstName">
                     </div>
-                    <div class="lastName">
-                        <spring:message code="app.lang.lastName"/>: <input disabled type="text" class="inputsBlock" value="${user.lastName}" name="lastName">
+                    <div class="inputForm">
+                        <p class="nameInput"><spring:message code="app.lang.lastName"/></p>
+                        <input disabled type="text" class="inputsBlock" value="${user.lastName}" name="lastName">
                     </div>
-                    <div class="phone">
-                        <spring:message code="app.lang.phone"/>: <input disabled type="phone" class="inputsBlock" value="${user.phoneNumber}" name="phoneNumber">
+                    <div class="inputForm">
+                        <p class="nameInput"><spring:message code="app.lang.phone"/></p>
+                        <input disabled type="phone" class="inputsBlock" value="${user.phoneNumber}" name="phoneNumber">
                     </div>
-                    <div class="email">
-                        E-mail: <input disabled type="email" class="inputsBlock" value="${user.email}" name="email">
+                    <div class="inputForm">
+                        <p class="nameInput">E-mail</p>
+                        <input disabled type="email" class="inputsBlock" value="${user.email}" name="email">
                     </div>
-                    <div class="city">
-                        <spring:message code="app.lang.city"/>: <input disabled type="text" class="inputsBlock" value="${user.address.city.cityName}" name="cityName">
+                    <div class="inputForm">
+                        <p class="nameInput"><spring:message code="app.lang.city"/></p>
+                        <input disabled type="text" class="inputsBlock" value="${user.address.city.cityName}" name="cityName">
                     </div>
-                    <div class="street">
-                        <spring:message code="app.lang.street"/>:<input disabled type="text" class="inputsBlock" value="${user.address.street}" name="street">
+                    <div class="inputForm">
+                        <p class="nameInput"><spring:message code="app.lang.street"/></p>
+                        <input disabled type="text" class="inputsBlock" value="${user.address.street}" name="street">
                     </div>
-                    <div class="numberHouse">
-                        <spring:message code="app.lang.numberHouse"/>:<input disabled type="text" class="inputsBlock" value="${user.address.numberHouse}" name="numberHouse">
+                    <div class="inputForm">
+                        <p class="nameInput"><spring:message code="app.lang.numberHouse"/></p>
+                        <input disabled type="text" class="inputsBlock" value="${user.address.numberHouse}" name="numberHouse">
                     </div>
                     <a href="/profile"><p class="redactorProfile"><span style="color: red"><spring:message code="app.lang.important"/>:</span>
                         <spring:message code="app.lang.refactor"/>

@@ -11,6 +11,7 @@
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/static/css/catalog.css">
+<script src="/static/js/main.js" />"></script>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -96,7 +97,6 @@
                     </div>
                 </div>
 
-
 </c:forEach>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
@@ -121,6 +121,7 @@
         </div>
     </div>
 </section>
+
 <footer class="footer">
     <div class="container">
         <div class="footerLineOne">

@@ -226,7 +226,8 @@ a{
     width: 70%;
     margin-top: 25px;
     margin-left:15%;
-    border: 4px solid #f7f8fa;
+    border: 2px solid #ffa627;
+    border-radius: 9px;
 }
 
 .inputsBlock{
@@ -249,7 +250,7 @@ a{
 }
 
 .checkoutInfo{
-    border: 1px solid #ffa627;
+    border: 2px solid #ffa627;
     border-radius: 9px;
     width: 70%;
     margin-left: 15%;

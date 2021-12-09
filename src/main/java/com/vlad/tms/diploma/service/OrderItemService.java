@@ -29,11 +29,19 @@ public class OrderItemService {
     }
 
     public void addOrder(Long id, String cookie) {
-        OrderItem orderItem = new OrderItem();
-        Product product = productService.findById(id);
-        orderItem.setProductOrder(product);
-        orderItem.setCookie(cookie);
-        orderItemRepository.save(orderItem);
+        if(orderItemRepository.findOrderItemByProductOrderIdAndCookie(id, cookie) == null){
+            OrderItem orderItem = new OrderItem();
+            Product product = productService.findById(id);
+            orderItem.setProductOrder(product);
+            orderItem.setCookie(cookie);
+            orderItemRepository.save(orderItem);
+        } else {
+            OrderItem orderItem = orderItemRepository.findOrderItemByProductOrderIdAndCookie(id, cookie);
+            int count = orderItem.getCount() + 1;
+            orderItem.setCount(count);
+            orderItemRepository.save(orderItem);
+        }
+
     }
 
     public void priceProductInRow(String cookie) {

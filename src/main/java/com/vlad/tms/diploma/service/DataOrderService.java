@@ -66,13 +66,12 @@ public class DataOrderService {
         }
 
         String finalPrice = "Ваш заказ: " + infoOrder + ".\n";
-
         String addressInfo = "Адрес доставки: г." +city + ", ул." + address.getStreet() + ", д." + address.getNumberHouse() + "\n";
         String callYou = "С вами свяжутся для подтверждения заказа. \nСпасибо что выбрали нас!";
 
         String message = finalPrice + sumOrder + addressInfo + callYou;
 
-        mailSenderService.send(customer.getEmail(), "Ваш заказ SportLine", message);
+        mailSenderService.send(customer.getEmail(), "Заказ SportLine", message);
     }
 
     public void saveOrderForUser(List<OrderItem> orderItem, User user) {
@@ -84,11 +83,28 @@ public class DataOrderService {
         String dateTime = simpleDateFormat.format(date);
         dataOrder.setDateOrder(dateTime);
         dataOrderRepository.save(dataOrder);
+
+        String sumOrder = "Сумма заказа: " + orderItemService.priceAllOrderUser(user) + " руб.\n";
+
         for (int i = 0; i < orderItem.size(); i++) {
             orderItem.get(i).setDataOrders(dataOrder);
             orderItem.get(i).setStatusOrder(true);
             orderItemService.saveOrder(orderItem.get(i));
         }
+        String infoOrder = orderItem.get(0).getProductOrder().toString()+ " " + orderItem.get(0).getCount() + "шт";
+        if (orderItem.size() > 0){
+            for (int i = 1; i < orderItem.size(); i++) {
+                infoOrder = infoOrder + ", " + orderItem.get(i).getProductOrder() + " " + orderItem.get(i).getCount() + "шт";
+            }
+        }
+
+        String finalPrice = "Ваш заказ: " + infoOrder + ".\n";
+        String addressInfo = "Адрес доставки: г." +user.getAddress().getCity().getCityName() + ", ул." + user.getAddress().getStreet() + ", д." + user.getAddress().getNumberHouse() + "\n";
+        String callYou = "С вами свяжутся для подтверждения заказа. \nСпасибо что выбрали нас!";
+
+        String message = finalPrice + sumOrder + addressInfo + callYou;
+
+        mailSenderService.send(user.getEmail(), "Заказ SportLine", message);
     }
 
     public List<DataOrder> findOrderByUser(User user){
