@@ -45,6 +45,10 @@ public class ProfileController {
         } else if (cityService.getCity(cityName) == null || cityName.isEmpty()) {
             model.addAttribute("messagesErrorCity", "Некорректно указан город");
             return "authenticatedUser/profile";
+        } else if(userService.findEmail(user.getEmail()) != null) {
+            model.addAttribute("messagesForEmail", "Такой e-mail уже существует");
+            return "registration";
+
         } else if (!userService.updateProfile(user, userUpdate, address, cityName)) {
             model.addAttribute("messages", "Такой логин уже существует");
             return "authenticatedUser/profile";

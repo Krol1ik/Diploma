@@ -94,6 +94,9 @@
                 <form:input path="email" class="inputsBlock" placeholder='${placeholderEmail}'/>
                     <br>
                 <form:errors path="email" class="err"/>
+                    <c:if test="${!messagesForEmail}">
+                        <p class="err">${messagesForEmail}</p>
+                    </c:if>
                 </div>
                 <div class="inputForm">
                     <p class="nameInput"><spring:message code="app.lang.firstName"/></p>

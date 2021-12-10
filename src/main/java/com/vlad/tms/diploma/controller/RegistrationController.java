@@ -38,14 +38,18 @@ public class RegistrationController {
         if (bindingResult.hasErrors() || errorAddress.hasErrors()){
             return "/registration";
         }
-        if (cityService.getCity(cityName) == null || cityName.isEmpty()){
+        if (cityService.getCity(cityName) == null || cityName.isEmpty()) {
             model.addAttribute("messagesErrorCity", "Некорректно указан город");
             return "/registration";
+
+        } else if(userService.findEmail(user.getEmail()) != null) {
+                model.addAttribute("messagesForEmail", "Такой e-mail уже существует");
+                return "registration";
 
         } else if (!userService.addUser(user, cityService.getCity(cityName), address)) {
             model.addAttribute("messages", "Такой логин уже существует");
             return "registration";
-        } else {
+        }else {
             return "redirect:/login";
         }
     }
