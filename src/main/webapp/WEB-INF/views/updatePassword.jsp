@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page isELIgnored = "false" %>
 <%--
   Created by IntelliJ IDEA.
@@ -10,7 +11,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/login.css">
+<link rel="stylesheet" href="/static/css/updatePassword.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -63,30 +64,20 @@
     </div>
 </header>
 <section>
-<div class="container">
-    <div class="inputForm">
-        <div>
-            <form action="/login" method="post">
-                <p class="nameInput"><spring:message code="app.lang.login"/></p>
-                <input type="text" class="inputPlace" name="username"> </h4>
-                <p class="nameInput"><spring:message code="app.lang.password"/></p>
-                <input type="password" class="inputPlace" name="password"> </h4>
-                <br>
-                <a href="/login/forgotPassword" class="forgotPass"><spring:message code="app.lang.forgotPassword"/></a>
-            <div class="btnAction">
-                <button type="submit" class="btn"><spring:message code="app.lang.logEnter"/></button>
-                <a href="/registration" class="btnReg"><spring:message code="app.lang.registration"/></a>
+    <div class="container">
+        <div class="inputForm">
+            <div>
+                <form method="post" action="/restore">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                    <p class="nameInput"><spring:message code="app.lang.PasswordRecoveryForm"/></p>
+                    <spring:message code="app.lang.enterNewPassword" var="placeholderNewPass" />
+                    <input type="password" minlength="4" class="inputPlace" name="password" placeholder='${placeholderNewPass}'/> </h4>
+                    <input type="hidden" name="code" value="${code}">
+                    <button type="submit" class="btnReg"><spring:message code="app.lang.restorePassword"/></button>
+                </form>
             </div>
-                <c:if test="${!messagesActiv}">
-                    <p class="err">${messagesActiv}</p>
-                </c:if>
-                <c:if test="${!passUpdate}">
-                    <p class="err">${passUpdate}</p>
-                </c:if>
-            </form>
         </div>
     </div>
-</div>
 </section>
 <footer class="footer">
     <div class="container">

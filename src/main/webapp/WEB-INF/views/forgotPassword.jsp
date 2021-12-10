@@ -10,7 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/login.css">
+<link rel="stylesheet" href="/static/css/forgotPassword.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -66,23 +66,13 @@
 <div class="container">
     <div class="inputForm">
         <div>
-            <form action="/login" method="post">
-                <p class="nameInput"><spring:message code="app.lang.login"/></p>
-                <input type="text" class="inputPlace" name="username"> </h4>
-                <p class="nameInput"><spring:message code="app.lang.password"/></p>
-                <input type="password" class="inputPlace" name="password"> </h4>
-                <br>
-                <a href="/login/forgotPassword" class="forgotPass"><spring:message code="app.lang.forgotPassword"/></a>
-            <div class="btnAction">
-                <button type="submit" class="btn"><spring:message code="app.lang.logEnter"/></button>
-                <a href="/registration" class="btnReg"><spring:message code="app.lang.registration"/></a>
-            </div>
-                <c:if test="${!messagesActiv}">
-                    <p class="err">${messagesActiv}</p>
+            <form method="post" action="/login/forgotPassword">
+                <p class="nameInput"><spring:message code="app.lang.enterYourEmail"/></p>
+                <input type="email" class="inputPlace" name="email"> </h4>
+                <c:if test="${!errorFindEmail}">
+                    <p class="err">${errorFindEmail}</p>
                 </c:if>
-                <c:if test="${!passUpdate}">
-                    <p class="err">${passUpdate}</p>
-                </c:if>
+            <button type="submit" class="btnReg"><spring:message code="app.lang.restorePassword"/></button>
             </form>
         </div>
     </div>

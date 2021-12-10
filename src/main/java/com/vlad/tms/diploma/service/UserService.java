@@ -102,6 +102,24 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    public void sendMessageRestorePass(User user) {
+        user.setActivationCode(UUID.randomUUID().toString());
+        save(user);
+        if (!StringUtils.isEmpty(user.getEmail())) {
+            String message = String.format(
+                    "Здравствуйте, %s! \n" +
+                            "Пройдите по ссылке, чтобы изменить пароль: http://localhost:8080/restore/%s",
+                    user.getUsername(),
+                    user.getActivationCode()
+            );
+            mailSenderService.send(user.getEmail(), "Восстановление пароля", message);
+        }
+    }
+
+    public User findByCode(String code){
+        return userRepository.findByActivationCode(code);
+    }
+
     public boolean activateUser(String code) {
         User user = userRepository.findByActivationCode(code);
 
@@ -123,6 +141,10 @@ public class UserService implements UserDetailsService {
 
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    public User findEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
 
