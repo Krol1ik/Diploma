@@ -1,18 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@page isELIgnored = "false" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
-  Date: 09.11.2021
-  Time: 16:09
+  Date: 11.11.2021
+  Time: 10:20
   To change this template use File | Settings | File Templates.
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/static/css/title.css">
-
+<link rel="stylesheet" href="/static/css/forgotPassword.css">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Sport line</title>
@@ -38,36 +37,15 @@
     <div class="container">
         <div class="headLineTwo">
             <a href="/" class="logo">SPORT LINE</a>
-            <div class="imgForButton">
-                <a href="/catalog">
-                <img src="static/img/katalog.png" alt="" class="btnImg">
-                </a>
             <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
-            </div>
             <input type="text" class="search" placeholder="<spring:message code="app.lang.search"/>">
             <sec:authorize access="isAnonymous()">
-            <div class="imgForButton">
-                <a href="/basket">
-                    <img src="static/img/basket.png" alt="" class="btnImg">
-                </a>
                 <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
-            </div>
-            <div class="imgForButton">
-                <a href="/login">
-                    <img src="static/img/signIn.png" alt="" class="btnImg" style="margin-left: 3px">
-                </a>
+
                 <a href="/login" class="log"><spring:message code="app.lang.log"/></a>
-            </div>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-            <div class="imgForButton">
-                <a href="/basket">
-                    <img src="static/img/basket.png" alt="" class="btnImg">
-                </a>
                 <a href="/basket/user" class="basket"><spring:message code="app.lang.basket"/></a>
-            </div>
-            <div class="imgForButton">
-                    <img src="static/img/profile.png" alt="" class="btnImg">
                 <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
                     <option><spring:message code="app.lang.profile"/></option>
                     <option value="http://localhost:8080/profile"><spring:message code="app.lang.personalData"/></option>
@@ -80,40 +58,24 @@
                     <option></option>
                     <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
                 </select>
-            </div>
             </sec:authorize>
         </div>
     </div>
 </header>
-<section class="title">
+<section>
     <div class="container">
-        <div class="benefistSection">
-            <div class="oneDel">
-                <img src="static/img/delivery.png" alt="" class="btnImgInfo">
-                <h3 class="textDelivery"><spring:message code="app.lang.shippingFree"/> <spring:message code="app.lang.shipping"/></h3>
+        <div class="inputForm">
+            <div>
+                <form method="post" action="/updateEmail">
+                    <p class="nameInput"><spring:message code="app.lang.enterNewEmail"/></p>
+                    <input type="hidden" value="${code}" name="code">
+                    <input type="email" class="inputPlace" name="email"> </h4>
+                    <c:if test="${!errorEmail}">
+                        <p class="err">${errorEmail}</p>
+                    </c:if>
+                    <button type="submit" class="btnReg"><spring:message code="app.lang.restorePassword"/></button>
+                </form>
             </div>
-            <div class="delivery">
-                <img src="static/img/guarantee.png" alt="" class="btnImgInfo">
-                <h3 class="textGuarantee"><spring:message code="app.lang.warranty"/> <spring:message code="app.lang.warranty18"/></h3>
-            </div>
-            <div class="delivery">
-                <h3 class="textGuarantee"><spring:message code="app.lang.qualityBest"/></h3>
-                <h3 class="textQualityTwo"><spring:message code="app.lang.quality"/></h3>
-            </div>
-            <div class="delivery">
-                <img src="static/img/compass.png" alt="" class="btnImgInfo">
-                <h3 class="textGuarantee"><spring:message code="app.lang.deliver"/> <spring:message code="app.lang.deliverBR"/></h3>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="category">
-            <a href="/catalog/category/${categoryList.get(0).id}" class="btn"><spring:message code="app.lang.bars"/></a>
-            <a href="/catalog/category/${categoryList.get(1).id}" class="btn"><spring:message
-                    code="app.lang.swedish"/></a>
-            <a href="/catalog/category/${categoryList.get(2).id}" class="btn"><spring:message code="app.lang.iron"/></a>
-            <a href="/catalog/category/${categoryList.get(3).id}" class="btn"><spring:message
-                    code="app.lang.simulators"/></a>
         </div>
     </div>
 </section>

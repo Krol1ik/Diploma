@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -73,7 +75,7 @@ public class UserService implements UserDetailsService {
         User userFromBD = userRepository.findByUsername(userNew.getUsername());
 
         if (user.getUsername().equals(userNew.getUsername()) || userFromBD == null) {
-            user.setEmail(userNew.getEmail());
+
             user.setUsername(userNew.getUsername());
             user.setPhoneNumber(userNew.getPhoneNumber());
             user.setFirstName(userNew.getFirstName());
@@ -84,6 +86,7 @@ public class UserService implements UserDetailsService {
             user.getAddress().setNumberHouse(address.getNumberHouse());
 
             userRepository.save(user);
+
             return true;
         } else {
             return false;
@@ -116,6 +119,21 @@ public class UserService implements UserDetailsService {
         }
     }
 
+
+    public void sendMessageRestoreEmail(User user) {
+        user.setActivationCode(UUID.randomUUID().toString());
+        save(user);
+        if (!StringUtils.isEmpty(user.getEmail())) {
+            String message = String.format(
+                    "Здравствуйте, %s! \n" +
+                            " Чтобы изменить e-mail вам необходимо пройти по ссылке: http://localhost:8080/restoreEmail/%s",
+                    user.getUsername(),
+                    user.getActivationCode()
+            );
+            mailSenderService.send(user.getEmail(), "Обновление E-mail", message);
+        }
+    }
+
     public User findByCode(String code){
         return userRepository.findByActivationCode(code);
     }
@@ -123,11 +141,10 @@ public class UserService implements UserDetailsService {
     public boolean activateUser(String code) {
         User user = userRepository.findByActivationCode(code);
 
-        if (user == null) {   //если пользователь не будет найден по коду, то активация не удалась
+        if (user == null) {
             return false;
         }
-
-        user.setActivationCode(null);  //означает, что пользователь подвердил активацию
+        user.setActivationCode(null);
         user.setActive(true);
         userRepository.save(user);
 

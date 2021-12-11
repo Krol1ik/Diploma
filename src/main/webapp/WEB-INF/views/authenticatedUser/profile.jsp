@@ -85,8 +85,8 @@
                             <p class="nameInput">E-mail</p>
                             <spring:message code="app.lang.placeholderEmail" var="placeholderEmail" />
                             <form:input path="email" class="inputsBlock" name="email" placeholder='${placeholderEmail}'/>
+                            <a href="/changeEmail" class="changeEmail"> <spring:message code="app.lang.changeEmail"/></a>
                             <br>
-                            <form:errors path="email" class="err"/>
                             <c:if test="${!messagesForEmail}">
                                 <p class="err">${messagesForEmail}</p>
                             </c:if>

@@ -109,12 +109,25 @@ a{
     text-align: left;
     font-weight: bold;
     border-radius: 10px ;
-    border: 1px solid grey;
-    text-decoration: none;
-    transition: all 1s ease;
 }
 
 .catalog:hover{
+    background-color: #ffa627;
+}
+
+.btnImg{
+    padding-top: 4px;
+    height: 30px;
+}
+.imgForButton{
+    display: flex;
+    border-radius: 10px ;
+    border: 1px solid grey;
+    text-decoration: none;
+    transition: all 1s ease;
+    margin-left: 30px;
+}
+.imgForButton:hover{
     background-color: #ffa627;
 }
 
@@ -125,24 +138,20 @@ a{
     font-size: 11px;
     border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
 .basket{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 122px;
     height: 42px;
     padding: 10px 0;
     padding-left: 17px;
     text-align: left;
     font-weight: bold;
-    border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
-    text-decoration: none;
-    transition: all 1s ease;
 }
 
 .basket:hover{
@@ -182,17 +191,13 @@ a{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 122px;
     height: 42px;
     padding: 10px 0;
     padding-left: 17px;
     text-align: left;
     font-weight: bold;
-    border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
-    text-decoration: none;
-    transition: all 1s ease;
 }
 
 .log:hover{
@@ -203,16 +208,16 @@ a{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 122px;
     height: 42px;
     padding: 10px 0;
     padding-left: 17px;
     text-align: left;
     font-weight: bold;
-    border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
+    border: 0px;
 }
+
 
 .title{
     margin-top: 41px;
@@ -223,16 +228,12 @@ a{
     padding-top: 20px;
     padding-right: 17px;
     font-size: 16px;
+    padding-left: 50px;
 }
 
-.textDeliveryTwo{
-    font-weight: bold;
-    padding-right: 40px;
-    padding-bottom: 17px;
-    font-size: 16px;
-}
 
 .delivery{
+    display: flex;
     width: 258px;
     height: 95px;
     background-color: #f7f8fa;
@@ -243,6 +244,7 @@ a{
 }
 
 .oneDel{
+    display: flex;
     width: 258px;
     height: 95px;
     background-color: #f7f8fa;
@@ -255,22 +257,16 @@ a{
 .benefistSection{
     display: flex;
     align-items:center;
-    /*padding-left: 100px;*/
 }
 
 .textGuarantee{
     font-weight: bold;
     padding-top: 20px;
-    padding-right: 55px;
+    padding-right: 17px;
     font-size: 16px;
+    padding-left: 50px;
 }
 
-.textGuaranteeTwo{
-    font-weight: bold;
-    padding-right: 40px;
-    padding-bottom: 17px;
-    font-size: 16px;
-}
 
 .textQualityTwo{
     font-weight: bold;
@@ -281,7 +277,7 @@ a{
 
 .deliveryBenefist{
     font-weight: bold;
-    padding-right: 5px;
+    padding-right: 14px;
     padding-bottom: 17px;
     font-size: 16px;
 }
@@ -290,6 +286,12 @@ a{
     align-items:center;
     padding-top: 70px;
 
+}
+
+.btnImgInfo{
+    padding-top: 10px;
+    padding-left: 5px;
+    height: 60px;
 }
 
 
