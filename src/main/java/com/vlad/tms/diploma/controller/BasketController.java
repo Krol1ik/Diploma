@@ -58,6 +58,15 @@ public class BasketController {
             orderItem.get(i).setCount(count.get(i));
             orderItemService.saveOrder(orderItem.get(i));
         }
+        for (int i = 0; i < orderItemService.placedOrder(sessionId).size(); i++) {
+            if(orderItemService.placedOrder(sessionId).get(i).getProductOrder().getStockBalance() < orderItemService.placedOrder(sessionId).get(i).getCount()){
+                model.addAttribute("order", orderItemService.placedOrder(sessionId));
+                model.addAttribute("errorCount", "Доступно только " +
+                        orderItemService.placedOrder(sessionId).get(i).getProductOrder().getStockBalance() + " товара под артикулом: " +
+                        orderItemService.placedOrder(sessionId).get(i).getProductOrder().getArticle());
+                return "/basket";
+            }
+        }
         if (user == null) {
             orderItemService.priceProductInRow(sessionId);
             return "redirect:checkoutOrder";
@@ -98,6 +107,8 @@ public class BasketController {
                                 HttpSession session,
                                 Model model) {
         String sessionId = session.getId();
+        model.addAttribute("finalPrice", orderItemService.priceAllOrder(sessionId));
+        model.addAttribute("order", orderItemService.placedOrder(sessionId));
 
         if (bindingResult.hasErrors() || errorAddress.hasErrors()){
             return "/checkoutOrder";

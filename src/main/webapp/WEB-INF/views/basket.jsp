@@ -87,6 +87,9 @@
                         <h3 id="${ord.productOrder.id + 1100}" class="price">${ord.productOrder.price}</h3><h3 class="priceStr"><spring:message code="app.lang.price"/> </h3>
                             <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a>
                         <input type="hidden" value="${ord.id}" name="orderId">
+                        <c:if test="${!errorCount}">
+                            <p class="err">${errorCount}</p>
+                        </c:if>
                     </div>
                 </div>
             </c:forEach>

@@ -35,16 +35,24 @@ public class Product {
     private Double price;
     @Column(name = "Discount")
     private int discount;
+    @Column (name = "Stock_balance")
+    private int stockBalance;
 
     @OneToMany (mappedBy = "productOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItem;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private StockBalance stockBalance;
 
     private String filename;
 
     public Product() {
+    }
+
+    public void setStockBalance(int stockBalance) {
+        this.stockBalance = stockBalance;
+    }
+
+    public int getStockBalance() {
+        return stockBalance;
     }
 
     public String getFilename() {
@@ -125,14 +133,6 @@ public class Product {
 
     public void setDiscount(int discount) {
         this.discount = discount;
-    }
-
-    public StockBalance getStockBalance() {
-        return stockBalance;
-    }
-
-    public void setStockBalance(StockBalance stockBalance) {
-        this.stockBalance = stockBalance;
     }
 
     public List<OrderItem> getOrderItem() {

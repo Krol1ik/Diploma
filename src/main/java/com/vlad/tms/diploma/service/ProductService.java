@@ -23,11 +23,23 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public List<Product> findByCategory(Long id){
-        return productRepository.findProductByCategoryId(id);
+        List<Product> productList = productRepository.findProductByCategoryId(id);
+        for (int i = 0; i < productList.size(); i++) {
+            if(productList.get(i).getStockBalance() <= 0){
+                productList.remove(i);
+            }
+        }
+        return productList;
     }
 
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public List<Product> findAllProduct (){
+        List<Product> productList = productRepository.findAll();
+        for (int i = 0; i < productList.size(); i++) {
+            if(productList.get(i).getStockBalance() <= 0){
+                productList.remove(i);
+            }
+        }
+        return productList;
     }
 
     public Product findById(Long id){

@@ -30,7 +30,8 @@ public class CatalogController {
 
     @GetMapping()
     public String catalogPage(Model model) {
-        model.addAttribute("productList", productService.findAll());
+
+        model.addAttribute("productList", productService.findAllProduct());
         model.addAttribute("categoryList", categoryService.categoryAll());
         return "catalog";
     }

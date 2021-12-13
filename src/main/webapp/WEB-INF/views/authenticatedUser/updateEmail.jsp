@@ -73,7 +73,7 @@
                     <c:if test="${!errorEmail}">
                         <p class="err">${errorEmail}</p>
                     </c:if>
-                    <button type="submit" class="btnReg"><spring:message code="app.lang.restorePassword"/></button>
+                    <button type="submit" class="btnReg"><spring:message code="app.lang.acceptNewEmail"/></button>
                 </form>
             </div>
         </div>
