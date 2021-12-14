@@ -71,8 +71,8 @@
                         <TD> <input name="price" value="${prod.price}"/> </TD>
                         <TD> <input name="discount" value="${prod.discount}" type="number"/> </TD>
                         <TD> <input name="stockBalance" value="${prod.stockBalance}" type="number"/> </TD>
-                        <TD> <button type="submit" class="btn">Обновить</button> <br>
-                            <button type="button" class="btn"><a href="/admin/deleteProduct/${prod.id}">Удалить</a></button>
+                        <TD> <button type="submit" class="btn"><spring:message code="app.lang.update"/></button> <br>
+                            <button type="button" class="btn"><a href="/admin/deleteProduct/${prod.id}"><spring:message code="app.lang.deleteProduct"/></a></button>
                         </TD>
                         </form>
                 <TR>
