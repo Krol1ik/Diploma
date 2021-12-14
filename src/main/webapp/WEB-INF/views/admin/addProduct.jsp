@@ -49,30 +49,31 @@
     <div class="container">
         <div class="wrapped">
             <form method="post" enctype="multipart/form-data">
-                <input type="text" name="brandName" placeholder=<spring:message code="app.lang.brand"/> class="row">
-                <input type="text" name="modelName" placeholder=<spring:message code="app.lang.model"/> class="row">
-                <input list="browsers" name="categoryName"  placeholder=<spring:message code="app.lang.category"/> class="row">
+                <input type="text" name="brandName" placeholder="<spring:message code="app.lang.brand"/>" class="row">
+                <input type="text" name="modelName" placeholder="<spring:message code="app.lang.model"/>" class="row">
+                <input list="browsers" name="categoryName"  placeholder="<spring:message code="app.lang.category"/>" class="row">
                 <datalist id="browsers" class="inputsBlock" >
                     <c:forEach items="${allCategory}" var="category">
                     <option value="${category.categoryName}" >
                         </c:forEach>
                 </datalist>
-                <input list="browser" name="typeName"  placeholder=<spring:message code="app.lang.type"/> class="row"/>
+                <input list="browser" name="typeName"  placeholder="<spring:message code="app.lang.type"/>" class="row"/>
                 <datalist id="browser" сlass="inputsBlock">
                     <c:forEach items="${allType}" var="type">
                     <option value="${type.typeName}">
                         </c:forEach>
                 </datalist>
-                <input type="text" name="descriptionProduct" placeholder=<spring:message code="app.lang.description"/> class="row">
-                <input type="text" name="price" placeholder=<spring:message code="app.lang.priceInFormat"/> class="row">
-                <input type="number" name="discount" placeholder=<spring:message code="app.lang.discount"/> class="row">
+                <input type="text" name="descriptionProduct" placeholder="<spring:message code="app.lang.description"/>" class="row">
+                <input type="text" name="price" placeholder="<spring:message code="app.lang.priceInFormat"/>" class="row">
+                <input type="number" name="discount" placeholder="<spring:message code="app.lang.discount"/>" class="row">
+                <input type="number" name="count" placeholder="<spring:message code="app.lang.qualityProd"/>" class="row">
                 <input type="hidden" name="_csrf" value="${_csrf.token}" class="row"/>
                 <input type="file" name="file" class="fileAdd">
-                <button type="submit" class="row"><spring:message code="app.lang.addProd"/></button>
+                <c:if test="${!messages}">
+                    <p class="err">${messages}</p>
+                </c:if>
+                <button type="submit" class="row">"<spring:message code="app.lang.addProd"/>"</button>
             </form>
-            <c:if test="${!messages}">
-                <p class="err">${messages}</p>
-            </c:if>
         </div>
     </div>
 </section>

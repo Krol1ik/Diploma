@@ -32,6 +32,10 @@ public class ProductService {
         return productList;
     }
 
+    public List<Product> productListForAdmin (){
+        return productRepository.findAll();
+    }
+
     public List<Product> findAllProduct (){
         List<Product> productList = productRepository.findAll();
         for (int i = 0; i < productList.size(); i++) {
@@ -48,11 +52,12 @@ public class ProductService {
 
 
     public void addFromAdmin (String brandName, String modelName, String typeName, String categoryName,
-                              String description, Double price, int discount, Product product) {
+                              String description, Double price, int discount, int count,Product product) {
 
         product.setDescriptionProduct(description);
         product.setDiscount(discount);
         product.setPrice(price);
+        product.setStockBalance(count);
 
         if (brandService.checkBrandName(brandName) != null) {
             product.setBrand(brandService.checkBrandName(brandName));
@@ -87,5 +92,17 @@ public class ProductService {
         Product product = productRepository.getById(id);
         orderItemService.deleteByProduct(product);
         productRepository.deleteById(id);
+    }
+
+    public void save (List<Product> products){
+        productRepository.saveAll(products);
+    }
+
+    public void updateProduct(Long id, int stockBalance, int discount, double price){
+        Product product = findById(id);
+        product.setStockBalance(stockBalance);
+        product.setDiscount(discount);
+        product.setPrice(price);
+        productRepository.save(product);
     }
 }

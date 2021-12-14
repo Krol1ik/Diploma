@@ -25,40 +25,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .header{
     background: #f7f8fa;
+    height: 100 px;
 }
 
-.titleHead{
+.listUser{
     padding-top: 60px;
 }
 
-
-.row{
-    width: 600px;
-    height: 30px;
-    display: block;
-    margin-top: 20px;
-    border-radius: 10px;
+.tableUsers{
+    margin-top: 50px;
 }
 
-.wrapper{
-    display: flex;
-    flex-wrap: nowrap;
+.tableData{
+    height: 26px;
+}
+
+.row{
+    width: 170px;
 }
 
 .wrapped{
-    margin-top: 40px;
     display: flex;
     flex-wrap: nowrap;
-    margin-left: 300px;
-}
-
-.fileAdd{
-    width: 230px;
-    height: 30px;
-    display: block;
-    margin-top: 20px;
-    border-radius: 10px;
-    display: inline;
 }
 
 .profile{
@@ -72,14 +60,33 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left;
     font-weight: bold;
     border: 1px solid grey;
-    margin-left: 273px;
+    margin-left: 200px;
     display: inline;
 }
 
 .err{
-    display: inline;
+    margin-top: 25px;
     color: #ffa627;
+    text-align: center;
+}
 
+.btn{
+    font-family: 'Montserrat', sans-serif;
+    background: #f7f8fa;
+    width: 80px;
+    height: 30px;
+    padding: 5px 5px;
+    margin: 5px;
+    text-align: left;
+    font-weight: bold;
+    border-radius: 10px ;
+    border: 1px solid grey;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.btn:hover{
+    background-color: #ffa627;
 }
 
 .logo{
@@ -87,9 +94,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 66px;
     display: inline;
     padding-right: 300px;
-    color: black;
 }
-
 
 .dropbtn {
     font-size: 15px;

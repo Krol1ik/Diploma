@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping ("/admin")
+@RequestMapping("/admin")
 public class AdminController {
 
     @Value("${upload.path}")  //данная аннатация ищет в properties "upload.path" и вставляет в переменную ниже
@@ -36,8 +37,8 @@ public class AdminController {
     private OrderItemService orderItemService;
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping ("/userList")
-    public String adminPage(Model model){
+    @GetMapping("/userList")
+    public String adminPage(Model model) {
 
         List<User> userList = userService.findAll();
 
@@ -56,7 +57,7 @@ public class AdminController {
             countProductList.add(countProduct);
             priceOrders = 0.0;
             countProduct = 0;
-       }
+        }
 
         model.addAttribute("priceOrder", priceOrderList);
         model.addAttribute("countOrder", countProductList);
@@ -64,8 +65,8 @@ public class AdminController {
         return "admin/userList";
     }
 
-    @GetMapping ("/addProduct")
-    public String getProduct (Model model){
+    @GetMapping("/addProduct")
+    public String getProduct(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("allCategory", categoryService.categoryAll());
         model.addAttribute("allType", typeService.typeAll());
@@ -73,15 +74,16 @@ public class AdminController {
     }
 
     @PostMapping("/addProduct")
-    public String addProduct (@RequestParam ("file") MultipartFile file,
-                              @RequestParam ("brandName") String brand,
-                              @RequestParam ("modelName") String modelProduct,
-                              @RequestParam ("categoryName") String category,
-                              @RequestParam ("typeName") String type,
-                              @RequestParam ("descriptionProduct") String description,
-                              @RequestParam ("price") Double price,
-                              @RequestParam ("discount") int discount,
-                              @ModelAttribute Product product, Model model) throws IOException {
+    public String addProduct(@RequestParam("file") MultipartFile file,
+                             @RequestParam("brandName") String brand,
+                             @RequestParam("modelName") String modelProduct,
+                             @RequestParam("categoryName") String category,
+                             @RequestParam("typeName") String type,
+                             @RequestParam("descriptionProduct") String description,
+                             @RequestParam("price") Double price,
+                             @RequestParam("discount") int discount,
+                             @RequestParam("count") int count,
+                             @ModelAttribute Product product, Model model) throws IOException {
 
         if (file != null && !file.getOriginalFilename().isEmpty()) { // если файл не равен 0, то мы его добавим в класс
             File uploadDir = new File(uploadPath);
@@ -95,12 +97,37 @@ public class AdminController {
 
             file.transferTo(new File(uploadPath + "/" + resultFilename));   //загружаем наш файл
             product.setFilename("/img/" + resultFilename);
-            productService.addFromAdmin(brand, modelProduct, type, category, description, price, discount, product);
-
+            productService.addFromAdmin(brand, modelProduct, type, category, description, price, discount, count, product);
+            model.addAttribute("messages", "Товар был добавлен");
             return "admin/addProduct";
         } else {
-            model.addAttribute("messages", "Товар не был добавлен, неверно заполнена форма.");
+            model.addAttribute("messages", "Товар не был добавлен, неверно заполнена форма");
             return "admin/addProduct";
         }
+    }
+
+    @GetMapping("/productList")
+    public String productList(Model model) {
+        model.addAttribute("products", productService.productListForAdmin());
+        return "admin/productList";
+    }
+
+    @PostMapping("/updateProduct/{id}")
+    public String updateProducts(@PathVariable("id") Long id,
+                                 @RequestParam("stockBalance") int stockBalance,
+                                 @RequestParam("discount") int discount,
+                                 @RequestParam("price") double price,
+                                 Model model) {
+        productService.updateProduct(id, stockBalance, discount, price);
+        model.addAttribute("products", productService.productListForAdmin());
+        model.addAttribute("updateAccept", "Информация о товаре была обновлена");
+        return "redirect:/admin/productList";
+    }
+
+    @Transactional
+    @GetMapping ("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable("id") Long id){
+        productService.delete(id);
+        return "redirect:/admin/productList";
     }
 }
