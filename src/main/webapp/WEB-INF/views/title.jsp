@@ -23,7 +23,9 @@
         <div class="headLineOne">
             <p class="number">+375 29 111 11 11</p>
             <a href="https://viber.click/375259624389" target="_blank" class="viber">Viber</a>
+            <img src="/static/img/viber.png" alt="" class="messages">
             <a href="https://t.me/krol1ik" target="_blank" class="telegram">Telegram</a>
+            <img src="/static/img/telegram.png" alt="" class="messages">
             <p class="workTime"><spring:message code="app.lang.schedule"/> <br> <spring:message code="app.lang.dayWeek"/>: 9:00-18:00</p>
             <div class="dropdown">
                 <button class="dropbtn"><spring:message code="app.lang.change"/></button>
@@ -40,7 +42,7 @@
             <a href="/" class="logo">SPORT LINE</a>
             <div class="imgForButton">
                 <a href="/catalog">
-                <img src="static/img/katalog.png" alt="" class="btnImg">
+                <img src="/static/img/catalog.png" alt="" class="btnImg">
                 </a>
             <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
             </div>
@@ -48,13 +50,13 @@
             <sec:authorize access="isAnonymous()">
             <div class="imgForButton">
                 <a href="/basket">
-                    <img src="static/img/basket.png" alt="" class="btnImg">
+                    <img src="/static/img/basket.png" alt="" class="btnImg">
                 </a>
                 <a href="/basket" class="basket"><spring:message code="app.lang.basket"/></a>
             </div>
             <div class="imgForButton">
                 <a href="/login">
-                    <img src="static/img/signIn.png" alt="" class="btnImg" style="margin-left: 3px">
+                    <img src="/static/img/signIn.png" alt="" class="btnImg" style="margin-left: 3px">
                 </a>
                 <a href="/login" class="log"><spring:message code="app.lang.log"/></a>
             </div>
@@ -62,12 +64,12 @@
             <sec:authorize access="isAuthenticated()">
             <div class="imgForButton">
                 <a href="/basket">
-                    <img src="static/img/basket.png" alt="" class="btnImg">
+                    <img src="/static/img/basket.png" alt="" class="btnImg">
                 </a>
                 <a href="/basket/user" class="basket"><spring:message code="app.lang.basket"/></a>
             </div>
             <div class="imgForButton">
-                    <img src="static/img/profile.png" alt="" class="btnImg">
+                    <img src="/static/img/profile.png" alt="" class="btnImg">
                 <select class="profile" onchange="window.location.href = this.options[this.selectedIndex].value">
                     <option><spring:message code="app.lang.profile"/></option>
                     <option value="http://localhost:8080/profile"><spring:message code="app.lang.personalData"/></option>
@@ -98,8 +100,8 @@
                 <h3 class="textGuarantee"><spring:message code="app.lang.warranty"/> <spring:message code="app.lang.warranty18"/></h3>
             </div>
             <div class="delivery">
-                <h3 class="textGuarantee"><spring:message code="app.lang.qualityBest"/></h3>
-                <h3 class="textQualityTwo"><spring:message code="app.lang.quality"/></h3>
+                <img src="static/img/quality.png" alt="" class="btnImgInfo">
+                <h3 class="textGuarantee"><spring:message code="app.lang.qualityBest"/> <spring:message code="app.lang.quality"/></h3>
             </div>
             <div class="delivery">
                 <img src="static/img/compass.png" alt="" class="btnImgInfo">
@@ -108,13 +110,34 @@
         </div>
     </div>
     <div class="container">
+        <div class="banerAndCategory">
         <div class="category">
-            <a href="/catalog/category/${categoryList.get(0).id}" class="btn"><spring:message code="app.lang.bars"/></a>
-            <a href="/catalog/category/${categoryList.get(1).id}" class="btn"><spring:message
-                    code="app.lang.swedish"/></a>
-            <a href="/catalog/category/${categoryList.get(2).id}" class="btn"><spring:message code="app.lang.iron"/></a>
-            <a href="/catalog/category/${categoryList.get(3).id}" class="btn"><spring:message
-                    code="app.lang.simulators"/></a>
+            <div class="categoryImg">
+                <a href="/catalog/category/${categoryList.get(0).id}">
+                    <img src="/static/img/horizontalBar.png" alt="" class="imgCategory">
+                </a>
+                <a href="/catalog/category/${categoryList.get(0).id}" class="btn"><spring:message code="app.lang.bars"/></a>
+            </div>
+            <div class="categoryImg">
+                <a href="/catalog/category/${categoryList.get(1).id}">
+                    <img src="/static/img/wallBars.png" alt="" class="imgCategory">
+                </a>
+                <a href="/catalog/category/${categoryList.get(1).id}" class="btn"><spring:message code="app.lang.swedish"/></a>
+            </div>
+            <div class="categoryImg">
+                <a href="/catalog/category/${categoryList.get(2).id}">
+                    <img src="/static/img/iron.png" alt="" class="imgCategory">
+                </a>
+                <a href="/catalog/category/${categoryList.get(2).id}" class="btn"><spring:message code="app.lang.iron"/></a>
+            </div>
+            <div class="categoryImg">
+                <a href="/catalog/category/${categoryList.get(3).id}">
+                    <img src="/static/img/trainingApparatus.png" alt="" class="imgCategory">
+                </a>
+                <a href="/catalog/category/${categoryList.get(3).id}" class="btn"><spring:message code="app.lang.simulators"/></a>
+            </div>
+        </div>
+            <img src="<spring:message code="app.lang.img"/>" alt="" class="banerImg">
         </div>
     </div>
 </section>

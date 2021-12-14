@@ -44,12 +44,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .viber{
     height: 35px;
-    margin-right: 17px;
     display: inline;
     padding-top: 5px;
     padding-left: 10px;
     border-left: 1px solid grey;
-
 }
 
 .telegram {
@@ -57,12 +55,11 @@ h1, h2, h3, h4, h5, h6 {
     display: inline;
     padding-top: 5px;
     padding-left: 10px;
-    padding-right: 16px;
     border-left: 1px solid grey;
 }
 
 .workTime {
-    width: 105px;
+    width: 116px;
     height: 35px;
     color: grey;
     padding-left: 10px;
@@ -294,18 +291,49 @@ a{
     height: 60px;
 }
 
+.messages{
+    height: 23px;
+}
+
+.imgCategory{
+    height: 60px;
+}
+
+.categoryImg{
+    display: flex;
+    background: #f7f8fa;
+    height: 90px;
+    width: 314px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+.categoryImg:hover{
+    background-color: #ffa627;
+}
+
+.banerImg{
+    height: 484px;
+    margin-left: 56px;
+    margin-top: 35px;
+}
+
+.banerAndCategory{
+    display: flex;
+}
+
 
 .btn {
     font-family: 'Montserrat', sans-serif;
-    background: #f7f8fa;
     display: block;
-    width: 314px;
+    width: 260px;
     height: 90px;
     padding: 16px 0;
-    padding-left: 95px;
     text-align: center;
     font-weight: bold;
     font-size: 19px;
+    border-radius: 10px;
     margin-bottom: 40px;
     text-decoration: none;
     transition: all 1s ease;

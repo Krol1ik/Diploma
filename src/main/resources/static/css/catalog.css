@@ -44,12 +44,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .viber{
     height: 35px;
-    margin-right: 17px;
     display: inline;
     padding-top: 5px;
     padding-left: 10px;
     border-left: 1px solid grey;
-
 }
 
 .telegram {
@@ -57,8 +55,11 @@ h1, h2, h3, h4, h5, h6 {
     display: inline;
     padding-top: 5px;
     padding-left: 10px;
-    padding-right: 16px;
     border-left: 1px solid grey;
+}
+
+.messages{
+    height: 23px;
 }
 
 .workTime {
@@ -109,12 +110,25 @@ a{
     text-align: left;
     font-weight: bold;
     border-radius: 10px ;
-    border: 1px solid grey;
-    text-decoration: none;
-    transition: all 1s ease;
 }
 
 .catalog:hover{
+    background-color: #ffa627;
+}
+
+.btnImg{
+    padding-top: 4px;
+    height: 30px;
+}
+.imgForButton{
+    display: flex;
+    border-radius: 10px ;
+    border: 1px solid grey;
+    text-decoration: none;
+    transition: all 1s ease;
+    margin-left: 30px;
+}
+.imgForButton:hover{
     background-color: #ffa627;
 }
 
@@ -132,17 +146,13 @@ a{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 122px;
     height: 42px;
     padding: 10px 0;
     padding-left: 17px;
     text-align: left;
     font-weight: bold;
-    border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
-    text-decoration: none;
-    transition: all 1s ease;
 }
 
 .basket:hover{
@@ -153,60 +163,87 @@ a{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 122px;
     height: 42px;
     padding: 10px 0;
     padding-left: 17px;
     text-align: left;
     font-weight: bold;
-    border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
-    text-decoration: none;
-    transition: all 1s ease;
 }
 
 .log:hover{
     background-color: #ffa627;
 }
 
+
 .profile{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;
     display: block;
-    width: 152px;
+    width: 122px;
     height: 42px;
     padding: 10px 0;
     padding-left: 17px;
     text-align: left;
     font-weight: bold;
-    border: 1px solid grey;
     border-radius: 10px;
-    margin-left: 40px;
+    border: 0px;
 }
 
-.category{
+.imgCategory{
+    height: 60px;
+}
+
+.categoryImg{
     display: flex;
+    background: #f7f8fa;
+    height: 80px;
+    width: 242px;
+    margin-left: 67px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+.categoryImg:hover{
+    background-color: #ffa627;
+}
+
+.categoryImgFirst{
+    display: flex;
+    background: #f7f8fa;
+    height: 80px;
+    width: 242px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 1s ease;
+}
+.categoryImgFirst:hover{
+    background-color: #ffa627;
+}
+
+
+.category{
     align-items:center;
+    padding-top: 40px;
+    display: flex;
 
 }
 
 
 .btn {
-    margin-top: 40px;
-    margin-left: 40px;
     font-family: 'Montserrat', sans-serif;
-    background: #f7f8fa;
     display: block;
-    width: 314px;
-    height: 90px;
+    width: 260px;
+    height: 80px;
     padding: 16px 0;
-    padding-left: 95px;
     text-align: center;
     font-weight: bold;
     font-size: 19px;
+    border-radius: 10px;
     margin-bottom: 40px;
-    border-radius: 50px;
     text-decoration: none;
     transition: all 1s ease;
 }
@@ -214,6 +251,7 @@ a{
 .btn:hover{
     background-color: #ffa627;
 }
+
 
 .pageProduct{
     margin-top: 50px;
