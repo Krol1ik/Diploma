@@ -31,6 +31,7 @@
                     <option></option>
                     <option value="http://localhost:8080/admin/userList"><spring:message code="app.lang.list"/></option>
                     <option value="http://localhost:8080/admin/addProduct"><spring:message code="app.lang.addProd"/></option>
+                    <option value="http://localhost:8080/admin/productList"><spring:message code="app.lang.listProduct"/></option>
                     <option></option>
                     <option value="http://localhost:8080/logout"><spring:message code="app.lang.logOut"/></option>
                 </select>

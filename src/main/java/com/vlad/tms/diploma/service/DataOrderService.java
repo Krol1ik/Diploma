@@ -90,6 +90,8 @@ public class DataOrderService {
         String sumOrder = "Сумма заказа: " + orderItemService.priceAllOrderUser(user) + " руб.\n";
 
         for (int i = 0; i < orderItem.size(); i++) {
+            orderItem.get(i).getProductOrder().setStockBalance(
+                    orderItem.get(i).getProductOrder().getStockBalance() - orderItem.get(i).getCount());
             orderItem.get(i).setDataOrders(dataOrder);
             orderItem.get(i).setStatusOrder(true);
             orderItemService.saveOrder(orderItem.get(i));

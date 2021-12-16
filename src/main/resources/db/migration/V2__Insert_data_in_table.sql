@@ -97,13 +97,13 @@ values (2, 2, 4, 'Шведская стенка – это базовая осн
         239.00, 0, 3, '/img/стенка3.jpg');
 insert into Product (Category_product_id, type_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, stock_balance, filename)
 values (4, 4, 2, 5, 'Кардио-тренировка – это одна из главных функций данного тренажера эллиптического типа. ',
-        659.40, 0, 9, '/img/эллиптический1.jpg');
+        659.00, 0, 9, '/img/эллиптический1.jpg');
 insert into Product (Category_product_id,type_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, stock_balance, filename)
 values (3, 2, 2, 3, 'Гриф для штанги Титан хромированный великолепно подходит для занятия физическими упражнениями.',
-        130.00, 0, 5, '/img/гриф1.jpg');
+        140.00, 0, 5, '/img/гриф1.jpg');
 insert into Product (Category_product_id,type_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, stock_balance, filename)
 values (3, 1, 1, 1, 'Гантель 61 кг черная неразборная. Предназначена для выполнения различных силовых упражнений, использования в качестве отягощения. Подходят для использования дома и в залах.',
-        129.30, 0, 2, '/img/гантель1.jpg');
+        129.99, 0, 2, '/img/гантель1.jpg');
 insert into Product (Category_product_id, type_product_id, Brand_product_id, Model_product_id, Description_product, Price, Discount, stock_balance, filename)
 values (3, 1, 1, 2, 'Гантель гексагональная обрезиненная ZSO, 10кг. С обрезиненными шестиугольными грузами. Анатомическая стальная ручка, покрытие зеркальный хром. Удобная форма грузов предохраняет от катания гантели.',
         99.00, 0, 8, '/img/гантель2.jpg');

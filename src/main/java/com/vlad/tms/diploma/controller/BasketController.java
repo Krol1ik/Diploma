@@ -115,6 +115,7 @@ public class BasketController {
         }
         if (cityService.getCity(cityName) == null || cityName.isEmpty()){
             model.addAttribute("messagesErrorCity", "К сожалению, мы не работает в данном городе.");
+            model.addAttribute("cityList", cityService.allCity());
             return "/checkoutOrder";
 
         }

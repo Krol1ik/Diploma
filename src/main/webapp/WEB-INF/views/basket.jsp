@@ -112,12 +112,12 @@
                         <h3 id="${ord.productOrder.id + 1100}" class="price">${ord.productOrder.price}</h3><h3 class="priceStr"><spring:message code="app.lang.price"/> </h3>
                             <a href="/basket/${ord.id}" class="del"><spring:message code="app.lang.delete"/></a>
                         <input type="hidden" value="${ord.id}" name="orderId">
-                        <c:if test="${!errorCount}">
-                            <p class="err">${errorCount}</p>
-                        </c:if>
                     </div>
                 </div>
             </c:forEach>
+            <c:if test="${!errorCount}">
+                <p class="err">${errorCount}</p>
+            </c:if>
             <button type="submit" class="btn"><spring:message code="app.lang.makeOrder"/></button>
         </form>
 
@@ -127,7 +127,7 @@
             <c:if test="${!messages}">
                 <p class="err">${messages}</p>
             </c:if>
-            <form action="/basket/user" method="post">
+            <form action="/basket" method="post">
                 <c:forEach items="${orderForUser}" var="ord">
                     <div class="productList">
                         <img src="${ord.productOrder.filename}" alt="No images" class="img">

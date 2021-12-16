@@ -40,6 +40,7 @@ public class RegistrationController {
         }
         if (cityService.getCity(cityName) == null || cityName.isEmpty()) {
             model.addAttribute("messagesErrorCity", "Некорректно указан город");
+            model.addAttribute("cityList", cityService.allCity());
             return "/registration";
 
         } else if(userService.findEmail(user.getEmail()) != null) {
