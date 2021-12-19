@@ -90,6 +90,11 @@ public class BasketController {
         orderItemService.delete(id);
         return "redirect:/basket";
     }
+    @GetMapping("/basket/user/{id}")
+    public String deleteProductInBasketForUser(@PathVariable("id") Long id) {
+        orderItemService.delete(id);
+        return "redirect:/basket/user";
+    }
 
     @GetMapping("/checkoutOrder")
     public String checkout(@AuthenticationPrincipal User user,

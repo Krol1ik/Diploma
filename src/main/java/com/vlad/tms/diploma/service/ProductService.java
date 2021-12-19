@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class ProductService {
+
     @Autowired
     private OrderItemService orderItemService;
     @Autowired
@@ -21,6 +22,20 @@ public class ProductService {
     private BrandService brandService;
     @Autowired
     private ProductRepository productRepository;
+
+    public List<Product> searchCatalog(String name){
+        if(categoryService.searchCategory(name) != null){
+            return productRepository.findProductByCategory(categoryService.searchCategory(name));
+        } else if(typeService.searchType(name) != null){
+            return  productRepository.findProductByType(typeService.searchType(name));
+        } else if (modelService.searchModel(name) != null){
+            return productRepository.findProductByModel(modelService.searchModel(name));
+        } else if (brandService.searchBrand(name) != null){
+            return productRepository.findProductByBrand(brandService.searchBrand(name));
+        } else {
+            return null;
+        }
+    }
 
     public List<Product> findByCategory(Long id){
         List<Product> productList = productRepository.findProductByCategoryId(id);

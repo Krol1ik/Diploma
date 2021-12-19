@@ -65,6 +65,16 @@ public class CatalogController {
         return "redirect:/catalog";
     }
 
+    @GetMapping ("/search")
+    public String searchCatalog (@RequestParam ("search") String name, Model model){
+        model.addAttribute("categoryList", categoryService.categoryAll());
+        if (productService.searchCatalog(name) != null){
+            model.addAttribute("productList", productService.searchCatalog(name));
+        } else {
+            model.addAttribute("productList", productService.findAllProduct());
+        }
+        return "catalog";
+    }
 }
 
 

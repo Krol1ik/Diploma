@@ -14,6 +14,10 @@ public class ModelService {
     private ModelRepository modelRepository;
 
 
+    public Model searchModel(String name){
+        return modelRepository.findByModelNameStartingWithIgnoreCase(name);
+    }
+
     public List<Model> findAll() {
         return modelRepository.findAll();
     }

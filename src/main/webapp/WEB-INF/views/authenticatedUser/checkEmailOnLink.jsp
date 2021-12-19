@@ -45,7 +45,9 @@
                 </a>
                 <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
             </div>
-            <input type="text" class="search" placeholder="<spring:message code="app.lang.search"/>">
+            <form method="get" action="/catalog/search">
+                <input type="text" class="search" name="search" placeholder="<spring:message code="app.lang.search"/>">
+            </form>
             <sec:authorize access="isAnonymous()">
                 <div class="imgForButton">
                     <a href="/basket">

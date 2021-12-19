@@ -11,6 +11,10 @@ public class BrandService {
     @Autowired
     private BrandRepository brandRepository;
 
+    public Brand searchBrand (String name){
+        return brandRepository.findByBrandNameStartingWithIgnoreCase(name);
+    }
+
     public Brand checkBrandName(String brandName){
         return brandRepository.findByBrandName(brandName);
     }
