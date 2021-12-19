@@ -272,7 +272,7 @@ a{
     color: #b2aeba;
     font-size: 9px;
     text-decoration: underline;
-    padding-left: 790px;
+    margin-left: 790px;
     margin-bottom: 50px;
 }
 
@@ -291,6 +291,7 @@ a{
     font-size: 16px;
     margin-bottom: 40px;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .basketList{

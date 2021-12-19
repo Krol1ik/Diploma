@@ -341,7 +341,7 @@ a{
     font-size: 16px;
     margin-bottom: 40px;
     border-radius: 10px;
-    color: white;
+    cursor: pointer;
 
 }
 
@@ -349,10 +349,6 @@ a{
     display: flex;
 
 }
-
-
-
-
 
 
 

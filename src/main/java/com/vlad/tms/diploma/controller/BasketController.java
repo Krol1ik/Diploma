@@ -67,6 +67,15 @@ public class BasketController {
                 return "/basket";
             }
         }
+        for (int i = 0; i < orderItemService.placedOrderForUser(user).size(); i++) {
+            if(orderItemService.placedOrderForUser(user).get(i).getProductOrder().getStockBalance() < orderItemService.placedOrderForUser(user).get(i).getCount()){
+                model.addAttribute("orderForUser", orderItemService.placedOrderForUser(user));
+                model.addAttribute("errorCountForUser", "Доступно только " +
+                        orderItemService.placedOrderForUser(user).get(i).getProductOrder().getStockBalance() + " товара под артикулом: " +
+                        orderItemService.placedOrderForUser(user).get(i).getProductOrder().getArticle());
+                return "/basket";
+            }
+        }
         if (user == null) {
             orderItemService.priceProductInRow(sessionId);
             return "redirect:checkoutOrder";

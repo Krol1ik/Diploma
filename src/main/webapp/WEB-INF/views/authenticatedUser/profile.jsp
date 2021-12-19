@@ -107,14 +107,12 @@
                             <input type="hidden" name="_csrf" value="${_csrf.token}" />
                         </div>
                         <div class="inputForm">
+                            <input type="hidden" value="${user.email}" name="email">
                             <p class="nameInput">E-mail</p>
                             <spring:message code="app.lang.placeholderEmail" var="placeholderEmail" />
-                            <form:input path="email" class="inputsBlock" name="email" placeholder='${placeholderEmail}'/>
+                            <form:input path="email" class="inputsBlock" name="email" placeholder='${placeholderEmail}' disabled="true"/>
                             <a href="/changeEmail" class="changeEmail"> <spring:message code="app.lang.changeEmail"/></a>
                             <br>
-                            <c:if test="${!messagesForEmail}">
-                                <p class="err">${messagesForEmail}</p>
-                            </c:if>
                         </div>
                         <div class="inputForm">
                             <p class="nameInput"><spring:message code="app.lang.firstName"/></p>

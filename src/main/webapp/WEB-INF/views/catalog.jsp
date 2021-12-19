@@ -133,28 +133,35 @@
                     <img src="${prod.filename}" alt="No images" class="img">
                     <br>
                     <h4 class="nameProduct">${prod.category} <br> ${prod.type.toString()} ${prod.brand} ${prod.model}</h4>
-                    <p class="nameProduct">Артикул: ${prod.article}</p>
+                    <p class="nameProduct"><spring:message code="app.lang.article"/>: ${prod.article}</p>
                     <div class="by">
                         <h3 class="price">${prod.price} руб</h3>
-                        <button type="submit" value="idProd" name="id" class="btnBy"><a href="/catalog/${prod.id}"><spring:message code="app.lang.inBasket"/></a></button>
-                    </div>
+                        <iframe name="myIFR" style="display: none"></iframe>
+                        <form method="post" target="myIFR" action="/catalog/addInBasket">
+                            <button type="submit" id="${prod.id}"  value="${prod.id}" name="idProd" class="btnBy" onclick="myFunction(document.getElementById('${prod.id}').id)"><spring:message code="app.lang.inBasket"/></button>
+                        </form>
+               </div>
                 </div>
-
 </c:forEach>
 </sec:authorize>
+
 <sec:authorize access="isAuthenticated()">
     <c:forEach items="${productList}" var="prod">
     <div class="prodouctStyle">
         <img src="${prod.filename}" alt="No images" class="img">
         <br>
         <h4 class="nameProduct">${prod.category} <br> ${prod.type.toString()} ${prod.brand} ${prod.model}</h4>
-        <p class="nameProduct">Артикул: ${prod.article}</p>
+        <p class="nameProduct"><spring:message code="app.lang.article"/>: ${prod.article}</p>
         <div class="by">
             <h3 class="price">${prod.price} руб</h3>
-            <button type="submit" class="btnBy"><a href="/catalog/user/${prod.id}">В корзину</a></button>
+            <iframe name="myIFR" style="display: none"></iframe>
+            <form method="post" target="myIFR" action="/catalog/addInBasketForUser">
+                <button type="submit" id="${prod.id}"  value="${prod.id}" name="idProd" class="btnBy" onclick="myFunction(document.getElementById('${prod.id}').id)"><spring:message code="app.lang.inBasket"/></button>
+            </form>
         </div>
         <sec:authorize access="hasAuthority('ADMIN')">
         <a href="/catalog/delete/${prod.id}" class="deleteProduct">Удалить товар</a>
+
         </sec:authorize>
     </div>
     </c:forEach>

@@ -38,11 +38,8 @@ public class ProfileController {
                                 @ModelAttribute("user") @Valid User userUpdate,BindingResult bindingResult, Model model) {
 
 
-
+        user = userService.findByUsername(user.getUsername());
         if (bindingResult.hasErrors() || bindingResultAddress.hasErrors()) {
-            return "authenticatedUser/profile";
-        } else if (!user.getEmail().equals(userUpdate.getEmail())) {
-            model.addAttribute("messagesForEmail", "Чтобы изменить e-mail нажмите на кнопку рядом");
             return "authenticatedUser/profile";
         }else if (cityService.getCity(cityName) == null || cityName.isEmpty()) {
             model.addAttribute("messagesErrorCity", "Некорректно указан город");
@@ -57,7 +54,9 @@ public class ProfileController {
 
     @GetMapping ("/changeEmail")
     public String updateEmailForm (@AuthenticationPrincipal User user) {
-        userService.sendMessageRestoreEmail(user);
+        User userUpdate = userService.findByUsername(user.getUsername());
+        userService.sendMessageRestoreEmail(userUpdate);
+//        userService.sendMessageRestoreEmail(user);
         return "authenticatedUser/checkEmailOnLink";
     }
 
