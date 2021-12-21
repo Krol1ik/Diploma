@@ -110,6 +110,9 @@
                 <c:if test="${!passUpdate}">
                     <p class="err">${passUpdate}</p>
                 </c:if>
+                <c:if test="${!checkEmail}">
+                    <p class="err">${checkEmail}</p>
+                </c:if>
             </form>
         </div>
     </div>

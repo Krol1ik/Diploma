@@ -223,7 +223,6 @@ a{
     display: flex;
     border: 2px solid #ffa627;
     width: 600px;
-    height: 260px;
     margin-top: 60px;
     margin-bottom: 60px;
     border-radius: 10px;
@@ -322,7 +321,6 @@ a{
 
 .err{
     color: #ffa627;
-    padding-left: 85px;
 }
 
 .footerInfo{

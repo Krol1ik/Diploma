@@ -36,22 +36,27 @@ public class RegistrationController {
                           @ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors() || errorAddress.hasErrors()){
+            model.addAttribute("cityList", cityService.allCity());
             return "/registration";
         }
         if (cityService.getCity(cityName) == null || cityName.isEmpty()) {
-            model.addAttribute("messagesErrorCity", "Некорректно указан город");
+            model.addAttribute("messagesErrorCity", "К сожалению, мы не работает в данном городе");
             model.addAttribute("cityList", cityService.allCity());
             return "/registration";
 
         } else if(userService.findEmail(user.getEmail()) != null) {
                 model.addAttribute("messagesForEmail", "Такой e-mail уже существует");
+                model.addAttribute("cityList", cityService.allCity());
                 return "registration";
 
         } else if (!userService.addUser(user, cityService.getCity(cityName), address)) {
             model.addAttribute("messages", "Такой логин уже существует");
+            model.addAttribute("cityList", cityService.allCity());
             return "registration";
         }else {
-            return "redirect:/login";
+            model.addAttribute("checkEmail", "Для активации аккаунта перейдите по ссылке, " +
+                    "которую вам отправили на ваш E-mail");
+            return "login";
         }
     }
 

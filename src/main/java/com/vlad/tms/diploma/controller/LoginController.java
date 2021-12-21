@@ -29,7 +29,7 @@ public class LoginController {
                                       Model model){
 
         if(userService.findEmail(email) == null){
-            model.addAttribute("errorFindEmail", "Такого E-mail не существует");
+            model.addAttribute("errorFindEmail", "Такой E-mail у нас не был зарегистрирован");
             return "forgotPassword";
         } else{
             User user = userService.findEmail(email);
