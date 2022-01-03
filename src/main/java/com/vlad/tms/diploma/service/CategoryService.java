@@ -27,8 +27,4 @@ public class CategoryService {
         categoryRepository.save(category);
         return category;
     }
-
-    public Category searchCategory(String category){
-        return categoryRepository.findByCategoryNameStartingWithIgnoreCase(category);
-    }
 }

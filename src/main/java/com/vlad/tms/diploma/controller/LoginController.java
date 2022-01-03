@@ -1,6 +1,7 @@
 package com.vlad.tms.diploma.controller;
 
 import com.vlad.tms.diploma.model.entity.User;
+import com.vlad.tms.diploma.service.ProductService;
 import com.vlad.tms.diploma.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,9 +19,18 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping ("/login")
+    public String loginPage (Model model){
+        model.addAttribute("search", productService.searchInput());
+        return "login";
+    }
 
     @GetMapping ("/login/forgotPassword")
-    public String forgotPasswordPage(){
+    public String forgotPasswordPage(Model model){
+        model.addAttribute("search", productService.searchInput());
         return "forgotPassword";
     }
 
@@ -29,11 +39,13 @@ public class LoginController {
                                       Model model){
 
         if(userService.findEmail(email) == null){
+            model.addAttribute("search", productService.searchInput());
             model.addAttribute("errorFindEmail", "Такой E-mail у нас не был зарегистрирован");
             return "forgotPassword";
         } else{
             User user = userService.findEmail(email);
             userService.sendMessageRestorePass(user);
+            model.addAttribute("search", productService.searchInput());
             model.addAttribute("errorFindEmail", "Вам на почту была отправлена ссылка на восстановление пароля");
             return "forgotPassword";
         }
@@ -42,6 +54,7 @@ public class LoginController {
     @GetMapping("/restore/{code}")
     public String activate(Model model, @PathVariable String code) {
 
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("code", code);
         return "updatePassword";
     }
@@ -56,6 +69,7 @@ public class LoginController {
         user.setActivationCode(null);
         userService.save(user);
 
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("passUpdate", "Пароль успешно обновлен");
         return "login";
     }

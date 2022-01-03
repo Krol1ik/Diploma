@@ -138,6 +138,10 @@ a{
     margin-left: 30px;
 }
 
+.search::-webkit-calendar-picker-indicator {
+    display:none !important;
+}
+
 .basket{
     font-family: 'Montserrat', sans-serif;
     background: #f7f8fa;

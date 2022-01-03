@@ -163,6 +163,10 @@ a{
     margin-left: 40px;
 }
 
+.search::-webkit-calendar-picker-indicator {
+    display:none !important;
+}
+
 .messages{
     height: 23px;
 }

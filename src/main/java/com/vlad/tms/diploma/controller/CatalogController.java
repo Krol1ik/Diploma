@@ -29,6 +29,7 @@ public class CatalogController {
     @GetMapping()
     public String catalogPage(Model model) {
 
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("productList", productService.findAllProduct());
         model.addAttribute("categoryList", categoryService.categoryAll());
         return "catalog";
@@ -36,6 +37,7 @@ public class CatalogController {
 
     @GetMapping("/category/{id}")
     public String catalogOnCategory(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("productList", productService.findByCategory(id));
         model.addAttribute("categoryList", categoryService.categoryAll());
         return "catalog";
@@ -66,10 +68,11 @@ public class CatalogController {
     }
 
     @GetMapping ("/search")
-    public String searchCatalog (@RequestParam ("search") String name, Model model){
+    public String searchCatalog (@RequestParam ("search") String search, Model model){
         model.addAttribute("categoryList", categoryService.categoryAll());
-        if (productService.searchCatalog(name) != null){
-            model.addAttribute("productList", productService.searchCatalog(name));
+        if (productService.searchCatalog(search, search, search, search) != null){
+            model.addAttribute("search", productService.searchInput());
+            model.addAttribute("productList", productService.searchCatalog(search, search, search, search));
         } else {
             model.addAttribute("productList", productService.findAllProduct());
         }

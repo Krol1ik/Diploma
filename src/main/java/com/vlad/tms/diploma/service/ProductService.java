@@ -5,6 +5,7 @@ import com.vlad.tms.diploma.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,18 +24,14 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> searchCatalog(String name){
-        if(categoryService.searchCategory(name) != null){
-            return productRepository.findProductByCategory(categoryService.searchCategory(name));
-        } else if(typeService.searchType(name) != null){
-            return  productRepository.findProductByType(typeService.searchType(name));
-        } else if (modelService.searchModel(name) != null){
-            return productRepository.findProductByModel(modelService.searchModel(name));
-        } else if (brandService.searchBrand(name) != null){
-            return productRepository.findProductByBrand(brandService.searchBrand(name));
-        } else {
-            return null;
+    public List<Product> searchCatalog(String brand, String category, String type, String model){
+        List<Product> productList = productRepository.findAllByBrand_brandNameContainingIgnoreCaseOrCategory_CategoryNameContainingIgnoreCaseOrType_TypeNameContainingIgnoreCaseOrModel_modelNameContainingIgnoreCase(brand, category, type, model);
+        for (int i = 0; i < productList.size(); i++) {
+            if(productList.get(i).getStockBalance() < 1){
+                productList.remove(i);
+            }
         }
+        return productList;
     }
 
     public List<Product> findByCategory(Long id){
@@ -120,4 +117,22 @@ public class ProductService {
         product.setPrice(price);
         productRepository.save(product);
     }
+
+    public List<String> searchInput() {
+        List<String> search = new ArrayList<>();
+        for (int i = 0; i < brandService.findAll().size(); i++) {
+            search.add(brandService.findAll().get(i).getBrandName());
+        }
+        for (int i = 0; i < categoryService.categoryAll().size(); i++) {
+            search.add(categoryService.categoryAll().get(i).getCategoryName());
+        }
+        for (int i = 0; i < typeService.typeAll().size(); i++) {
+            search.add(typeService.typeAll().get(i).getTypeName());
+        }
+        for (int i = 0; i < modelService.findAll().size(); i++) {
+            search.add(modelService.findAll().get(i).getModelName());
+        }
+        return search;
+    }
 }
+

@@ -6,8 +6,8 @@ import com.vlad.tms.diploma.model.entity.User;
 import com.vlad.tms.diploma.model.order.OrderItem;
 import com.vlad.tms.diploma.service.CityService;
 import com.vlad.tms.diploma.service.DataOrderService;
-import com.vlad.tms.diploma.service.MailSenderService;
 import com.vlad.tms.diploma.service.OrderItemService;
+import com.vlad.tms.diploma.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,12 +29,15 @@ public class BasketController {
     private OrderItemService orderItemService;
     @Autowired
     private DataOrderService dataOrderService;
+    @Autowired
+    private ProductService productService;
 
 
 
     @GetMapping("/basket")
     public String basketPage(HttpSession session ,Model model) {
         String sessionId = session.getId();
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("order", orderItemService.placedOrder(sessionId));
         return "basket";
     }
@@ -52,6 +54,7 @@ public class BasketController {
 
         if (orderItem == null) {
             model.addAttribute("messages", "У вас еще нет товаров в корзине");
+            model.addAttribute("search", productService.searchInput());
             return "basket";
         }
         for (int i = 0; i < orderItem.size(); i++) {
@@ -60,6 +63,7 @@ public class BasketController {
         }
         for (int i = 0; i < orderItemService.placedOrder(sessionId).size(); i++) {
             if(orderItemService.placedOrder(sessionId).get(i).getProductOrder().getStockBalance() < orderItemService.placedOrder(sessionId).get(i).getCount()){
+                model.addAttribute("search", productService.searchInput());
                 model.addAttribute("order", orderItemService.placedOrder(sessionId));
                 model.addAttribute("errorCount", "Доступно только " +
                         orderItemService.placedOrder(sessionId).get(i).getProductOrder().getStockBalance() + " товара под артикулом: " +
@@ -69,6 +73,7 @@ public class BasketController {
         }
         for (int i = 0; i < orderItemService.placedOrderForUser(user).size(); i++) {
             if(orderItemService.placedOrderForUser(user).get(i).getProductOrder().getStockBalance() < orderItemService.placedOrderForUser(user).get(i).getCount()){
+                model.addAttribute("search", productService.searchInput());
                 model.addAttribute("orderForUser", orderItemService.placedOrderForUser(user));
                 model.addAttribute("errorCountForUser", "Доступно только " +
                         orderItemService.placedOrderForUser(user).get(i).getProductOrder().getStockBalance() + " товара под артикулом: " +
@@ -102,6 +107,7 @@ public class BasketController {
                            Model model) {
         String sessionId = session.getId();
 
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("finalPrice", orderItemService.priceAllOrder(sessionId));
         model.addAttribute("order", orderItemService.placedOrder(sessionId));
         model.addAttribute("customer", new Customer());
@@ -138,7 +144,8 @@ public class BasketController {
     }
 
     @GetMapping("/thanksOrder")
-    public String thanksOrder() {
+    public String thanksOrder(Model model) {
+        model.addAttribute("search", productService.searchInput());
         return "thanksOrder";
     }
 
@@ -146,6 +153,7 @@ public class BasketController {
     @GetMapping("/basket/user")
     public String basketPageForUser(@AuthenticationPrincipal User user,
                                     Model model) {
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("orderForUser", orderItemService.placedOrderForUser(user));
         return "basket";
     }
@@ -154,6 +162,7 @@ public class BasketController {
     public String orderCompleteForUser(@AuthenticationPrincipal User user,
                                        Model model) {
 
+        model.addAttribute("search", productService.searchInput());
         dataOrderService.saveOrderForUser(orderItemService.placedOrderForUser(user), user);
         return "thanksOrder";
     }

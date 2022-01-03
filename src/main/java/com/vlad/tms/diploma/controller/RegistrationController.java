@@ -5,6 +5,7 @@ import com.vlad.tms.diploma.model.address.City;
 import com.vlad.tms.diploma.model.entity.Customer;
 import com.vlad.tms.diploma.model.entity.User;
 import com.vlad.tms.diploma.service.CityService;
+import com.vlad.tms.diploma.service.ProductService;
 import com.vlad.tms.diploma.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,12 @@ public class RegistrationController {
     private CityService cityService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/registration")
     public String registration(Model model) {
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("cityList", cityService.allCity());
         model.addAttribute("user", new User());
         model.addAttribute("address", new Address());

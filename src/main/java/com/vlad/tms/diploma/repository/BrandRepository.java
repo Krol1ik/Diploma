@@ -7,5 +7,4 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 
     Brand findByBrandName(String brandName);
 
-    Brand findByBrandNameStartingWithIgnoreCase(String name);
 }

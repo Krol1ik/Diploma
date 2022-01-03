@@ -12,7 +12,7 @@
 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/static/css/title.css">
-
+<script src="/static/js/main.js" />"></script>
 <html>
 <head>
     <title>Sport line</title>
@@ -47,7 +47,13 @@
             <a href="/catalog" class="catalog"><spring:message code="app.lang.catalog"/></a>
             </div>
             <form method="get" action="/catalog/search">
-                <input type="text" class="search" name="search" placeholder="<spring:message code="app.lang.search"/>">
+                <template id="resultstemplate">
+                    <c:forEach items="${search}" var="search">
+                        <option> ${search}</option>
+                    </c:forEach>
+                </template>
+                <input type="text" oninput="searchCatalog()" name="search" id="search"   class="search" list="searchresults" autocomplete="off" placeholder="<spring:message code="app.lang.search"/>"/>
+                <datalist id="searchresults"></datalist>
             </form>
             <sec:authorize access="isAnonymous()">
             <div class="imgForButton">

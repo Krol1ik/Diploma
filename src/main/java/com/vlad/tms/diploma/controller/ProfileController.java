@@ -3,6 +3,7 @@ package com.vlad.tms.diploma.controller;
 import com.vlad.tms.diploma.model.address.Address;
 import com.vlad.tms.diploma.model.entity.User;
 import com.vlad.tms.diploma.service.CityService;
+import com.vlad.tms.diploma.service.ProductService;
 import com.vlad.tms.diploma.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,10 +21,13 @@ public class ProfileController {
     private UserService userService;
     @Autowired
     private CityService cityService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/profile")
     public String getProfile(@AuthenticationPrincipal User user, Model model) {
 
+        model.addAttribute("search", productService.searchInput());
         model.addAttribute("user", user);
         model.addAttribute("address", user.getAddress());
         model.addAttribute("cityUser", user.getAddress().getCity().getCityName());
